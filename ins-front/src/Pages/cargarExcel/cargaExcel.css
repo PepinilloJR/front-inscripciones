@@ -1,0 +1,14 @@
+input[type="file"] {
+    display: none;
+}
+
+
+.LectorArchivo {
+    font-size: calc(0.8vw + 0.9vh);
+    width: calc(7vw + 7vh);
+    height: calc(2vw + 2vh);
+    display: flex;
+    outline: 1px solid black;    
+    background-color: rgb(255, 255, 255);
+    margin-inline: auto;
+}
