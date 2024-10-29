@@ -1,0 +1,50 @@
+input[type="file"] {
+    display: none;
+}
+
+
+.LectorArchivo {
+    font-size: calc(0.8vw + 0.9vh);
+    width: calc(7vw + 7vh);
+    height: calc(2vw + 2vh);
+    display: flex;
+    outline: calc(0.2vw + 0.2vh) solid black;    
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    margin-top: calc(1vw + 1vh);
+}
+
+
+
+.CursosContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(142, 144, 238);
+    outline: calc(0.2vw + 0.2vh) solid black; 
+    margin: calc(5vw + 5vh); 
+    width: calc(35vw + 35vh);
+}
+
+.Curso {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(142, 144, 238);
+    outline: calc(0.2vw + 0.2vh) solid black; 
+    margin: calc(1vw + 1vh);
+}
+
+.Comision {
+    background-color: rgb(196, 196, 245);
+    font-size: calc(2vw + 2vh);
+    text-align: center;
+}
+
+.Comision:hover {
+    background-color: rgb(209, 209, 212);
+}
+
+.Materia {
+    background-color: rgb(148, 148, 223);
+    text-align: center;
+    font-size: calc(1.5vw + 1.5vh);
+}
