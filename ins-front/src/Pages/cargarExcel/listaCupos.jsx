@@ -19,6 +19,7 @@ function ListadoCupos() {
     // como digo, eso deberia venir desde el back ya armadito, si no tendria que hacer esto todo el rato
     const filtrarCursos = () => {
 
+        
         const tabla = new Map();
         
         for (const o of listaCupos) {
