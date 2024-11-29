@@ -65,7 +65,6 @@ function parseToJsonFile(archivo, sheet) {
             var sheets = XLSX.read(datos, { type: "array" })
 
             var Json = XLSX.utils.sheet_to_json(sheets.Sheets[sheet])
-
             resolve(Json)
         }
         fileReader.readAsArrayBuffer(archivo)
