@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { GeneralContext } from "../../Context/Context"
 
 
@@ -6,21 +6,30 @@ import { GeneralContext } from "../../Context/Context"
 function Inscripciones() {
     const GContext = useContext(GeneralContext)
     const Slider = useRef()
-
     
+    const [desplazamiento, setDesplazamiento] = useState(0)
+
     return <div className="InscripcionesSliderContainer">
         
-        <button className="SliderButton">{"<"}</button>
+        <button onClick={ () => {
+            // esto depende del estilo y tamaño de las inscripciones
+            setDesplazamiento((desplazamiento + (12 + 0.65 * 2) * 3))
+            console.log(desplazamiento)
+        }} className="SliderButton">{"<"}</button>
 
         <div ref={Slider} className="InscripcionesSlider">    
-            <div className="InscripcionesLista">
+            <div style={{transform: `translateX(calc(${desplazamiento}vw + ${desplazamiento}vh))`}} className="InscripcionesLista">
             {GContext.inscripciones?.map((value, key) => {
                 return <Inscripcion ins={value} key={key}/>
             })}
             </div>
         </div>
 
-        <button className="SliderButton">{">"}</button>
+        <button onClick={ () => {
+            // esto depende del estilo y tamaño de las inscripciones
+
+            setDesplazamiento(desplazamiento - ( 12 + 0.65 * 2) * 3)
+        }} className="SliderButton">{">"}</button>
     </div>
 
 }
