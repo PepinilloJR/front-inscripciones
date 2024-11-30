@@ -5,3 +5,65 @@
     height: 100%;
     align-items: center;
 }
+
+.InscripcionesSliderContainer {
+    display: flex;
+    align-items: center;
+}
+
+.SliderButton {
+    display: flex;
+    align-items: center;
+    font-size: calc(1vh + 1vw);
+    background-color:rgb(177, 177, 177);
+    width: calc(2vh + 2vw);
+    height: calc(2vh + 2vw);
+}
+
+.InscripcionesSlider {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border: calc(0.05vh + 0.05vw) solid rgb(145, 145, 145);
+    width: calc(40vh + 40vw);
+    height: calc(20vh + 20vw);
+    border-radius: calc(1vh + 1vw);
+    overflow: hidden;
+
+}
+
+.InscripcionesLista {
+    display: flex;
+    gap: 0;
+    width: fit-content;
+    height: fit-content;
+
+}
+
+.Inscripcion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: cadetblue;
+    width: calc(12vh + 12vw);
+    height: calc(6vh + 6vw);
+    margin: calc(0.65vh + 0.65vw);
+    border-radius: calc(1vh + 1vw);
+    flex-shrink: 0;
+}
+
+.InscripcionTitulo {
+    display: flex;
+    align-items: center;
+    font-size: calc(1vh + 1vw);
+    width: fit-content;
+    height: calc(2vh + 2vw);
+}
+
+.ComisionesMiniList {
+    display: flex;
+    align-items: center;
+    font-size: calc(1vh + 1vw);
+    width: fit-content;
+    height: calc(2vh + 2vw); 
+}
