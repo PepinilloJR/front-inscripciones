@@ -14,10 +14,13 @@
 .SliderButton {
     display: flex;
     align-items: center;
-    font-size: calc(1vh + 1vw);
-    background-color:rgb(177, 177, 177);
+    background-color:rgb(255, 255, 255);
+    outline: calc(0.05vh + 0.05vw) solid rgba(75, 75, 75, 0.116);
     width: calc(2vh + 2vw);
-    height: calc(2vh + 2vw);
+    height: 100%;
+    justify-content: center;
+    border-radius: calc(1vh + 1vw);
+    padding-inline: calc(4vh + 4vw);
 }
 
 .InscripcionesSlider {
@@ -34,10 +37,13 @@
 
 .InscripcionesLista {
     display: flex;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
     width: fit-content;
-    height: fit-content;
+    height: calc(15vh + 15vw);
     gap: 0px;
-
+    transition: 0.5s;
 }
 
 .Inscripcion {

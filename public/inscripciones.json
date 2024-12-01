@@ -344,7 +344,8 @@
           ]
         }
       ]
-    }, {
+    },
+    {
       "Materia": "Matemáticas",
       "Comisiones": [
         {
@@ -374,6 +375,426 @@
               "id": 4,
               "nombre": "Laura Martínez",
               "edad": 23
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Materia": "Matemáticas",
+      "Comisiones": [
+        {
+          "Comision": "A",
+          "Alumnos": [
+            {
+              "id": 1,
+              "nombre": "Juan Pérez",
+              "edad": 20
+            },
+            {
+              "id": 2,
+              "nombre": "Ana López",
+              "edad": 22
+            }
+          ]
+        },
+        {
+          "Comision": "B",
+          "Alumnos": [
+            {
+              "id": 3,
+              "nombre": "Carlos García",
+              "edad": 21
+            },
+            {
+              "id": 4,
+              "nombre": "Laura Martínez",
+              "edad": 23
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Materia": "Matemáticas",
+      "Comisiones": [
+        {
+          "Comision": "A",
+          "Alumnos": [
+            {
+              "id": 1,
+              "nombre": "Juan Pérez",
+              "edad": 20
+            },
+            {
+              "id": 2,
+              "nombre": "Ana López",
+              "edad": 22
+            }
+          ]
+        },
+        {
+          "Comision": "B",
+          "Alumnos": [
+            {
+              "id": 3,
+              "nombre": "Carlos García",
+              "edad": 21
+            },
+            {
+              "id": 4,
+              "nombre": "Laura Martínez",
+              "edad": 23
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Materia": "Matemáticas",
+      "Comisiones": [
+        {
+          "Comision": "A",
+          "Alumnos": [
+            {
+              "id": 1,
+              "nombre": "Juan Pérez",
+              "edad": 20
+            },
+            {
+              "id": 2,
+              "nombre": "Ana López",
+              "edad": 22
+            }
+          ]
+        },
+        {
+          "Comision": "B",
+          "Alumnos": [
+            {
+              "id": 3,
+              "nombre": "Carlos García",
+              "edad": 21
+            },
+            {
+              "id": 4,
+              "nombre": "Laura Martínez",
+              "edad": 23
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Materia": "Matemáticas",
+      "Comisiones": [
+        {
+          "Comision": "A",
+          "Alumnos": [
+            {
+              "id": 1,
+              "nombre": "Juan Pérez",
+              "edad": 20
+            },
+            {
+              "id": 2,
+              "nombre": "Ana López",
+              "edad": 22
+            }
+          ]
+        },
+        {
+          "Comision": "B",
+          "Alumnos": [
+            {
+              "id": 3,
+              "nombre": "Carlos García",
+              "edad": 21
+            },
+            {
+              "id": 4,
+              "nombre": "Laura Martínez",
+              "edad": 23
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Materia": "Matemáticas",
+      "Comisiones": [
+        {
+          "Comision": "A",
+          "Alumnos": [
+            {
+              "id": 1,
+              "nombre": "Juan Pérez",
+              "edad": 20
+            },
+            {
+              "id": 2,
+              "nombre": "Ana López",
+              "edad": 22
+            }
+          ]
+        },
+        {
+          "Comision": "B",
+          "Alumnos": [
+            {
+              "id": 3,
+              "nombre": "Carlos García",
+              "edad": 21
+            },
+            {
+              "id": 4,
+              "nombre": "Laura Martínez",
+              "edad": 23
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Materia": "Matemáticas",
+      "Comisiones": [
+        {
+          "Comision": "A",
+          "Alumnos": [
+            {
+              "id": 1,
+              "nombre": "Juan Pérez",
+              "edad": 20
+            },
+            {
+              "id": 2,
+              "nombre": "Ana López",
+              "edad": 22
+            }
+          ]
+        },
+        {
+          "Comision": "B",
+          "Alumnos": [
+            {
+              "id": 3,
+              "nombre": "Carlos García",
+              "edad": 21
+            },
+            {
+              "id": 4,
+              "nombre": "Laura Martínez",
+              "edad": 23
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Materia": "Matemáticas",
+      "Comisiones": [
+        {
+          "Comision": "A",
+          "Alumnos": [
+            {
+              "id": 1,
+              "nombre": "Juan Pérez",
+              "edad": 20
+            },
+            {
+              "id": 2,
+              "nombre": "Ana López",
+              "edad": 22
+            }
+          ]
+        },
+        {
+          "Comision": "B",
+          "Alumnos": [
+            {
+              "id": 3,
+              "nombre": "Carlos García",
+              "edad": 21
+            },
+            {
+              "id": 4,
+              "nombre": "Laura Martínez",
+              "edad": 23
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Materia": "Matemáticas",
+      "Comisiones": [
+        {
+          "Comision": "A",
+          "Alumnos": [
+            {
+              "id": 1,
+              "nombre": "Juan Pérez",
+              "edad": 20
+            },
+            {
+              "id": 2,
+              "nombre": "Ana López",
+              "edad": 22
+            }
+          ]
+        },
+        {
+          "Comision": "B",
+          "Alumnos": [
+            {
+              "id": 3,
+              "nombre": "Carlos García",
+              "edad": 21
+            },
+            {
+              "id": 4,
+              "nombre": "Laura Martínez",
+              "edad": 23
+            }
+          ]
+        }
+      ]
+    }, 
+    {
+      "Materia": "Matemáticas",
+      "Comisiones": [
+        {
+          "Comision": "A",
+          "Alumnos": [
+            {
+              "id": 1,
+              "nombre": "Juan Pérez",
+              "edad": 20
+            },
+            {
+              "id": 2,
+              "nombre": "Ana López",
+              "edad": 22
+            }
+          ]
+        },
+        {
+          "Comision": "B",
+          "Alumnos": [
+            {
+              "id": 3,
+              "nombre": "Carlos García",
+              "edad": 21
+            },
+            {
+              "id": 4,
+              "nombre": "Laura Martínez",
+              "edad": 23
+            }
+          ]
+        }
+      ]
+    }, 
+    {
+      "Materia": "Matemáticas",
+      "Comisiones": [
+        {
+          "Comision": "A",
+          "Alumnos": [
+            {
+              "id": 1,
+              "nombre": "Juan Pérez",
+              "edad": 20
+            },
+            {
+              "id": 2,
+              "nombre": "Ana López",
+              "edad": 22
+            }
+          ]
+        },
+        {
+          "Comision": "B",
+          "Alumnos": [
+            {
+              "id": 3,
+              "nombre": "Carlos García",
+              "edad": 21
+            },
+            {
+              "id": 4,
+              "nombre": "Laura Martínez",
+              "edad": 23
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Materia": "Historia",
+      "Comisiones": [
+        {
+          "Comision": "A",
+          "Alumnos": [
+            {
+              "id": 5,
+              "nombre": "Pedro Rodríguez",
+              "edad": 24
+            },
+            {
+              "id": 6,
+              "nombre": "Sofía Pérez",
+              "edad": 25
+            }
+          ]
+        },
+        {
+          "Comision": "B",
+          "Alumnos": [
+            {
+              "id": 7,
+              "nombre": "Ricardo Díaz",
+              "edad": 26
+            },
+            {
+              "id": 8,
+              "nombre": "Marta Gómez",
+              "edad": 27
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Materia": "Historia",
+      "Comisiones": [
+        {
+          "Comision": "A",
+          "Alumnos": [
+            {
+              "id": 5,
+              "nombre": "Pedro Rodríguez",
+              "edad": 24
+            },
+            {
+              "id": 6,
+              "nombre": "Sofía Pérez",
+              "edad": 25
+            }
+          ]
+        },
+        {
+          "Comision": "B",
+          "Alumnos": [
+            {
+              "id": 7,
+              "nombre": "Ricardo Díaz",
+              "edad": 26
+            },
+            {
+              "id": 8,
+              "nombre": "Marta Gómez",
+              "edad": 27
             }
           ]
         }
