@@ -7,43 +7,51 @@ import { BsChevronLeft  } from "react-icons/bs";
 function Inscripciones() {
     const GContext = useContext(GeneralContext)
     const Slider = useRef()
-    
     const [desplazamiento, setDesplazamiento] = useState(0)
+    const ndes = useRef(0)
+    
+    // aplicar el desplazamiento cuando se hace zoom o cambia la ventana, ya que el translate es en pixeles
+    useEffect(() => {
+
+        const manejarResize = () => {
+            console.log(ndes.current)
+            setDesplazamiento(ndes.current * (Slider.current?.getBoundingClientRect().width))
+        }
+
+        window.addEventListener("resize", manejarResize)
+
+        return () => {
+            window.removeEventListener("resize", manejarResize)
+        }
+    }, [])
 
     return <div className="InscripcionesSliderContainer">
         
         <BsChevronLeft onClick={ () => {
             // esto depende del estilo y tamaño de las inscripciones
             if (desplazamiento < 0) {
-                setDesplazamiento((desplazamiento + (12 + 0.65 * 2) * 3))
-                console.log(desplazamiento)
+                ndes.current = ndes.current + 1
+                setDesplazamiento(ndes.current * (Slider.current?.getBoundingClientRect().width))
             }
         }} className="SliderButton">
         </BsChevronLeft>
-
-        <div ref={Slider} className="InscripcionesSlider">    
-            <div style={{transform: `translateX(calc(${desplazamiento}vw + ${desplazamiento}vh))`}} className="InscripcionesLista">
+        <div className="InscripcionesSlider">    
+            <div ref={Slider} style={{transform: `translateX(${desplazamiento}px)`}} className="InscripcionesLista">
             {GContext.inscripciones?.map((value, key) => {
                 return <Inscripcion ins={value} key={key}/>
             })}
             </div>
         </div>
-
         <BsChevronRight onClick={ () => {
-            // esto depende del estilo y tamaño de las inscripciones
-
             const cantidadMaterias = 6 // cantidad de materias que iran a pantalla 
-            const cantidadColumnas = 3 // cantidad de materias en cada fila que se muestra en pantalla
-
             var cantidad = Math.floor((GContext.inscripciones.length / cantidadMaterias) - 0.1)
-            var limiteDerecho = cantidad * ( 12 + 0.65 * 2) * cantidadColumnas
+            var limiteDerecho = (cantidad * Slider.current?.getBoundingClientRect().width * 3)
             
-
             if (desplazamiento > -limiteDerecho) {
-                setDesplazamiento(desplazamiento - ( 12 + 0.65 * 2) * 3)
+                ndes.current = ndes.current - 1
+                setDesplazamiento(ndes.current * (Slider.current?.getBoundingClientRect().width))
             }
         }} className="SliderButton"/>
-
     </div>
 
 }
@@ -54,11 +62,8 @@ function Inscripcion ({ins}) {
     return <>
     <div className="Inscripcion">
         <div className="InscripcionTitulo">
-            {ins.Materia}        
+            {ins.Materia}
         </div> 
-        <div className="ComisionesMiniList">
-            lista aqui...
-        </div>
     </div>
     </>
 

@@ -27,8 +27,8 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    border: calc(0.05vh + 0.05vw) solid rgb(145, 145, 145);
-    width: calc(40vh + 40vw);
+    border: calc(0.05vh + 0.05vw) solid rgb(218, 218, 218);
+    width: calc(39.96vh + 39.96vw);
     height: calc(20vh + 20vw);
     border-radius: calc(1vh + 1vw);
     overflow: hidden;
@@ -37,12 +37,11 @@
 
 .InscripcionesLista {
     display: flex;
-    justify-content:flex-start;
+    justify-content: flex-start;
     flex-wrap: wrap;
     flex-direction: column;
     width: fit-content;
-    height: calc(15vh + 15vw);
-    gap: 0px;
+    height: calc(13.5vh + 13.5vw);
     transition: 0.5s;
 }
 
@@ -50,26 +49,33 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color: cadetblue;
     width: calc(12vh + 12vw);
     height: calc(6vh + 6vw);
-    margin: calc(0.65vh + 0.65vw);
+
+    margin: calc(0.36vh + 0.36vw);
+
+    padding-inline: calc(0.30vh + 0.30vw);
+
+    padding-left:calc(0.30vh + 0.30vw) ;
+    padding-right:calc(0.30vh + 0.30vw) ;
+
     border-radius: calc(1vh + 1vw);
     flex-shrink: 0;
+
+}
+
+.Inscripcion:hover {
+    outline: calc(0.2vh + 0.2vw) rgb(166, 209, 211) solid;
+    transition: 0.2s;
 }
 
 .InscripcionTitulo {
-    display: flex;
     align-items: center;
     font-size: calc(1vh + 1vw);
+    line-height: calc(1vh + 1vw);
     width: fit-content;
-    height: calc(2vh + 2vw);
-}
-
-.ComisionesMiniList {
-    display: flex;
-    align-items: center;
-    font-size: calc(1vh + 1vw);
-    width: fit-content;
-    height: calc(2vh + 2vw); 
+    height: fit-content;
+    text-align: center;
 }

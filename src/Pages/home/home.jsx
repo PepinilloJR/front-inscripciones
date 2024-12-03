@@ -6,9 +6,8 @@ import { GeneralContext } from "../../Context/Context"
 import Inscripciones from "./Inscripciones"
 
 function Home() {
-
     const GContext = useContext(GeneralContext)
-
+    
     useEffect(()=> {
         getInscripciones(GContext.setInscripciones)
     }, [])
@@ -19,7 +18,6 @@ function Home() {
             <SearchBar></SearchBar>
             {GContext.inscripciones ?  <Inscripciones/> : <div></div> }
         </div>
-
 }
 
 
@@ -31,12 +29,9 @@ async function getInscripciones(setInscripciones) {
             }
         })
         setInscripciones(await response.json())
-
     } catch (error) {
         console.log(error)
     }
-
-
 }
 
 export default Home
