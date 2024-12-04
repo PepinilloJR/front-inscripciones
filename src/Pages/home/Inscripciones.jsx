@@ -10,12 +10,21 @@ function Inscripciones() {
     const [desplazamiento, setDesplazamiento] = useState(0)
     const ndes = useRef(0)
     
-    // aplicar el desplazamiento cuando se hace zoom o cambia la ventana, ya que el translate es en pixeles
+    // actualizar el tamaño del desplazamiento cuando se genera un resize, para memorizar la posicion en la que estaba el usuario
+    // al cambiar el tamaño de la ventana
     useEffect(() => {
 
         const manejarResize = () => {
-            console.log(ndes.current)
-            setDesplazamiento(ndes.current * (Slider.current?.getBoundingClientRect().width))
+            
+            const longitudLineas = 3 // la cantidad de materias que hay en cada linea
+
+            var desplazamientoDerecho = Slider.current?.getBoundingClientRect().width
+
+            if (navigator.userAgent.includes("Firefox")) {
+                desplazamientoDerecho = desplazamientoDerecho * longitudLineas
+            }
+
+            setDesplazamiento(-ndes.current * desplazamientoDerecho)
         }
 
         window.addEventListener("resize", manejarResize)
@@ -26,30 +35,49 @@ function Inscripciones() {
     }, [])
 
     return <div className="InscripcionesSliderContainer">
-        
         <BsChevronLeft onClick={ () => {
-            // esto depende del estilo y tamaño de las inscripciones
-            if (desplazamiento < 0) {
-                ndes.current = ndes.current + 1
-                setDesplazamiento(ndes.current * (Slider.current?.getBoundingClientRect().width))
+            const longitudLineas = 3 // la cantidad de materias que hay en cada linea
+
+            var desplazamientoIzquierdo = Slider.current?.getBoundingClientRect().width
+
+            // detectar si es firefox, debido a sus diferencias en la implementacion del flexbox
+            if (navigator.userAgent.includes("Firefox")) {
+                desplazamientoIzquierdo = desplazamientoIzquierdo * longitudLineas
             }
+
+            if (desplazamiento < 0) {
+                ndes.current = ndes.current - 1
+                setDesplazamiento(-ndes.current * desplazamientoIzquierdo)
+            }
+
         }} className="SliderButton">
         </BsChevronLeft>
         <div className="InscripcionesSlider">    
+
             <div ref={Slider} style={{transform: `translateX(${desplazamiento}px)`}} className="InscripcionesLista">
             {GContext.inscripciones?.map((value, key) => {
                 return <Inscripcion ins={value} key={key}/>
             })}
             </div>
+
         </div>
         <BsChevronRight onClick={ () => {
+
             const cantidadMaterias = 6 // cantidad de materias que iran a pantalla 
-            var cantidad = Math.floor((GContext.inscripciones.length / cantidadMaterias) - 0.1)
-            var limiteDerecho = (cantidad * Slider.current?.getBoundingClientRect().width * 3)
+            const longitudLineas = 3 // la cantidad de materias que hay en cada linea
+
+
+            var desplazamientoMaximo = Math.floor((GContext.inscripciones.length / cantidadMaterias) - 0.1) * longitudLineas
+            var desplazamientoDerecho = Slider.current?.getBoundingClientRect().width
             
-            if (desplazamiento > -limiteDerecho) {
-                ndes.current = ndes.current - 1
-                setDesplazamiento(ndes.current * (Slider.current?.getBoundingClientRect().width))
+            // detectar si es firefox, debido a sus diferencias en la implementacion del flexbox
+            if (navigator.userAgent.includes("Firefox")) {
+                desplazamientoDerecho = desplazamientoDerecho * longitudLineas
+            }
+
+            if (ndes.current * 3 < desplazamientoMaximo) {
+                ndes.current = ndes.current + 1
+                setDesplazamiento(-ndes.current * desplazamientoDerecho)
             }
         }} className="SliderButton"/>
     </div>

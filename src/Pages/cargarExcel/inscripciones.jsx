@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import * as XLSX from 'xlsx';
 import { ListadoContext } from "../../Context/Context";
 import ListadoCupos from "./listaCupos";
+import { json } from "react-router-dom";
 
 function Inscripciones() {
 
@@ -65,6 +66,7 @@ function parseToJsonFile(archivo, sheet) {
             var sheets = XLSX.read(datos, { type: "array" })
 
             var Json = XLSX.utils.sheet_to_json(sheets.Sheets[sheet])
+            console.log(Json[0]["Apellido"])
             resolve(Json)
         }
         fileReader.readAsArrayBuffer(archivo)
@@ -88,6 +90,7 @@ function parseToJsonURL(url, sheet) {
             var sheets = XLSX.read(datos, { type: "array" })
 
             var Json = XLSX.utils.sheet_to_json(sheets.Sheets[sheet])
+            console.log(Json)
             resolve(Json)
         }
         fileReader.readAsArrayBuffer(blob)
