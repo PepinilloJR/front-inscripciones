@@ -1,17 +1,24 @@
-
+import { MdFileUpload } from "react-icons/md";
 import { Link } from "react-router-dom"
 import "./menu.css"
-
+import { GeneralContext } from "../Context/Context";
+import { useContext } from "react";
 
 
 function Menu () {
     
+    const GContext = useContext(GeneralContext)
+
+
     return <>
         <menu className="Menu">
             <Link className="botonLink" to="/">
                 <button className="boton">Inscripciones</button>
             </Link>
-            <Link className="botonLink" to="/ins">
+            <Link onClick={() => {GContext.setSubirOpen(true)
+                console.log(GContext.subirOpen)
+            }} className="botonLink" to="/">
+                <MdFileUpload className="UploadBoton"></MdFileUpload>
                 <button className="boton">Subir</button>
             </Link>
         </menu>

@@ -19,13 +19,19 @@
 
 .botonLink {
     display: flex;
+    align-items: center;
     width: fit-content;
     height: calc(1.5vw + 1.5vh); 
-    padding: calc(0.2vw + 0.2vh);
+    padding: calc(0.5vw + 0.5vh);
     margin-inline: calc(1vw + 1vh); 
 }
 
 .botonLink:hover {    
     box-shadow:  calc(-0.2vw + -0.2vh) calc(0.2vw + 0.2vh) rgb(26, 25, 25);
     transition: 0.2s;
+}
+
+
+.UploadBoton {
+    font-size: calc(1.5vw + 1.5vh); 
 }

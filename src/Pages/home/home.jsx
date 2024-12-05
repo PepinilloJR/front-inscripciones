@@ -34,4 +34,20 @@ async function getInscripciones(setInscripciones) {
     }
 }
 
+
+async function getInscripcionesAPI(setInscripciones) {
+    try {
+        const response = await fetch("http://127.0.0.1:8000/inscripciones/", {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+
+        console.log(await response.json())
+        setInscripciones(await response.json())
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export default Home
