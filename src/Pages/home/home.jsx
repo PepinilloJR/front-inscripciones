@@ -3,18 +3,18 @@ import SearchBar from "../../Components/searchbar"
 
 import "./home.css"
 import { GeneralContext } from "../../Context/Context"
-import Inscripciones from "./Inscripciones"
+import MateriasSlider from "./materiasslider"
 
 function Home() {
-    const GContext = useContext(GeneralContext)
+    const {materias, setMaterias, setMateriasFilter} = useContext(GeneralContext)
 
     useEffect(()=> {
-        getMaterias(GContext.setMaterias)
+        getMaterias(setMaterias)
     }, [])
 
     return <div className="MateriasContainer">
-            <SearchBar ContentSetter={GContext.setMateriasFilter} Placeholder={"Buscar Materia..."}></SearchBar>
-            {GContext.materias ? <Inscripciones/> : <div>Cargando materias...</div> }
+            <SearchBar ContentSetter={setMateriasFilter} Placeholder={"Buscar Materia..."}></SearchBar>
+            {materias ? <MateriasSlider/> : <div>Cargando materias...</div> }
         </div>
 }
 

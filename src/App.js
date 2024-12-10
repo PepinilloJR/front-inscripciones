@@ -6,7 +6,7 @@ import { GeneralContext } from './Context/Context';
 import Inscripciones from './Pages/cargarExcel/inscripciones';
 import Menu from './Components/menu';
 import { useRef, useState } from 'react';
-import CargarExcel from './Pages/cargarExcel/cargarExcel';
+import CargarExcel from './Modales/cargarExcel/cargarExcel';
 
 function App() {
 
@@ -21,17 +21,9 @@ function App() {
       <GeneralContext.Provider value={{materias, setMaterias, subirOpen, setSubirOpen, materiasFilter, setMateriasFilter}}>
         {subirOpen ? <CargarExcel/> : <div/> }
         <BrowserRouter>
-
           <Menu></Menu>
-
-
           <Routes>
-
-      
             <Route path='/' element={<Home />} />
-            <Route path='/ins' element={<Inscripciones />} />
-
-
           </Routes>
         </BrowserRouter>
       </GeneralContext.Provider>

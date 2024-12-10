@@ -2,30 +2,35 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { GeneralContext } from "../../Context/Context"
 import { BsChevronRight  } from "react-icons/bs";
 import { BsChevronLeft  } from "react-icons/bs";
+import Materia from "./materia";
 
+function MateriasSlider() {
+    const { materiasFilter, materias } = useContext(GeneralContext)
 
-function Inscripciones() {
-    const GContext = useContext(GeneralContext)
-
-    const { materiasFilter } = useContext(GeneralContext)
-
-    const Slider = useRef()
+    const [listMaterias, setListMaterias] = useState(materias) // lista de materias filtrada
     const [desplazamiento, setDesplazamiento] = useState(0)
     const ndes = useRef(0)
-    
-    const [listMaterias, setListMaterias] = useState(GContext.materias) // lista de materias filtrada
+    const Slider = useRef()
 
-    // cambio las materias que se muestran, al cambiar el filtro, que se cambia el el searchBar
+
+    // cambio las materias que se muestran al cambiar el filtro, que se cambia el el searchBar
     useEffect(() => {
-        setListMaterias(GContext.materias?.filter((e) => e.Materia.toLowerCase().includes(materiasFilter.toLowerCase())))
-
+        setListMaterias(materias?.filter((e) => e.Materia.toLowerCase().includes(materiasFilter.toLowerCase())))
         // reinicio el slider
         ndes.current = 0; 
         manejarResize();
+        console.log("se ejecuto otra vez")
+    }, [materiasFilter, materias])
 
-        console.log(materiasFilter.toLowerCase())
-    }, [materiasFilter])
+    
+    useEffect(() => {
 
+        window.addEventListener("resize", manejarResize)
+
+        return () => {
+            window.removeEventListener("resize", manejarResize)
+        }
+    }, [])
 
     // actualizar el tamaño del desplazamiento cuando se genera un resize, para memorizar la posicion en la que estaba el usuario
     // al cambiar el tamaño de la ventana
@@ -43,14 +48,6 @@ function Inscripciones() {
         setDesplazamiento(-ndes.current * desplazamientoDerecho)
     }
 
-    useEffect(() => {
-
-        window.addEventListener("resize", manejarResize)
-
-        return () => {
-            window.removeEventListener("resize", manejarResize)
-        }
-    }, [])
 
     return <div className="MateriasSliderContainer">
         <BsChevronLeft onClick={ () => {
@@ -74,7 +71,7 @@ function Inscripciones() {
 
             <div ref={Slider} style={{transform: `translateX(${desplazamiento}px)`}} className="MateriasLista">
             {listMaterias.map((value, key) => {
-                return <Inscripcion ins={value} key={key}/>
+                return <Materia mat={value} key={key}/>
             })}
             </div>
 
@@ -103,17 +100,5 @@ function Inscripciones() {
 }
 
 
-function Inscripcion ({ins}) {
 
-    return <>
-    <div className="Materia">
-        <div className="MateriaTitulo">
-            {ins.Materia}
-        </div> 
-    </div>
-    </>
-
-}
-
-
-export default Inscripciones
+export default MateriasSlider
