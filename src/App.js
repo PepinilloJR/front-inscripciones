@@ -5,17 +5,20 @@ import Home from './Pages/home/home';
 import { GeneralContext } from './Context/Context';
 import Inscripciones from './Pages/cargarExcel/inscripciones';
 import Menu from './Components/menu';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import CargarExcel from './Pages/cargarExcel/cargarExcel';
 
 function App() {
 
-  const [inscripciones, setInscripciones] = useState();
+  const [materias, setMaterias] = useState();
   const [subirOpen, setSubirOpen] = useState(false);
+
+  const [materiasFilter, setMateriasFilter] = useState() // referencia al search de Materias, por ahora esta forma se me ocurrio de hacerlo, no es un Ref posta, es el texto
+                                                   // que tiene el input del searchbar
 
   return (
     <div className="App">
-      <GeneralContext.Provider value={{inscripciones, setInscripciones, subirOpen, setSubirOpen}}>
+      <GeneralContext.Provider value={{materias, setMaterias, subirOpen, setSubirOpen, materiasFilter, setMateriasFilter}}>
         {subirOpen ? <CargarExcel/> : <div/> }
         <BrowserRouter>
 

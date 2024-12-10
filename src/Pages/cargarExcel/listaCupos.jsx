@@ -17,6 +17,11 @@ function ListadoCupos() {
     // tabla de cursos = [... curso -> { materias: [{nombre: asda, cupos: 23, inscriptos: [...] ...} ...]  }
     
     // como digo, eso deberia venir desde el back ya armadito, si no tendria que hacer esto todo el rato
+    
+    
+    
+    
+    
     const filtrarCursos = () => {
 
         

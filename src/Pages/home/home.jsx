@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 import SearchBar from "../../Components/searchbar"
 
 import "./home.css"
@@ -7,35 +7,34 @@ import Inscripciones from "./Inscripciones"
 
 function Home() {
     const GContext = useContext(GeneralContext)
-    
+
     useEffect(()=> {
-        getInscripciones(GContext.setInscripciones)
+        getMaterias(GContext.setMaterias)
     }, [])
 
-    console.log(GContext.inscripciones)
-
-    return <div className="InscripcionesContainer">
-            <SearchBar></SearchBar>
-            {GContext.inscripciones ?  <Inscripciones/> : <div></div> }
+    return <div className="MateriasContainer">
+            <SearchBar ContentSetter={GContext.setMateriasFilter} Placeholder={"Buscar Materia..."}></SearchBar>
+            {GContext.materias ? <Inscripciones/> : <div>Cargando materias...</div> }
         </div>
 }
 
 
-async function getInscripciones(setInscripciones) {
+async function getMaterias(setMaterias) {
     try {
-        const response = await fetch("/inscripciones.json", {
+        const response = await fetch("/materias.json", {
             headers: {
                 'Accept': 'application/json'
             }
         })
-        setInscripciones(await response.json())
+        setMaterias(await response.json())
     } catch (error) {
         console.log(error)
     }
 }
 
+// POR AHORA NADA PORQUE NO HAY API >:)
 
-async function getInscripcionesAPI(setInscripciones) {
+async function getMateriasAPI(setMaterias) {
     try {
         const response = await fetch("http://127.0.0.1:8000/inscripciones/", {
             headers: {
@@ -44,7 +43,7 @@ async function getInscripcionesAPI(setInscripciones) {
         })
 
         console.log(await response.json())
-        setInscripciones(await response.json())
+        setMaterias(await response.json())
     } catch (error) {
         console.log(error)
     }
