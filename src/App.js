@@ -7,6 +7,7 @@ import Inscripciones from './Pages/cargarExcel/inscripciones';
 import Menu from './Components/menu';
 import { useRef, useState } from 'react';
 import CargarExcel from './Modales/cargarExcel/cargarExcel';
+import MateriaModal from './Pages/home/materiaModal';
 
 function App() {
 
@@ -15,11 +16,14 @@ function App() {
 
   const [materiasFilter, setMateriasFilter] = useState() // referencia al search de Materias, por ahora esta forma se me ocurrio de hacerlo, no es un Ref posta, es el texto
                                                    // que tiene el input del searchbar
+  const [materiaSelected, setMateriaSelected] = useState()
 
   return (
     <div className="App">
-      <GeneralContext.Provider value={{materias, setMaterias, subirOpen, setSubirOpen, materiasFilter, setMateriasFilter}}>
+      <GeneralContext.Provider value={{materias, setMaterias, subirOpen, setSubirOpen, materiasFilter, setMateriasFilter, materiaSelected, setMateriaSelected}}>
         {subirOpen ? <CargarExcel/> : <div/> }
+        {materiaSelected ? <MateriaModal></MateriaModal> : null}
+
         <BrowserRouter>
           <Menu></Menu>
           <Routes>
