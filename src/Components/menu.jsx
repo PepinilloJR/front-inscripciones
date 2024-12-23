@@ -12,14 +12,20 @@ function Menu () {
 
     return <>
         <menu className="Menu">
-            <Link className="botonLink" to="/">
-                <button className="boton">Inscripciones</button>
-            </Link>
+        
             <Link onClick={() => {GContext.setSubirOpen(true)
                 console.log(GContext.subirOpen)
             }} className="botonLink" to="/">
                 <MdFileUpload className="UploadBoton"></MdFileUpload>
-                <button className="boton">Subir</button>
+                <button className="boton">Subir Inscripciones</button>
+            </Link>
+            <Link onClick={() => {GContext.setCrearMateriaOpen(true)
+                console.log(GContext.subirOpen)
+            }} className="botonLink" to="/">
+                <button className="boton">Crear materia</button>
+            </Link>
+            <Link className="botonLink" to="/">
+                <button className="boton">Crear curso</button>
             </Link>
         </menu>
     </>

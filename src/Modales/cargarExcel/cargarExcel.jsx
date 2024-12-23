@@ -5,7 +5,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import * as XLSX from 'xlsx';
 import { GeneralContext } from "../../Context/Context";
 
-function CargarExcel() {
+function CargarExcelModal() {
 
     const GContext = useContext(GeneralContext)
 
@@ -91,4 +91,4 @@ async function POSTInscripcion(json) {
 }
 
 
-export default CargarExcel
+export default CargarExcelModal

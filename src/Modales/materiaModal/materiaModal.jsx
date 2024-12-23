@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { GeneralContext } from "../../Context/Context"
 
-
+import "./materiaModal.css"
 
 function MateriaModal() {
 
@@ -19,21 +19,30 @@ function MateriaModal() {
 
         <div className="MateriaModal">
             <div className="MateriaModalTitulo">
-                {materiaSelected.Materia}
-
+                {materiaSelected.nombre}
             </div>
 
             <div className="MateriaModalContent">
                 <div className="Comisiones">
+                    <div className="MateriaModalTitulo">
+                        Comisiones disponibles
+                    </div>
+                    <div className="ComisionesList">
                     {comisiones?.map((c, key) => {
-                        return <div key={key}>{c.Comision}</div>
+                        return <div className="Comision" key={key}>{c.Comision}</div>
                     })}
+                    </div>
                 </div>
 
                 <div className="AlumnosContainer">
+                    <div className="MateriaModalTitulo">
+                        Alumnos asignados
+                    </div>
+                    <div className="AlumnosList">
                     {alumnos?.map((a, key)=> {
                         return <div key={key}>{a.Alumno}</div>
                     })}
+                    </div>
                 </div>
 
             </div>

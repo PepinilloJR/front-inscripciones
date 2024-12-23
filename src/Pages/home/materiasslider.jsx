@@ -2,10 +2,9 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { GeneralContext } from "../../Context/Context"
 import { BsChevronRight  } from "react-icons/bs";
 import { BsChevronLeft  } from "react-icons/bs";
-import Materia from "./materia";
 
 function MateriasSlider() {
-    const { materiasFilter, materias } = useContext(GeneralContext)
+    const { materiasFilter, materias, setMaterias } = useContext(GeneralContext)
 
     const [listMaterias, setListMaterias] = useState(materias) // lista de materias filtrada
     const [desplazamiento, setDesplazamiento] = useState(0)
@@ -13,9 +12,13 @@ function MateriasSlider() {
     const Slider = useRef()
 
 
+    useEffect(()=> {
+        getMateriasAPI(setMaterias)
+    }, [])
+
     // cambio las materias que se muestran al cambiar el filtro, que se cambia el el searchBar
     useEffect(() => {
-        setListMaterias(materias?.filter((e) => e.Materia.toLowerCase().includes(materiasFilter.toLowerCase())))
+        setListMaterias(materias?.filter((e) => e.nombre.toLowerCase().includes(materiasFilter.toLowerCase())))
         // reinicio el slider
         ndes.current = 0; 
         manejarResize();
@@ -49,7 +52,7 @@ function MateriasSlider() {
     }
 
 
-    return <div className="MateriasSliderContainer">
+    return listMaterias ? <div className="MateriasSliderContainer">
         <BsChevronLeft onClick={ () => {
             const longitudLineas = 3 // la cantidad de materias que hay en cada linea
 
@@ -95,10 +98,35 @@ function MateriasSlider() {
                 setDesplazamiento(-ndes.current * desplazamientoDerecho)
             }
         }} className="SliderButton"/>
+    </div> : <div>Cargando Materias</div>
+}
+
+function Materia ({mat}) {
+
+    const { setMateriaSelected } = useContext(GeneralContext)
+
+    return <>
+    <div onClick={() => {setMateriaSelected(mat)}} className="Materia">
+        <div className="MateriaTitulo">
+            {mat.nombre}
+        </div> 
     </div>
+    </>
 
 }
 
+async function getMateriasAPI(setMaterias) {
+    try {
+        const response = await fetch("http://127.0.0.1:8000/materias/", {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
 
+        setMaterias(await response.json())
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 export default MateriasSlider
