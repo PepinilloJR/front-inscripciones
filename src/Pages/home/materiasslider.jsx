@@ -4,7 +4,7 @@ import { BsChevronRight  } from "react-icons/bs";
 import { BsChevronLeft  } from "react-icons/bs";
 
 function MateriasSlider() {
-    const { materiasFilter, materias, setMaterias } = useContext(GeneralContext)
+    const { materiasFilter, materias, setMaterias, crearMateriaOpen} = useContext(GeneralContext)
 
     const [listMaterias, setListMaterias] = useState(materias) // lista de materias filtrada
     const [desplazamiento, setDesplazamiento] = useState(0)
@@ -14,7 +14,7 @@ function MateriasSlider() {
 
     useEffect(()=> {
         getMateriasAPI(setMaterias)
-    }, [])
+    }, [crearMateriaOpen])
 
     // cambio las materias que se muestran al cambiar el filtro, que se cambia el el searchBar
     useEffect(() => {

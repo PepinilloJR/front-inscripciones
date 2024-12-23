@@ -36,15 +36,61 @@
 }
 
 
+.InputNombreContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: calc(1vw + 1vh);
+    width: 50%;
+    border-radius: calc(0.5vw + 0.5vh);
+    outline: calc(0.1vw + 0.1vh) solid rgb(218, 218, 218);
+}
+
+
+.InputNombreContainer:focus-within {
+    outline: calc(0.2vw + 0.2vh) solid rgb(170, 193, 255);
+}
+
+
+.InputNombreTitulo {
+    display: flex;
+    align-items: center;
+    height: calc(1vh + 1vw);
+    color: black;
+    font-size: calc(1vh + 1vw);
+    border-right: calc(0.1vh + 0.1vw) solid rgb(218, 218, 218);
+    padding: calc(0.5vw + 0.5vh);
+}
+
+
+.InputNombreContainer:focus-within .InputNombreTitulo  {
+    border-right: calc(0.1vh + 0.1vw) solid rgb(170, 193, 255);
+}
+
+.InputNombre {
+    height: calc(1vh + 1vw);
+    width: 100%;
+    margin-left: calc(0.2vh + 0.2vw);
+    font-size: calc(1vh + 1vw);
+    height: calc(1.5vh + 1.5vw);
+}
+
+.InputNombre:focus {
+    outline: none;
+}
+
+
 .botonContainer {
     display: flex;
     align-items: center;
     width: fit-content;
     height: calc(1.5vw + 1.5vh); 
-    padding: calc(0.5vw + 0.5vh);
+    padding: calc(1vw + 1vh);
     margin-inline: calc(1vw + 1vh); 
+    margin-top: auto;
+    
 }
-.botonSubir {
+.botonSubirMat {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -55,11 +101,10 @@
     color: black;
     border-radius: calc(2vw + 2vh);
     padding: calc(1vw + 1vh);
-    margin-top: calc(3vw + 3vh);
     font-size: calc(1vw + 1vh); 
     margin-inline: calc(1vw + 1vh);
 }
-.botonCancelar {
+.botonCancelarMat {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -70,7 +115,6 @@
     color: black;
     border-radius: calc(2vw + 2vh);
     padding: calc(1vw + 1vh);
-    margin-top: calc(3vw + 3vh);
     font-size: calc(1vw + 1vh); 
     margin-inline:  calc(1vw + 1vh);
 }
