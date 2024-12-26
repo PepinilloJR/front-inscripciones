@@ -20,7 +20,7 @@ function CrearCursoModal() {
     return <div className="CrearCursoContainer">
         <div className="CrearCursoModal">
 
-            <div className="CrearCursoTitulo">Crear nueva materia</div>
+            <div className="CrearCursoTitulo">Crear nuevo curso</div>
             <div className="InputContainer">
                 <div className="InputCursoTitulo">Comision </div>
                 <input ref={Comision} type="text" className="InputCurso">
