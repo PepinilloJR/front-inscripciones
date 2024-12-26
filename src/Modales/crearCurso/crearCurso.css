@@ -1,4 +1,4 @@
-.CrearMateriaContainer {
+.CrearCursoContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +11,7 @@
 }
 
 
-.CrearMateriaModal {
+.CrearCursoModal {
 
     display: flex;
     flex-direction: column;
@@ -24,7 +24,7 @@
 
 }
 
-.CrearMateriaTitulo {
+.CrearCursoTitulo {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,38 +36,40 @@
 }
 
 
-.InputNombreContainer {
+.InputContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: calc(1vw + 1vh);
+    margin: calc(0.5vw + 0.5vh);
     width: 50%;
     border-radius: calc(0.5vw + 0.5vh);
     outline: calc(0.1vw + 0.1vh) solid rgb(218, 218, 218);
 }
 
 
-.InputNombreContainer:focus-within {
+.InputContainer:focus-within {
     outline: calc(0.2vw + 0.2vh) solid rgb(170, 193, 255);
 }
 
 
-.InputNombreTitulo {
+.InputCursoTitulo {
     display: flex;
     align-items: center;
     height: calc(1vh + 1vw);
+    width: fit-content;
     color: black;
     font-size: calc(1vh + 1vw);
     border-right: calc(0.1vh + 0.1vw) solid rgb(218, 218, 218);
     padding: calc(0.5vw + 0.5vh);
+    white-space: nowrap; 
 }
 
 
-.InputNombreContainer:focus-within .InputNombreTitulo  {
+.InputContainer:focus-within .InputCursoTitulo  {
     border-right: calc(0.1vh + 0.1vw) solid rgb(170, 193, 255);
 }
 
-.InputNombre {
+.InputCurso {
     height: calc(1vh + 1vw);
     width: 100%;
     margin-left: calc(0.2vh + 0.2vw);
@@ -75,7 +77,7 @@
     height: calc(1.5vh + 1.5vw);
 }
 
-.InputNombre:focus {
+.InputCurso:focus {
     outline: none;
 }
 
@@ -90,7 +92,7 @@
     margin-top: auto;
     
 }
-.botonSubirMat {
+.botonSubirCur {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -104,7 +106,7 @@
     font-size: calc(1vw + 1vh); 
     margin-inline: calc(1vw + 1vh);
 }
-.botonCancelarMat {
+.botonCancelarCur{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -119,13 +121,13 @@
     margin-inline:  calc(1vw + 1vh);
 }
 
-.botonSubirMat:hover {
+.botonSubirCur:hover {
 
     background-color: rgb(135, 209, 135);
 
 }
 
-.botonCancelarMat:hover {
+.botonCancelarCur:hover {
     background-color: rgb(211, 99, 99);
 
 }

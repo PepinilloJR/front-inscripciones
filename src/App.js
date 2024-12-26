@@ -7,12 +7,14 @@ import { useState } from 'react';
 import CargarExcelModal from './Modales/cargarExcel/cargarExcel';
 import MateriaModal from './Modales/materiaModal/materiaModal';
 import CrearMateriaModal from './Modales/crearMateria/crearMateria'
+import CrearCursoModal from './Modales/crearCurso/crearCurso';
 
 function App() {
 
   const [materias, setMaterias] = useState();
   const [subirOpen, setSubirOpen] = useState(false);
   const [crearMateriaOpen, setCrearMateriaOpen ] = useState(false);
+  const [crearCursoOpen, setCrearCursoOpen ] = useState(false);
 
   const [materiasFilter, setMateriasFilter] = useState() // referencia al search de Materias, por ahora esta forma se me ocurrio de hacerlo, no es un Ref posta, es el texto
                                                    // que tiene el input del searchbar
@@ -30,7 +32,9 @@ function App() {
         materiaSelected, 
         setMateriaSelected, 
         crearMateriaOpen,
-        setCrearMateriaOpen
+        setCrearMateriaOpen,
+        crearCursoOpen,
+        setCrearCursoOpen
       }}>
 
 
@@ -39,6 +43,7 @@ function App() {
           {subirOpen ? <CargarExcelModal/> : <div/> }
           {materiaSelected ? <MateriaModal></MateriaModal> : null}
           {crearMateriaOpen ? <CrearMateriaModal></CrearMateriaModal> : null}
+          {crearCursoOpen ? <CrearCursoModal></CrearCursoModal> : null}
 
           <Menu></Menu>
           <Routes>

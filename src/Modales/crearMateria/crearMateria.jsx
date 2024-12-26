@@ -1,6 +1,7 @@
 import { useContext, useRef } from "react"
 import { GeneralContext } from "../../Context/Context"
 import './crearMateria.css'
+import { FormatText } from "../../Components/useful"
 
 function CrearMateriaModal() {
 
@@ -20,7 +21,7 @@ function CrearMateriaModal() {
             </div>
             <div className="botonContainer"> 
                 <button onClick={() => {setCrearMateriaOpen(false)}} className="botonCancelarMat">Cancelar</button>
-                <button onClick={() => {PostMateria(NombreRef.current.value); setCrearMateriaOpen(false)}} className="botonSubirMat">Subir</button>
+                <button onClick={() => {POSTmateria(NombreRef.current.value); setCrearMateriaOpen(false)}} className="botonSubirMat">Subir</button>
             </div>
             </div>
     
@@ -28,8 +29,10 @@ function CrearMateriaModal() {
 }
 
 
-async function PostMateria(nombre_materia) {
+async function POSTmateria(nombre_materia) {
     
+
+    const nombre = FormatText(nombre_materia)
     try {
         const response = await fetch("http://127.0.0.1:8000/materias/", {
             method: 'POST',
@@ -38,7 +41,7 @@ async function PostMateria(nombre_materia) {
                 'Content-Type': 'application/json'
 
             }, body: JSON.stringify({
-                "nombre": nombre_materia
+                "nombre": nombre
             })
                 
         })
