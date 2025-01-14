@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import "./searchbar.css"
 import { BsSearch } from "react-icons/bs";
-import { GeneralContext } from "../Context/Context";
+import { GeneralContext } from "../Context/context";
 
 
 function SearchBar({ContentSetter, Placeholder}){

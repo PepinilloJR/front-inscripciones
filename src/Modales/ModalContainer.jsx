@@ -1,12 +1,9 @@
 import { useContext } from "react"
-import { GeneralContext } from "../Context/Context"
+import { GeneralContext } from "../Context/context"
 
+function ModalContainer() {
 
-
-
-function Modal() {
-
-    const { modal, setModal } = useContext(GeneralContext)
+    const { modal } = useContext(GeneralContext)
 
     return <div className="ModalContainer">
         <div className="Modal">
@@ -16,4 +13,4 @@ function Modal() {
 }
 
 
-export default Modal
+export default ModalContainer

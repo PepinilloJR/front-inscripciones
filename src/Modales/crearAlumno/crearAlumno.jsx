@@ -1,10 +1,11 @@
 
 import { useContext, useRef } from 'react';
-import './crearAlumno.css'
 import "../modales.css"
-import { GeneralContext } from '../../Context/Context';
+import { GeneralContext } from '../../Context/context';
 
-import { POSTalumno } from '../POST';
+import { POSTalumno } from "../../Services/http"
+
+import { FormatText } from '../../Components/useful';
 
 function CrearAlumnoModal() {
 
@@ -40,10 +41,11 @@ function CrearAlumnoModal() {
         <div className="botonContainer">
             <button onClick={() => { setModal(undefined) }} className="botonCancelar">Cancelar</button>
             <button onClick={() => {
-                setModal(undefined); POSTalumno(
-                    legajo.current.value,
-                    nombre.current.value,
-                    apellido.current.value
+                setModal(undefined); 
+                POSTalumno(
+                    FormatText(legajo.current.value),
+                    FormatText(nombre.current.value),
+                    FormatText(apellido.current.value)
                 )
             }} className="botonSubir">Subir</button>
         </div>

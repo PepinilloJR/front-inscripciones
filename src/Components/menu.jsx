@@ -1,12 +1,12 @@
 import { MdFileUpload } from "react-icons/md";
 import { Link } from "react-router-dom"
 import "./menu.css"
-import { GeneralContext } from "../Context/Context";
+import { GeneralContext } from "../Context/context";
 import { useContext } from "react";
-import CargarExcelModal from "../Modales/cargarExcel/cargarExcel";
-import CrearAlumnoModal from "../Modales/crearAlumno/crearAlumno";
-import CrearMateriaModal from "../Modales/crearMateria/crearMateria";
-import CrearCursoModal from "../Modales/crearCurso/crearCurso";
+import CargarExcelModal from "../Modales/CargarExcel/cargarExcel";
+import CrearAlumnoModal from "../Modales/CrearAlumno/crearAlumno";
+import CrearMateriaModal from "../Modales/CrearMateria/crearMateria";
+import CrearCursoModal from "../Modales/CrearCurso/crearCurso";
 
 
 function Menu () {

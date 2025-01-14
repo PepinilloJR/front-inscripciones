@@ -1,8 +1,8 @@
 import { useContext, useEffect, useRef, useState } from "react"
-import { GeneralContext } from "../../Context/Context"
+import { GeneralContext } from "../../Context/context"
 import { BsChevronRight  } from "react-icons/bs";
 import { BsChevronLeft  } from "react-icons/bs";
-import MateriaModal from "../../Modales/materiaModal/materiaModal";
+import MateriaModal from "../../Modales/MateriaModal/materiaModal";
 
 function MateriasSlider() {
     const { materiasFilter, materias, setMaterias, crearMateriaOpen} = useContext(GeneralContext)

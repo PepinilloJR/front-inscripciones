@@ -1,11 +1,9 @@
 import { useContext, useRef } from "react"
-import { GeneralContext } from "../../Context/Context"
-import './crearMateria.css'
+import { GeneralContext } from "../../Context/context"
 import "../modales.css"
+import { POSTmateria } from "../../Services/http"
 
-import { POSTmateria } from "../POST"
-
-
+import { FormatText } from "../../Components/useful"
 
 function CrearMateriaModal() {
 
@@ -25,10 +23,12 @@ function CrearMateriaModal() {
             </div>
             <div className="botonContainer"> 
                 <button onClick={() => {setModal(undefined)}} className="botonCancelar">Cancelar</button>
-                <button onClick={() => {POSTmateria(NombreRef.current.value); setModal(undefined)}} className="botonSubir">Subir</button>
+                <button onClick={() => {
+                    setModal(undefined)
+                    POSTmateria(FormatText(NombreRef.current.value))
+                }} className="botonSubir">Subir</button>
             </div>
             </div>
-    
         </div>
 }
 

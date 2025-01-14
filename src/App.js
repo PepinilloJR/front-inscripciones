@@ -1,13 +1,12 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Home from './Pages/home/home';
-import { GeneralContext } from './Context/Context';
+import Home from './Pages/Home/home';
+import { GeneralContext } from './Context/context';
 import Menu from './Components/menu';
 import { useState } from 'react';
-import Modal from './Modales/Modal';
+import ModalContainer from './Modales/ModalContainer';
 
 function App() {
-
 
   const [modal, setModal] = useState(undefined)
 
@@ -32,7 +31,7 @@ function App() {
 
 
         <BrowserRouter>
-          {modal === undefined ? null : <Modal></Modal>}
+          {modal === undefined ? null : <ModalContainer></ModalContainer>}
 
 
           <Menu></Menu>

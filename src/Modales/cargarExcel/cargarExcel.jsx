@@ -5,10 +5,10 @@ import "../modales.css"
 import { HiMiniDocumentPlus } from "react-icons/hi2";
 import { useContext, useEffect, useRef, useState } from "react";
 import * as XLSX from 'xlsx';
-import { GeneralContext } from "../../Context/Context";
-import { FormatText } from "../../Components/useful";
+import { GeneralContext } from "../../Context/context.jsx";
+import { FormatText } from "../../Components/useful.js";
 
-import { POSTInscripcion } from "../POST";
+import { POSTInscripcion } from "../../Services/http.js";
 
 function CargarExcelModal() {
 
@@ -45,7 +45,11 @@ function CargarExcelModal() {
         </div>
         <div className="botonContainer"> 
             <button onClick={() => {setModal(undefined)}} className="botonCancelar">Cancelar</button>
-            <button onClick={() => {POSTInscripcion(json); setModal(undefined)}} className="botonSubir">Subir</button>
+            <button onClick={() => {
+                POSTInscripcion(json); 
+                setModal(undefined)
+
+            }} className="botonSubir">Subir</button>
         </div>
         </div>
 

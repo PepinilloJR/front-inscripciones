@@ -1,22 +1,22 @@
-import { FormatText } from "../Components/useful"
+
+
+export const APIurl = "http://127.0.0.1:8000"
 
 
 export async function POSTmateria(nombre_materia) {
-    const nombre = FormatText(nombre_materia)
+    
     try {
-        const response = await fetch("http://127.0.0.1:8000/materias/", {
+        const response = await fetch(`${APIurl}/materias/`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
 
             }, body: JSON.stringify({
-                "nombre": nombre
+                nombre: nombre_materia
             })
                 
         })
-        console.log(response)
-
     } catch (e) {
         console.log(e)
     }
@@ -25,22 +25,19 @@ export async function POSTmateria(nombre_materia) {
 
 
 export async function POSTcurso(Comision, Cuatrimestre, HoraInicio, HoraFin, Cupo, Materia) {
-    const com = FormatText(Comision)
-    const hin = FormatText(HoraInicio)
-    const hfi = FormatText(HoraFin)
 
     try {
-        const response = fetch("http://127.0.0.1:8000/cursos/", {
+        const response = fetch(`${APIurl}/cursos/`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                comision: com,
+                comision: Comision,
                 cuatrimestre: Cuatrimestre,
-                hora_inicio: hin,
-                hora_fin: hfi,
+                hora_inicio: HoraInicio,
+                hora_fin: HoraFin,
                 cupo: Cupo,
                 materia: Materia
             })
@@ -53,21 +50,17 @@ export async function POSTcurso(Comision, Cuatrimestre, HoraInicio, HoraFin, Cup
 
 
 export async function POSTalumno(legajo, nombre, apellido) {
-    const leg = FormatText(legajo)
-    const nom = FormatText(nombre)
-    const ape = FormatText(apellido)
-
     try {
-        const response = fetch("http://127.0.0.1:8000/alumnos/", {
+        const response = fetch(`${APIurl}/alumnos/`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                legajo: leg,
-                nombre: nom,
-                apellido: ape
+                legajo: legajo,
+                nombre: nombre,
+                apellido: apellido
             })
         })
     } catch (e) {
@@ -79,8 +72,8 @@ export async function POSTalumno(legajo, nombre, apellido) {
 
 export async function POSTInscripcion(json) {
     try {
-        const response = await fetch("http://127.0.0.1:8000/inscripciones/bulk", 
-            {
+        const response = await fetch(`${APIurl}/inscripciones/bulk`, 
+        {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -90,7 +83,7 @@ export async function POSTInscripcion(json) {
                 )
             }
         )
-        console.log(await response.json())
+
     } catch (error) {
         console.log(error)
     }

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { GeneralContext } from "../../Context/Context"
+import { GeneralContext } from "../../Context/context"
 
 import "./materiaModal.css"
 import "../modales.css"

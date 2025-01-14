@@ -1,10 +1,10 @@
 
 import { useContext, useRef } from 'react';
-import './crearCurso.css'
 import "../modales.css"
-import { GeneralContext } from '../../Context/Context';
+import { GeneralContext } from '../../Context/context';
+import { FormatText } from '../../Components/useful';
 
-import { POSTcurso } from '../POST';
+import { POSTcurso } from "../../Services/http"
 
 function CrearCursoModal() {
 
@@ -63,12 +63,12 @@ function CrearCursoModal() {
             <button onClick={() => {
                 setModal(undefined); 
                 POSTcurso(
-                    Comision.current.value,
-                    Cuatrimestre.current.value,
-                    HoraInicio.current.value,
-                    HoraFin.current.value,
-                    Cupo.current.value,
-                    Materia.current.value
+                    FormatText(Comision.current.value),
+                    FormatText(Cuatrimestre.current.value),
+                    FormatText(HoraInicio.current.value),
+                    FormatText(HoraFin.current.value),
+                    FormatText(Cupo.current.value),
+                    FormatText(Materia.current.value)
                 )
             }} className="botonSubir">Subir</button>
         </div>
