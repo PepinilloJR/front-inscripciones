@@ -3,6 +3,10 @@ import { Link } from "react-router-dom"
 import "./menu.css"
 import { GeneralContext } from "../Context/Context";
 import { useContext } from "react";
+import CargarExcelModal from "../Modales/cargarExcel/cargarExcel";
+import CrearAlumnoModal from "../Modales/crearAlumno/crearAlumno";
+import CrearMateriaModal from "../Modales/crearMateria/crearMateria";
+import CrearCursoModal from "../Modales/crearCurso/crearCurso";
 
 
 function Menu () {
@@ -13,20 +17,20 @@ function Menu () {
     return <>
         <menu className="Menu">
         
-            <Link onClick={() => {GContext.setSubirOpen(true)
+            <Link onClick={() => {GContext.setModal(<CargarExcelModal></CargarExcelModal>);
             }} className="botonLink" to="/">
                 <MdFileUpload className="UploadBoton"></MdFileUpload>
                 <button className="boton">Subir Inscripciones</button>
             </Link>
-            <Link onClick={() => {GContext.setCrearMateriaOpen(true)
+            <Link onClick={() => {GContext.setModal(<CrearMateriaModal></CrearMateriaModal>)
             }} className="botonLink" to="/">
                 <button className="boton">Crear materia</button>
             </Link>
-            <Link onClick={() => {GContext.setCrearCursoOpen(true)
+            <Link onClick={() => {GContext.setModal(<CrearCursoModal></CrearCursoModal>)
             }} className="botonLink" to="/">
                 <button className="boton">Crear curso</button>
             </Link>
-            <Link onClick={() => {GContext.setCrearAlumnoOpen(true)
+            <Link onClick={() => {GContext.setModal(<CrearAlumnoModal></CrearAlumnoModal>)
             }} className="botonLink" to="/">
                 <button className="boton">Crear alumno</button>
             </Link>

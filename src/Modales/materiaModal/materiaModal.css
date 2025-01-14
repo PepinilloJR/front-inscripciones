@@ -1,14 +1,4 @@
 
-.MateriaModalTitulo {
-    display: flex;
-    color: black;
-
-    justify-content: center;
-    font-size: calc(1vw + 1vh);
-    align-items: center;
-    min-height: calc(3vw + 3vh);
-}
-
 .MateriaModalContent {
     display: flex;
     flex-direction: row;
@@ -50,12 +40,11 @@
 
 .Comision {
     display: flex;
-    justify-content: center;
     align-items: center;
     background-color: rgb(75, 101, 252);
     color: black;
     font-size: calc(2vh + 2vw);
-    min-height: calc(2vh + 2vw);
+    height: calc(2vh + 2vw);
     margin:calc(0.5vh + 0.5vw);
     padding:calc(1vh + 1vw);
     border-radius: calc(1vh + 1vw);
@@ -65,7 +54,6 @@
 }
 
 .Comision:hover {
-    outline: calc(0.2vh + 0.2vw) rgb(132, 168, 221) solid;
     background-color: rgb(132, 168, 221);
     transition: 0.2s;
 }
@@ -74,5 +62,44 @@
     display: flex;
     flex-direction: column;
     width: 50%;
+    height: 100%;
     margin: auto;
 }
+
+
+.AlumnosList {
+    display: flex;
+    background-color: rgb(233, 233, 233);
+    border-radius: calc(1vh + 1vw);
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+}
+
+
+.Alumno {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(171, 178, 212);
+    color: black;
+    height: calc(10vw + 10vh);
+    margin:calc(0.5vh + 0.5vw);
+    padding:calc(1vh + 1vw);
+    border-radius: calc(1vh + 1vw);
+    width: 80%;
+    transition: 0.2s;
+
+}
+
+.AlumnoCampo {
+    display: flex;
+    font-size: calc(0.5vh + 0.5vw);
+    font-weight: bold;
+    align-items: center;
+    height: calc(1vw + 1vh);
+    width: 100%;
+}
+

@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { GeneralContext } from "../../Context/Context"
 import { BsChevronRight  } from "react-icons/bs";
 import { BsChevronLeft  } from "react-icons/bs";
+import MateriaModal from "../../Modales/materiaModal/materiaModal";
 
 function MateriasSlider() {
     const { materiasFilter, materias, setMaterias, crearMateriaOpen} = useContext(GeneralContext)
@@ -103,10 +104,10 @@ function MateriasSlider() {
 
 function Materia ({mat}) {
 
-    const { setMateriaSelected } = useContext(GeneralContext)
+    const { setMateriaSelected, setModal } = useContext(GeneralContext)
 
     return <>
-    <div onClick={() => {setMateriaSelected(mat)}} className="Materia">
+    <div onClick={() => {setMateriaSelected(mat); setModal(<MateriaModal></MateriaModal>)}} className="Materia">
         <div className="MateriaTitulo">
             {mat.nombre}
         </div> 

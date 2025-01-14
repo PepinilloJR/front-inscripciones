@@ -1,13 +1,18 @@
 import { IconContext } from "react-icons";
 import "./cargarExcel.css"
+import "../modales.css"
+
 import { HiMiniDocumentPlus } from "react-icons/hi2";
 import { useContext, useEffect, useRef, useState } from "react";
 import * as XLSX from 'xlsx';
 import { GeneralContext } from "../../Context/Context";
+import { FormatText } from "../../Components/useful";
+
+import { POSTInscripcion } from "../POST";
 
 function CargarExcelModal() {
 
-    const GContext = useContext(GeneralContext)
+    const {setModal} = useContext(GeneralContext)
 
     const [archivo, setArchivo] = useState()
     const [json, setJson] = useState("No se cargo ningun archivo...")
@@ -25,10 +30,10 @@ function CargarExcelModal() {
     }, [archivo])
 
 
-    return <div className="SubirExcelContainer">
-        <div className="SubirExcelModal">
+    return <div className="ModalContainer">
+        <div className="Modal">
 
-        <div className="InputTitulo">Añade un archivo Excel</div>
+        <div className="ModalTitulo">Añade un archivo Excel</div>
         <label htmlFor="subir" className="InputArchivoContainer">
             <HiMiniDocumentPlus fill="black" className="InputArchivo"></HiMiniDocumentPlus>
         </label>
@@ -39,8 +44,8 @@ function CargarExcelModal() {
             {JSON.stringify(json, null, 4)}
         </div>
         <div className="botonContainer"> 
-            <button onClick={() => {GContext.setSubirOpen(false)}} className="botonCancelar">Cancelar</button>
-            <button onClick={() => {POSTInscripcion(json)}} className="botonSubir">Subir</button>
+            <button onClick={() => {setModal(undefined)}} className="botonCancelar">Cancelar</button>
+            <button onClick={() => {POSTInscripcion(json); setModal(undefined)}} className="botonSubir">Subir</button>
         </div>
         </div>
 
@@ -49,6 +54,19 @@ function CargarExcelModal() {
 
 
 function parseToJsonFile(archivo) {
+
+    const mapeos = {
+        "Confirmar legajo": "legajo",
+        "Comisión (Opción 1)": "comision1",
+        "Comisión Opción 2": "comision2",
+        "Materia " : "materia",
+        "curso inscripto": "curso",
+        "Seleccione su ingeniería": "ingenieria",
+        "¿En que condición estás en la materia?": "condicion",
+        "¿Iniciaste el trámite de RECURSADO DE ASIGNATURA REGULAR en AUTOGESTIÓN 4 en el AÑO para la/s materia/s solicitadas?": "tramite",
+
+    }
+
 
     return new Promise(async (resolve, reject) => {
 
@@ -60,33 +78,26 @@ function parseToJsonFile(archivo) {
             var sheets = XLSX.read(datos, { type: "array" })
             
             var Json = XLSX.utils.sheet_to_json(sheets.Sheets[sheets.SheetNames[0]])
-            resolve(Json)
+            
+            
+            // mapea las propiedades obtenidas del excel a algo mas legible y util al backend
+            const JsonLimpio = Json.map(object => {
+                const nuevoObjeto = {}
+                Object.keys(object).forEach(propiedad => {
+                    
+                    const nuevaPropiedad = mapeos[propiedad] || FormatText(propiedad)
+                    nuevoObjeto[nuevaPropiedad] = FormatText(object[propiedad].toString())               
+                    
+                })
+                return nuevoObjeto
+            })
+
+            console.log(Json)
+
+            resolve(JsonLimpio)
         }
         fileReader.readAsArrayBuffer(archivo)
     })
-
-}
-
-
-async function POSTInscripcion(json) {
-
-    try {
-        const response = await fetch("http://127.0.0.1:8000/inscripciones/", 
-            {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(json)
-
-            }
-        )
-        console.log(await response.json())
-
-
-    } catch (error) {
-        console.log(error)
-    }
 
 }
 
