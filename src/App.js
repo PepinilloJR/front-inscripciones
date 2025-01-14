@@ -56,3 +56,18 @@ function App() {
 }
 
 export default App;
+
+
+
+
+/* TODO:
+
+-deshabilitar los botones con inputs vacios o incorrectos en modales
+
+-terminar modal de materia seleccionada
+
+-subir excel cuando el endpoint funcione
+
+- could be nice poder editar el JSON en el visualizador
+
+*/
