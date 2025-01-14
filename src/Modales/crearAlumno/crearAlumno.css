@@ -1,0 +1,133 @@
+.CrearAlumnoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(97, 153, 155, 0.486);
+    z-index: 3;
+}
+
+
+.CrearAlumnoModal {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    width: 75%;
+    height: 90%;
+    background-color: rgb(255, 255, 255);
+    border-radius: calc(2vw + 2vh);
+    box-shadow: calc(-0.2vw + -0.2vh) calc(0.2vw + 0.2vh)  rgba(97, 153, 155, 0.486);
+
+}
+
+.CrearAlumnoTitulo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: calc(1vw + 1vh);
+    margin: calc(1vw + 1vh);
+    height: calc(1.5vw + 1.5vh);
+}
+
+
+.InputContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: calc(0.5vw + 0.5vh);
+    width: 50%;
+    border-radius: calc(0.5vw + 0.5vh);
+    outline: calc(0.1vw + 0.1vh) solid rgb(218, 218, 218);
+}
+
+
+.InputContainer:focus-within {
+    outline: calc(0.2vw + 0.2vh) solid rgb(170, 193, 255);
+}
+
+
+.InputAlumnoTitulo {
+    display: flex;
+    align-items: center;
+    height: calc(1vh + 1vw);
+    width: fit-content;
+    color: black;
+    font-size: calc(1vh + 1vw);
+    border-right: calc(0.1vh + 0.1vw) solid rgb(218, 218, 218);
+    padding: calc(0.5vw + 0.5vh);
+    white-space: nowrap; 
+}
+
+
+.InputContainer:focus-within .InputAlumnoTitulo  {
+    border-right: calc(0.1vh + 0.1vw) solid rgb(170, 193, 255);
+}
+
+.InputAlumno {
+    height: calc(1vh + 1vw);
+    width: 100%;
+    margin-left: calc(0.2vh + 0.2vw);
+    font-size: calc(1vh + 1vw);
+    height: calc(1.5vh + 1.5vw);
+}
+
+.InputAlumno:focus {
+    outline: none;
+}
+
+
+.botonContainer {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: calc(1.5vw + 1.5vh); 
+    padding: calc(1vw + 1vh);
+    margin-inline: calc(1vw + 1vh); 
+    margin-top: auto;
+    
+}
+.botonSubirAlum {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(5vw + 5vh);
+    height: calc(1.5vw + 1.5vh); 
+    background-color: green;
+    color: black;
+    border-radius: calc(2vw + 2vh);
+    padding: calc(1vw + 1vh);
+    font-size: calc(1vw + 1vh); 
+    margin-inline: calc(1vw + 1vh);
+}
+.botonCancelarAlum{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(5vw + 5vh);
+    height: calc(1.5vw + 1.5vh); 
+    background-color: rgb(197, 0, 0);
+    color: black;
+    border-radius: calc(2vw + 2vh);
+    padding: calc(1vw + 1vh);
+    font-size: calc(1vw + 1vh); 
+    margin-inline:  calc(1vw + 1vh);
+}
+
+.botonSubirAlum:hover {
+
+    background-color: rgb(135, 209, 135);
+
+}
+
+.botonCancelarAlum:hover {
+    background-color: rgb(211, 99, 99);
+
+}

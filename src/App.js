@@ -8,13 +8,15 @@ import CargarExcelModal from './Modales/cargarExcel/cargarExcel';
 import MateriaModal from './Modales/materiaModal/materiaModal';
 import CrearMateriaModal from './Modales/crearMateria/crearMateria'
 import CrearCursoModal from './Modales/crearCurso/crearCurso';
+import CrearAlumnoModal from './Modales/crearAlumno/crearAlumno';
 
 function App() {
 
-  const [materias, setMaterias] = useState();
-  const [subirOpen, setSubirOpen] = useState(false);
-  const [crearMateriaOpen, setCrearMateriaOpen ] = useState(false);
-  const [crearCursoOpen, setCrearCursoOpen ] = useState(false);
+  const [materias, setMaterias] = useState()
+  const [subirOpen, setSubirOpen] = useState(false)
+  const [crearMateriaOpen, setCrearMateriaOpen ] = useState(false)
+  const [crearCursoOpen, setCrearCursoOpen ] = useState(false)
+  const [crearAlumnoOpen,setCrearAlumnoOpen] = useState(false)
 
   const [materiasFilter, setMateriasFilter] = useState() // referencia al search de Materias, por ahora esta forma se me ocurrio de hacerlo, no es un Ref posta, es el texto
                                                    // que tiene el input del searchbar
@@ -34,7 +36,9 @@ function App() {
         crearMateriaOpen,
         setCrearMateriaOpen,
         crearCursoOpen,
-        setCrearCursoOpen
+        setCrearCursoOpen,
+        crearAlumnoOpen,
+        setCrearAlumnoOpen
       }}>
 
 
@@ -44,6 +48,7 @@ function App() {
           {materiaSelected ? <MateriaModal></MateriaModal> : null}
           {crearMateriaOpen ? <CrearMateriaModal></CrearMateriaModal> : null}
           {crearCursoOpen ? <CrearCursoModal></CrearCursoModal> : null}
+          {crearAlumnoOpen ? <CrearAlumnoModal></CrearAlumnoModal> : null}
 
           <Menu></Menu>
           <Routes>

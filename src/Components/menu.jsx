@@ -26,6 +26,10 @@ function Menu () {
             }} className="botonLink" to="/">
                 <button className="boton">Crear curso</button>
             </Link>
+            <Link onClick={() => {GContext.setCrearAlumnoOpen(true)
+            }} className="botonLink" to="/">
+                <button className="boton">Crear alumno</button>
+            </Link>
         </menu>
     </>
 
