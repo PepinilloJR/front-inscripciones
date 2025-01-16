@@ -16,6 +16,8 @@ function App() {
                                                    // que tiene el input del searchbar
   const [materiaSelected, setMateriaSelected] = useState()
 
+  const [alumnosSelected, setAlumnosSelected] = useState([])
+
   return (
     <div className="App">
       <GeneralContext.Provider value={{
@@ -25,8 +27,10 @@ function App() {
         setMateriasFilter, 
         materiaSelected, 
         setMateriaSelected, 
+        alumnosSelected, 
+        setAlumnosSelected,
         setModal,
-        modal
+        modal, 
       }}>
 
 

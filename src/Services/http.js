@@ -89,3 +89,37 @@ export async function POSTInscripcion(json) {
     }
 
 }
+
+export async function GETcursosByMateria(idmateria) {
+    try {
+        const response = await fetch(`${APIurl}/materias/${idmateria}/cursos/`, {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        const json = await response.json()
+        return json.cursos
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+export async function GETinscripcionesByMateria(idmateria) {
+    try {
+        const response = await fetch(`${APIurl}/inscripciones/materia/${idmateria}`, {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        const json = await response.json()
+        return json.alumnos
+       
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
+
+
+

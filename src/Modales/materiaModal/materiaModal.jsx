@@ -1,90 +1,105 @@
 import { useContext, useEffect, useState } from "react"
-import { GeneralContext } from "../../Context/context"
+import { GeneralContext, InsContext } from "../../Context/context"
 
-import "./materiaModal.css"
 import "../modales.css"
 import Alumno from "./alumno"
 
+import { GETcursosByMateria, GETinscripcionesByMateria } from "../../Services/http"
+import Curso from "./curso"
+
 function MateriaModal() {
 
-    const { materiaSelected } = useContext(GeneralContext)
+    const { materiaSelected, setModal, modal } = useContext(GeneralContext)
 
-    const [comisiones, setComisiones] = useState([])
-    const [alumnos, setAlumnos] = useState([])
+    const [cursos, setCursos] = useState()
+    const [inscripciones, setInscripciones] = useState()
 
+    const [alumnos, setAlumnos] = useState()
 
-    const [comisionSelected, setComisionSelected] = useState("")
+    const [cursoSelected, setCursoSelected] = useState()
+    const [alumnosSelected, setAlumnosSelected] = useState([])
 
     useEffect(() => {
-        GETalumnos(materiaSelected.id, setComisiones, setAlumnos)
+        const ObtenerCursos = async () => {
+            setCursos(await GETcursosByMateria(materiaSelected.id))
+            console.log(cursos)
+        }
+
+        const ObtenerInscripciones = async () => {
+            setInscripciones(await GETinscripcionesByMateria(materiaSelected.id))
+            console.log(inscripciones)
+        }
+
+        ObtenerCursos()
+        ObtenerInscripciones()
     }, [])
 
+
+    useEffect(() => {
+        const ObtenerAlumnos = async () => {
+            setAlumnos(await DefineAlumnos(cursoSelected, inscripciones))
+        }
+        ObtenerAlumnos()
+        
+    }, [cursoSelected])
+
+
     return <>
+    <InsContext.Provider value={{
+        cursoSelected, setCursoSelected, alumnosSelected, setAlumnosSelected
+    }}>
         <div className="ModalTitulo">
             {materiaSelected.nombre}
         </div>
 
-        <div className="MateriaModalContent">
-            <div className="Comisiones">
+        <div className="SectionsContainer">
+            <div className="Section">
                 <div className="ModalTitulo">
-                    Comisiones disponibles
+                    Cursos disponibles
                 </div>
-                <div className="ComisionesList">
-                    {comisiones?.map((c, key) => {
-                        return <div onClick={() => { setComisionSelected(c) }} className="Comision" key={key}>{c}</div>
+                <div className="list">
+                    {cursos?.map((c, key) => {
+                        return <Curso key={key} curso={c}></Curso>
                     })}
                 </div>
             </div>
 
-            <div className="AlumnosContainer">
+            <div className="Section">
                 <div className="ModalTitulo">
                     Alumnos solicitando inscripcion
                 </div>
-                <div className="AlumnosList">
+                <div className="list">
                     {alumnos?.map((a, key) => {
-                        if (a["Comision 1"] === comisionSelected || a["Comision 2"] === comisionSelected) {
-                            return <Alumno key={key} alumno={a}></Alumno>
-                        }
-
+                        return <Alumno key={key} alumno={a}></Alumno>
                     })}
                 </div>
             </div>
+            
         </div>
+        <div className="botonContainer">
+                    <button onClick={() => {setAlumnosSelected([]); setModal(undefined);  }} className="botonCancelar">Cancelar</button>
+                    <button onClick={() => {setAlumnosSelected([]); setModal(undefined) }} className="botonSubir">Subir</button>
+        </div>
+    </InsContext.Provider>
     </>
+    
 }
 
 
-async function GETalumnos(idmateria, setComisiones, setAlumnos) {
-    console.log(idmateria)
-    try {
-        const response = await fetch(`http://127.0.0.1:8000/inscripciones/materia/${idmateria}`, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        const json = await response.json()
-        setAlumnos(json.alumnos)
-        setComisiones(DefineComisiones(json.alumnos))
-    } catch (error) {
-        console.log(error)
-    }
+async function DefineAlumnos(cursoSelected, inscripciones) {
+    console.log(cursoSelected)
+    console.log(inscripciones)
+    const alumnos = []
 
-}
-
-function DefineComisiones(alumnos) {
-    const Comisiones = []
-    alumnos?.forEach(a => {
-        if (Comisiones.find(c => a["Comision 1"] === c) === undefined) {
-            Comisiones.push(a["Comision 1"])
-        }
-
-        if (Comisiones.find(c => a["Comision 2"] === c) === undefined) {
-            Comisiones.push(a["Comision 2"])
+    inscripciones?.forEach(i => {
+        if (i["Comision 1"] === cursoSelected.comision || i["Comision 2"] === cursoSelected.comision) {
+            alumnos.push(i)
         }
     });
-    return Comisiones
-
+    console.log(alumnos)
+    return alumnos
 }
+
 
 
 export default MateriaModal
