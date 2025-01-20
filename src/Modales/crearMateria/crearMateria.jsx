@@ -3,7 +3,7 @@ import { GeneralContext } from "../../Context/context"
 import "../modales.css"
 import { POSTmateria } from "../../Services/http"
 
-import { FormatText } from "../../Components/useful"
+import { FormatText } from '../../Services/useful';
 
 function CrearMateriaModal() {
 
@@ -12,9 +12,7 @@ function CrearMateriaModal() {
     const NombreRef = useRef("")
 
 
-    return <div className="ModalContainer">
-            <div className="Modal">
-    
+    return  <>
             <div className="ModalTitulo">Crear nueva materia</div>
             <div className="InputContainer">
                 <div className="InputTitulo">Nombre </div>
@@ -28,8 +26,8 @@ function CrearMateriaModal() {
                     POSTmateria(FormatText(NombreRef.current.value))
                 }} className="botonSubir">Subir</button>
             </div>
-            </div>
-        </div>
+            </>
+
 }
 
 

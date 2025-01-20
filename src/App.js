@@ -5,18 +5,19 @@ import { GeneralContext } from './Context/context';
 import Menu from './Components/menu';
 import { useState } from 'react';
 import ModalContainer from './Modales/ModalContainer';
+import { use } from "react";
 
 function App() {
 
   const [modal, setModal] = useState(undefined)
 
-  const [materias, setMaterias] = useState()
+  const [materias, setMaterias] = useState([])
 
   const [materiasFilter, setMateriasFilter] = useState() // referencia al search de Materias, por ahora esta forma se me ocurrio de hacerlo, no es un Ref posta, es el texto
                                                    // que tiene el input del searchbar
   const [materiaSelected, setMateriaSelected] = useState()
 
-  const [alumnosSelected, setAlumnosSelected] = useState([])
+  const [archivo, setArchivo] = useState()
 
   return (
     <div className="App">
@@ -26,9 +27,9 @@ function App() {
         materiasFilter, 
         setMateriasFilter, 
         materiaSelected, 
+        archivo,
+        setArchivo,
         setMateriaSelected, 
-        alumnosSelected, 
-        setAlumnosSelected,
         setModal,
         modal, 
       }}>

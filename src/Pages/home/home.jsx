@@ -3,7 +3,7 @@ import SearchBar from "../../Components/searchbar"
 
 import "./home.css"
 import { GeneralContext } from "../../Context/context"
-import MateriasSlider from "./materiasslider"
+import MateriasSlider from "./slider"
 
 function Home() {
     const {setMateriasFilter} = useContext(GeneralContext)

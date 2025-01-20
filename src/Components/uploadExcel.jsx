@@ -1,25 +1,15 @@
-import { IconContext } from "react-icons";
-import "./cargarExcel.css"
-import "../modales.css"
-
-import { HiMiniDocumentPlus } from "react-icons/hi2";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as XLSX from 'xlsx';
-import { GeneralContext } from "../../Context/context.jsx";
-import { FormatText } from "../../Components/useful.js";
+import { FormatText } from "../Services/useful";
+import { HiMiniDocumentPlus } from "react-icons/hi2";
 
-import { POSTInscripcion } from "../../Services/http.js";
+import './uploadExcel.css'
 
-function CargarExcelModal() {
-
-    const {setModal} = useContext(GeneralContext)
-
-    const [archivo, setArchivo] = useState()
-    const [json, setJson] = useState("No se cargo ningun archivo...")
+function CargarExcelComponent({archivo, setArchivo, json, setJson}) {
 
     const inputArchivo = useRef()
 
-    const CargarJson =  async () => {
+    const CargarJson = async () => {
         setJson(await parseToJsonFile(archivo))
     }
 
@@ -30,10 +20,7 @@ function CargarExcelModal() {
     }, [archivo])
 
 
-    return <div className="ModalContainer">
-        <div className="Modal">
-
-        <div className="ModalTitulo">Añade un archivo Excel</div>
+    return <>
         <label htmlFor="subir" className="InputArchivoContainer">
             <HiMiniDocumentPlus fill="black" className="InputArchivo"></HiMiniDocumentPlus>
         </label>
@@ -43,19 +30,8 @@ function CargarExcelModal() {
         <div className="ExcelJsonContainer">
             {JSON.stringify(json, null, 4)}
         </div>
-        <div className="botonContainer"> 
-            <button onClick={() => {setModal(undefined)}} className="botonCancelar">Cancelar</button>
-            <button onClick={() => {
-                POSTInscripcion(json); 
-                setModal(undefined)
-
-            }} className="botonSubir">Subir</button>
-        </div>
-        </div>
-
-    </div>
+    </>
 }
-
 
 function parseToJsonFile(archivo) {
 
@@ -68,7 +44,10 @@ function parseToJsonFile(archivo) {
         "Seleccione su ingeniería": "ingenieria",
         "¿En que condición estás en la materia?": "condicion",
         "¿Iniciaste el trámite de RECURSADO DE ASIGNATURA REGULAR en AUTOGESTIÓN 4 en el AÑO para la/s materia/s solicitadas?": "tramite",
-
+        "curso":"comision",
+        "diccomisio":"cuatrimestre",
+        "hd":"hora_inicio",
+        "hh":"hora_fin"
     }
 
 
@@ -96,8 +75,6 @@ function parseToJsonFile(archivo) {
                 return nuevoObjeto
             })
 
-            console.log(Json)
-
             resolve(JsonLimpio)
         }
         fileReader.readAsArrayBuffer(archivo)
@@ -106,4 +83,4 @@ function parseToJsonFile(archivo) {
 }
 
 
-export default CargarExcelModal
+export default CargarExcelComponent

@@ -35,7 +35,6 @@
     border-radius: calc(2vw + 2vh);
     box-shadow: calc(-0.2vw + -0.2vh) calc(0.2vw + 0.2vh)  rgba(97, 153, 155, 0.486);
     padding: calc(0.5vw + 0.5vh);
-
 }
 
 
@@ -60,6 +59,7 @@
     background-color: green;
     color: black;
     border-radius: calc(2vw + 2vh);
+
     padding: calc(1vw + 1vh);
     font-size: calc(1vw + 1vh);
     line-height: calc(1vw + 1vh); 
@@ -75,6 +75,7 @@
     background-color: rgb(197, 0, 0);
     color: black;
     border-radius: calc(2vw + 2vh);
+
     padding: calc(1vw + 1vh);
     font-size: calc(1vw + 1vh); 
     line-height: calc(1vw + 1vh); 
@@ -89,6 +90,28 @@
 
 .botonCancelar:hover {
     background-color: rgb(211, 99, 99);
+
+}
+
+.botonOption {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: calc(1.5vw + 1.5vh); 
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-radius: calc(2vw + 2vh);
+    border: solid rgb(109, 109, 109) calc(0.1vw + 0.1vh);
+    padding: calc(1vw + 1vh);
+    font-size: calc(1vw + 1vh); 
+    line-height: calc(1vw + 1vh); 
+    margin-inline:  calc(1vw + 1vh);
+}
+.botonOption:hover {
+
+    background-color: rgb(177, 177, 177);
 
 }
 
@@ -192,7 +215,7 @@
     width: fit-content;
     height: fit-content;
     transition: 0.2s;
-  }
+}
 
 .listElement:hover {
 

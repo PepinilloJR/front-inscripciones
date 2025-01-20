@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import "./menu.css"
 import { GeneralContext } from "../Context/context";
 import { useContext } from "react";
-import CargarExcelModal from "../Modales/CargarExcel/cargarExcel";
+import CargarExcelModal from "../Modales/crearInscripciones/crearInscripcion";
 import CrearAlumnoModal from "../Modales/CrearAlumno/crearAlumno";
 import CrearMateriaModal from "../Modales/CrearMateria/crearMateria";
 import CrearCursoModal from "../Modales/CrearCurso/crearCurso";

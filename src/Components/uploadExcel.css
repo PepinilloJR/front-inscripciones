@@ -31,10 +31,11 @@ input[type="file"] {
     font-size: calc(0.5vh + 0.5vw);
     font-weight: bolder;
     font-family: monospace;
-    overflow: scroll;
+    overflow: auto;
     overflow-x: hidden;
     color: rgb(0, 104, 26);
     white-space: pre-wrap; 
     line-height:calc(1vh + 1vw);
     user-select:text;
+    scrollbar-color: rgb(0, 104, 26) rgb(164, 255, 187);;
 }

@@ -5,7 +5,7 @@ import { GeneralContext } from '../../Context/context';
 
 import { POSTalumno } from "../../Services/http"
 
-import { FormatText } from '../../Components/useful';
+import { FormatText } from '../../Services/useful';
 
 function CrearAlumnoModal() {
 

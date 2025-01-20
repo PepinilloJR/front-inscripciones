@@ -4,7 +4,7 @@ import { GeneralContext, InsContext } from "../../Context/context"
 import "../modales.css"
 import Alumno from "./alumno"
 
-import { GETcursosByMateria, GETinscripcionesByMateria } from "../../Services/http"
+import { GETcursosByMateria, GETinscripcionesByMateria, POSTcursados } from "../../Services/http"
 import Curso from "./curso"
 
 function MateriaModal() {
@@ -78,7 +78,7 @@ function MateriaModal() {
         </div>
         <div className="botonContainer">
                     <button onClick={() => {setAlumnosSelected([]); setModal(undefined);  }} className="botonCancelar">Cancelar</button>
-                    <button onClick={() => {setAlumnosSelected([]); setModal(undefined) }} className="botonSubir">Subir</button>
+                    <button onClick={() => {POSTcursados(cursoSelected, alumnosSelected, materiaSelected); setAlumnosSelected([]); setModal(undefined) }} className="botonSubir">Subir</button>
         </div>
     </InsContext.Provider>
     </>

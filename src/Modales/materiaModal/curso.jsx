@@ -7,7 +7,7 @@ function Curso({ curso }) {
 
 
     return <div onClick={() => { setCursoSelected(curso); setAlumnosSelected([]) }} className={curso === cursoSelected ? "listElementSelected" : "listElement"}>
-        <div style={{fontSize: "calc(1.2vw + 1.2vh)" }} className="listData">Comision: {curso.comision}</div>
+        <div style={{fontSize: "calc(1vw + 1vh)" }} className="listData">Comision: {curso.comision}</div>
         <div className="listData">Inscriptos: {curso.inscriptos} / {curso.cupo}</div>
         <div className="listData">Periodo: {curso.cuatrimestre}</div>
         <div className="listData">Año: {curso.year}</div>

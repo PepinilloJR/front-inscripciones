@@ -1,11 +1,13 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import { GeneralContext } from "../../Context/context"
-import { BsChevronRight  } from "react-icons/bs";
-import { BsChevronLeft  } from "react-icons/bs";
-import MateriaModal from "../../Modales/MateriaModal/materiaModal";
+import { BsChevronRight } from "react-icons/bs";
+import { BsChevronLeft } from "react-icons/bs";
+import { GETmaterias } from "../../Services/http";
+
+import Materia from "./materia";
 
 function MateriasSlider() {
-    const { materiasFilter, materias, setMaterias, crearMateriaOpen} = useContext(GeneralContext)
+    const { materiasFilter, materias, setMaterias } = useContext(GeneralContext)
 
     const [listMaterias, setListMaterias] = useState(materias) // lista de materias filtrada
     const [desplazamiento, setDesplazamiento] = useState(0)
@@ -13,20 +15,23 @@ function MateriasSlider() {
     const Slider = useRef()
 
 
-    useEffect(()=> {
-        getMateriasAPI(setMaterias)
-    }, [crearMateriaOpen])
+    useEffect(() => {
+        const ObtenerMaterias = async () => {
+            setMaterias(await GETmaterias())
+        }
+        ObtenerMaterias()
+    }, [])
 
     // cambio las materias que se muestran al cambiar el filtro, que se cambia el el searchBar
     useEffect(() => {
         setListMaterias(materias?.filter((e) => e.nombre.toLowerCase().includes(materiasFilter.toLowerCase())))
         // reinicio el slider
-        ndes.current = 0; 
+        ndes.current = 0;
         manejarResize();
         console.log("se ejecuto otra vez")
     }, [materiasFilter, materias])
 
-    
+
     useEffect(() => {
 
         window.addEventListener("resize", manejarResize)
@@ -40,7 +45,7 @@ function MateriasSlider() {
     // al cambiar el tamaño de la ventana
 
     const manejarResize = () => {
-            
+
         const longitudLineas = 3 // la cantidad de materias que hay en cada linea
 
         var desplazamientoDerecho = Slider.current?.getBoundingClientRect().width
@@ -54,7 +59,7 @@ function MateriasSlider() {
 
 
     return listMaterias ? <div className="MateriasSliderContainer">
-        <BsChevronLeft onClick={ () => {
+        <BsChevronLeft onClick={() => {
             const longitudLineas = 3 // la cantidad de materias que hay en cada linea
 
             var desplazamientoIzquierdo = Slider.current?.getBoundingClientRect().width
@@ -71,16 +76,18 @@ function MateriasSlider() {
 
         }} className="SliderButton">
         </BsChevronLeft>
-        <div className="MateriasSlider">    
 
-            <div ref={Slider} style={{transform: `translateX(${desplazamiento}px)`}} className="MateriasLista">
-            {listMaterias.map((value, key) => {
-                return <Materia mat={value} key={key}/>
-            })}
+
+        <div className="MateriasSlider">
+            <div ref={Slider} style={{ transform: `translateX(${desplazamiento}px)` }} className="MateriasLista">
+                {listMaterias.map((value, key) => {
+                    return <Materia mat={value} key={key} />
+                })}
             </div>
-
         </div>
-        <BsChevronRight onClick={ () => {
+
+
+        <BsChevronRight onClick={() => {
 
             const cantidadMaterias = 6 // cantidad de materias que iran a pantalla 
             const longitudLineas = 3 // la cantidad de materias que hay en cada linea
@@ -88,7 +95,7 @@ function MateriasSlider() {
 
             var desplazamientoMaximo = Math.floor((listMaterias.length / cantidadMaterias) - 0.1) * longitudLineas
             var desplazamientoDerecho = Slider.current?.getBoundingClientRect().width
-            
+
             // detectar si es firefox, debido a sus diferencias en la implementacion del flexbox
             if (navigator.userAgent.includes("Firefox")) {
                 desplazamientoDerecho = desplazamientoDerecho * longitudLineas
@@ -98,36 +105,11 @@ function MateriasSlider() {
                 ndes.current = ndes.current + 1
                 setDesplazamiento(-ndes.current * desplazamientoDerecho)
             }
-        }} className="SliderButton"/>
+        }} className="SliderButton" />
+
     </div> : <div>Cargando Materias</div>
 }
 
-function Materia ({mat}) {
 
-    const { setMateriaSelected, setModal } = useContext(GeneralContext)
-
-    return <>
-    <div onClick={() => {setMateriaSelected(mat); setModal(<MateriaModal></MateriaModal>)}} className="Materia">
-        <div className="MateriaTitulo">
-            {mat.nombre}
-        </div> 
-    </div>
-    </>
-
-}
-
-async function getMateriasAPI(setMaterias) {
-    try {
-        const response = await fetch("http://127.0.0.1:8000/materias/", {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-
-        setMaterias(await response.json())
-    } catch (error) {
-        console.log(error)
-    }
-}
 
 export default MateriasSlider
