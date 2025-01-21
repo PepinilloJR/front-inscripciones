@@ -1,7 +1,7 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from './Pages/Home/home';
-import { GeneralContext } from './Context/context';
+import { GeneralContext } from './Context/Context';
 import Menu from './Components/menu';
 import { useState } from 'react';
 import ModalContainer from './Modales/ModalContainer';

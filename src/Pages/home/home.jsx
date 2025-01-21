@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef } from "react"
 import SearchBar from "../../Components/searchbar"
 
 import "./home.css"
-import { GeneralContext } from "../../Context/context"
+import { GeneralContext } from "../../Context/Context"
 import MateriasSlider from "./slider"
 
 function Home() {

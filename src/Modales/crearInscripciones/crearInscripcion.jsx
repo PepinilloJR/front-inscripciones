@@ -2,7 +2,7 @@ import "../modales.css"
 
 import { useContext, useState } from "react";
 import * as XLSX from 'xlsx';
-import { GeneralContext } from "../../Context/context.jsx";
+import { GeneralContext } from "../../Context/Context";
 import { FormatText } from '../../Services/useful.js';
 
 import { POSTInscripcion } from "../../Services/http.js";

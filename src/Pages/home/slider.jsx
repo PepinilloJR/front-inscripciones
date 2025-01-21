@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react"
-import { GeneralContext } from "../../Context/context"
+import { GeneralContext } from "../../Context/Context"
 import { BsChevronRight } from "react-icons/bs";
 import { BsChevronLeft } from "react-icons/bs";
 import { GETmaterias } from "../../Services/http";
