@@ -1,5 +1,5 @@
 import { useContext, useRef } from "react"
-import { GeneralContext } from "../../Context/context"
+import { GeneralContext } from "../../Context/Context"
 import "../modales.css"
 import { POSTmateria } from "../../Services/http"
 

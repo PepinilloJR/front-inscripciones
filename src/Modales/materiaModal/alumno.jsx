@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { GeneralContext, InsContext } from "../../Context/context"
+import { GeneralContext, InsContext } from "../../Context/Context"
 
 
 function Alumno({alumno}) {

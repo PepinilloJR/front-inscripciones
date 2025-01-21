@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { GeneralContext, InsContext } from "../../Context/context"
+import { GeneralContext, InsContext } from "../../Context/Context"
 
 import "../modales.css"
 import Alumno from "./alumno"

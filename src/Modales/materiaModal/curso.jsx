@@ -1,4 +1,4 @@
-import { InsContext } from "../../Context/context"
+import { InsContext } from "../../Context/Context"
 import { useContext } from "react"
 
 function Curso({ curso }) {

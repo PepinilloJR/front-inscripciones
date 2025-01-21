@@ -1,7 +1,7 @@
 
 import { useContext, useRef, useState } from 'react';
 import "../modales.css"
-import { GeneralContext } from '../../Context/context';
+import { GeneralContext } from "../../Context/Context"
 import { FormatText } from '../../Services/useful';
 import * as XLSX from 'xlsx';
 import { POSTcurso, POSTcursos } from "../../Services/http"

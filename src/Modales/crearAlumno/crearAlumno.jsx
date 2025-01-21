@@ -1,7 +1,7 @@
 
 import { useContext, useRef } from 'react';
 import "../modales.css"
-import { GeneralContext } from '../../Context/context';
+import { GeneralContext } from "../../Context/Context"
 
 import { POSTalumno } from "../../Services/http"
 
