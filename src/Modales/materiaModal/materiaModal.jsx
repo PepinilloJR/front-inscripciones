@@ -19,6 +19,8 @@ function MateriaModal() {
     const [cursoSelected, setCursoSelected] = useState()
     const [alumnosSelected, setAlumnosSelected] = useState([])
 
+    const [mensajeResultado, setMensajeResultado] = useState()
+
     useEffect(() => {
         const ObtenerCursos = async () => {
             setCursos(await GETcursosByMateria(materiaSelected.id))
@@ -76,9 +78,19 @@ function MateriaModal() {
             </div>
             
         </div>
+
+        <div className='MessageContainer'>
+            <div className={mensajeResultado?.status === "ok" ? 'MessageSuccess' : 'MessageError'}>{mensajeResultado?.message}</div>
+        </div>
+
         <div className="botonContainer">
                     <button onClick={() => {setAlumnosSelected([]); setModal(undefined);  }} className="botonCancelar">Cancelar</button>
-                    <button onClick={() => {POSTcursados(cursoSelected, alumnosSelected, materiaSelected); setAlumnosSelected([]); setModal(undefined) }} className="botonSubir">Subir</button>
+                    <button onClick={async () => {
+                        const mensaje = await POSTcursados(cursoSelected, alumnosSelected, materiaSelected); 
+                        setMensajeResultado(mensaje)
+                        setAlumnosSelected([]); 
+                        //setModal(undefined) 
+                    }} className="botonSubir">Subir</button>
         </div>
     </InsContext.Provider>
     </>

@@ -16,16 +16,23 @@ function CargarExcelModal() {
     const [archivo, setArchivo] = useState()
     const [json, setJson] = useState("No se cargo ningun archivo...")
 
+    const [mensajeResultado, setMensajeResultado] = useState()
+
     return <div className="ModalContainer">
         <div className="Modal">
 
         <div className="ModalTitulo">Añade un archivo Excel</div>
         <CargarExcelComponent archivo={archivo} setArchivo={setArchivo} json={json} setJson={setJson} ></CargarExcelComponent>
+
+        <div className='MessageContainer'>
+            <div className={mensajeResultado?.status === "ok" ? 'MessageSuccess' : 'MessageError'}>{mensajeResultado?.message}</div>
+        </div>
+
         <div className="botonContainer"> 
             <button onClick={() => {setModal(undefined)}} className="botonCancelar">Cancelar</button>
-            <button onClick={() => {
-                POSTInscripcion(json); 
-                setModal(undefined)
+            <button onClick={async () => {
+                const mensaje = await POSTInscripcion(json); 
+                setMensajeResultado(mensaje)
 
             }} className="botonSubir">Subir</button>
         </div>

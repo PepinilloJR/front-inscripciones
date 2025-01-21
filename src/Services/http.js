@@ -32,8 +32,12 @@ export async function POSTmateria(nombre_materia) {
             })
                 
         })
-    } catch (e) {
-        console.log(e)
+        if (!response.ok) {
+            return { message: "no se pudo subir la materia" + " Status: " + response.status, status: "error" }
+        } 
+        return { message: "Materia subida con exito", status: "ok"  }
+    } catch (error) {
+        return error
     }
 
 }
@@ -57,8 +61,13 @@ export async function POSTcurso(Comision, Cuatrimestre, HoraInicio, HoraFin, Cup
                 materia: Materia
             })
         })
-    } catch (e) {
-        console.log(e)
+        if (!response.ok) {
+            return { message: "no se pudo cargar el curso" + " Status: " + response.status, status: "error" }
+            
+        } 
+        return { message: "Curso subido con exito", status: "ok" }
+    } catch (error) {
+        return error
     }
 
 }
@@ -76,9 +85,12 @@ export async function POSTcursos(json) {
                 )
             }
         )
-
+        if (!response.ok) {
+            return { message: "no se pudo cargar los cursos" + " Status: " + response.status, status: "error" }
+        } 
+        return { message: "Cursos cargados con exito" }
     } catch (error) {
-        console.log(error)
+        return error
     }
 
 }
@@ -86,7 +98,7 @@ export async function POSTcursos(json) {
 
 export async function POSTalumno(legajo, nombre, apellido) {
     try {
-        const response = fetch(`${APIurl}/alumnos/`, {
+        const response = await fetch(`${APIurl}/alumnos/`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -98,8 +110,13 @@ export async function POSTalumno(legajo, nombre, apellido) {
                 apellido: apellido
             })
         })
-    } catch (e) {
-        console.log(e)
+        if (!response.ok) {
+            return { message: "no se pudo subir el alumno" + " Status: " + response.status, status: "error" }
+        } 
+        return { message: "Alumno subido con exito", status: "ok"  }
+        
+    } catch (error) {
+        return error
     }
 
 }
@@ -118,9 +135,12 @@ export async function POSTInscripcion(json) {
                 )
             }
         )
-
+        if (!response.ok) {
+            return { message: "no se pudo cargar las inscripciones" + " Status: " + response.status, status: "error" }
+        } 
+        return { message: "Inscripciones subidas con exito", status: "ok"  }
     } catch (error) {
-        console.log(error)
+        return error
     }
 
 }
@@ -190,9 +210,12 @@ export async function POSTcursados(cursoSelected, alumnosSelected, materiaSelect
                 )
             }
         )
-    
+        if (!response.ok) {
+            return { message: "no se pudo subir los cursados" + " Status: " + response.status, status: "error" }
+        } 
+        return { message: "Cursados subidos con exito", status: "ok" }
     } catch (error) {
-        console.log(error)
+        return error
     }
 }
 
