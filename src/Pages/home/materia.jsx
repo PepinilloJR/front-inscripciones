@@ -1,6 +1,6 @@
-import MateriaModal from "../../Modales/materiaModal/materiaModal";
+import MateriaModal from "../../Modales/materiaModal/materiaModal"
 import { useContext } from "react";
-import { GeneralContext } from "../../Context/Context";
+import { GeneralContext } from "../../Context/Context"
 
 function Materia({ mat }) {
 

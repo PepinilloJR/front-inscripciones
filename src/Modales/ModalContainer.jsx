@@ -1,5 +1,6 @@
 import { useContext } from "react"
-import { GeneralContext } from "../Context/Context"
+import { GeneralContext } from "../Context/Context";
+
 
 function ModalContainer() {
 

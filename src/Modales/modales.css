@@ -231,3 +231,13 @@
     height: calc(1vw + 1vh);
     line-height: calc(0.5vw + 0.5vh);
 }
+
+.MessageSuccess {
+    color: greenyellow;
+    font-size: calc(0.5vw + 0.5vh);
+}
+
+.MessageError {
+    color: red;
+    font-size: calc(0.5vw + 0.5vh);
+}

@@ -1,7 +1,8 @@
 
 import { useContext, useRef, useState } from 'react';
 import "../modales.css"
-import { GeneralContext } from "../../Context/Context"
+import { GeneralContext } from "../../Context/Context";
+
 import { FormatText } from '../../Services/useful';
 import * as XLSX from 'xlsx';
 import { POSTcurso, POSTcursos } from "../../Services/http"
@@ -19,7 +20,7 @@ function CrearCursoModal() {
 
     const [json, setJson] = useState("No se cargo ningun archivo...")
 
-
+    const [mensajeResultado, setMensajeResultado] = useState()
     // refs
 
     const Comision = useRef('');
@@ -60,6 +61,7 @@ function CrearCursoModal() {
             </input>
         </div>
 
+
         <div className="InputContainer">
             <div className="InputTitulo">Materia </div>
             <select ref={Materia} className="Input">
@@ -68,11 +70,18 @@ function CrearCursoModal() {
                 })}
             </select>
         </div>
+
+
+        <div className='MessageContainer'>
+            <div className={mensajeResultado?.status === "ok" ? 'MessageSuccess' : 'MessageError'}>{mensajeResultado?.message}</div>
+        </div>
+
+
         <div className="botonContainer">
             <button onClick={() => { setModal(undefined) }} className="botonCancelar">Cancelar</button>
-            <button onClick={() => {
-                setModal(undefined); 
-                POSTcurso(
+            <button onClick={async () => {
+                //setModal(undefined); 
+                const mensaje = await POSTcurso(
                     FormatText(Comision.current.value),
                     FormatText(Cuatrimestre.current.value),
                     FormatText(HoraInicio.current.value),
@@ -80,6 +89,7 @@ function CrearCursoModal() {
                     FormatText(Cupo.current.value),
                     FormatText(Materia.current.value)
                 )
+                setMensajeResultado(mensaje)
             }} className="botonSubir">Subir</button>
             <button onClick={() => { setSubirExcel(true) }} className="botonOption">Cargar Excel</button>
         </div>
@@ -87,13 +97,18 @@ function CrearCursoModal() {
     : 
     <>
     <CargarExcelComponent archivo={archivo} setArchivo={setArchivo} json={json} setJson={setJson}></CargarExcelComponent>
+    <div className='MessageContainer'>
+        <div className={mensajeResultado?.status === "ok" ? 'MessageSuccess' : 'MessageError'}>{mensajeResultado?.message}</div>
+    </div>
+
     <div className="botonContainer">
             <button onClick={() => { setModal(undefined) }} className="botonCancelar">Cancelar</button>
-            <button onClick={() => {
-                setModal(undefined); 
-                POSTcursos(
+            <button onClick={async () => {
+                //setModal(undefined); 
+                const mensaje = await POSTcursos(
                     json
                 )
+                setMensajeResultado(mensaje)
             }} className="botonSubir">Subir</button>
         <button onClick={() => { setSubirExcel(false) }} className="botonOption">Cargar curso individual</button>
     </div>
