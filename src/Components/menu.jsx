@@ -1,0 +1,44 @@
+import { MdFileUpload } from "react-icons/md";
+import { Link } from "react-router-dom"
+import "./menu.css"
+import { GeneralContext } from "../Context/context";
+import { useContext } from "react";
+import CargarExcelModal from "../Modales/crearInscripciones/crearInscripcion";
+import CrearAlumnoModal from "../Modales/CrearAlumno/crearAlumno";
+import CrearMateriaModal from "../Modales/CrearMateria/crearMateria";
+import CrearCursoModal from "../Modales/CrearCurso/crearCurso";
+
+
+function Menu () {
+    
+    const GContext = useContext(GeneralContext)
+
+
+    return <>
+        <menu className="Menu">
+        
+            <Link onClick={() => {GContext.setModal(<CargarExcelModal></CargarExcelModal>);
+            }} className="botonLink" to="/">
+                <MdFileUpload className="UploadBoton"></MdFileUpload>
+                <button className="boton">Subir Inscripciones</button>
+            </Link>
+            <Link onClick={() => {GContext.setModal(<CrearMateriaModal></CrearMateriaModal>)
+            }} className="botonLink" to="/">
+                <button className="boton">Crear materia</button>
+            </Link>
+            <Link onClick={() => {GContext.setModal(<CrearCursoModal></CrearCursoModal>)
+            }} className="botonLink" to="/">
+                <button className="boton">Crear curso</button>
+            </Link>
+            <Link onClick={() => {GContext.setModal(<CrearAlumnoModal></CrearAlumnoModal>)
+            }} className="botonLink" to="/">
+                <button className="boton">Crear alumno</button>
+            </Link>
+        </menu>
+    </>
+
+
+} 
+
+
+export default Menu
