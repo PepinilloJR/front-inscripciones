@@ -45,7 +45,7 @@ function MateriaModal() {
         
     }, [cursoSelected])
 
-
+    console.log(alumnos)
     return <>
     <InsContext.Provider value={{
         cursoSelected, setCursoSelected, alumnosSelected, setAlumnosSelected
@@ -89,7 +89,7 @@ function MateriaModal() {
                         const mensaje = await POSTcursados(cursoSelected, alumnosSelected, materiaSelected); 
                         setMensajeResultado(mensaje)
                         setAlumnosSelected([]); 
-                        //setModal(undefined) 
+
                     }} className="botonSubir">Subir</button>
         </div>
     </InsContext.Provider>

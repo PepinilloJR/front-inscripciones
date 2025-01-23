@@ -1,6 +1,6 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Home from './Pages/Home/home';
+import Home from './Pages/Materias/home';
 import { GeneralContext } from './Context/Context';
 import Menu from './Components/menu';
 import { useState } from 'react';
@@ -52,6 +52,13 @@ function App() {
 export default App;
 
 /* TODO:
+
+- ULTRA IMPORTANTE REMODELACION DE INTERFAZ
+
+- exportar excel con cursados
+
+- LA FILTROS UPDATE : agregar filtros y opciones de seleccion para recorrer y hacer mas rapido el trabajo
+                      ejemplo: seleccionar todo, filtrar por año cursados
 
 -deshabilitar los botones con inputs vacios o incorrectos en modales
 

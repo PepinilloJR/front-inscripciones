@@ -1,4 +1,6 @@
 import { MdFileUpload } from "react-icons/md";
+import { FaFileExcel } from "react-icons/fa";
+
 import { Link } from "react-router-dom"
 import "./menu.css"
 import { GeneralContext } from "../Context/Context";
@@ -7,7 +9,8 @@ import CargarExcelModal from "../Modales/crearInscripciones/crearInscripcion";
 import CrearAlumnoModal from "../Modales/crearAlumno/crearAlumno";
 import CrearMateriaModal from "../Modales/crearMateria/crearMateria";
 import CrearCursoModal from "../Modales/crearCurso/crearCurso";
-
+import DescargarExcelComponet from "./downloadExcel";
+import CursadosModal from "../Modales/exportarCursados/cursados";
 
 function Menu () {
     
@@ -20,7 +23,12 @@ function Menu () {
             <Link onClick={() => {GContext.setModal(<CargarExcelModal></CargarExcelModal>);
             }} className="botonLink" to="/">
                 <MdFileUpload className="UploadBoton"></MdFileUpload>
-                <button className="boton">Subir Inscripciones</button>
+                <button className="boton">Importar Inscripciones</button>
+            </Link>
+            <Link onClick={() => {GContext.setModal(<CursadosModal></CursadosModal>);
+            }} className="botonLink" to="/">
+                <MdFileUpload className="UploadBoton"></MdFileUpload>
+                <button className="boton">Exportar Inscriptos</button>
             </Link>
             <Link onClick={() => {GContext.setModal(<CrearMateriaModal></CrearMateriaModal>)
             }} className="botonLink" to="/">

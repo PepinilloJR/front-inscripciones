@@ -176,6 +176,22 @@ export async function GETinscripcionesByMateria(idmateria) {
     
 }
 
+export async function GETcursados() {
+    try {
+        const response = await fetch(`${APIurl}/cursados`, {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        const json = await response.json()
+        return json
+       
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
+
 
 export async function POSTcursados(cursoSelected, alumnosSelected, materiaSelected) {
     const cursados = []
@@ -219,5 +235,18 @@ export async function POSTcursados(cursoSelected, alumnosSelected, materiaSelect
     }
 }
 
+/*
+export async function DELETEinscripciones(inscripciones) {
+    inscripciones.forEach(async i => {
+        try {
+            const response = await fetch(`${APIurl}/inscripciones/${i.id}`, {
+                method: "DELETE"
+            })
 
 
+        } catch (e) {
+            console.error(e)
+        }
+    })
+}
+*/
