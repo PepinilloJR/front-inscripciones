@@ -6,6 +6,7 @@ import Menu from './Components/menu';
 import { useState } from 'react';
 import ModalContainer from './Modales/ModalContainer';
 import { use } from "react";
+import Cursados from "./Pages/Cursados/cursados";
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
           <Menu></Menu>
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/cursados' element={<Cursados />} />
           </Routes>
         </BrowserRouter>
       </GeneralContext.Provider>

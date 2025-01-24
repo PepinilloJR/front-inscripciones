@@ -4,8 +4,8 @@
     position: sticky;
     top: 0px;
     justify-content:flex-start;
-    height: fit-content;
-    padding: calc(0.5vw + 0.5vh);
+    align-items: center;
+    height: 10%;
     z-index: 2;
 }
 
