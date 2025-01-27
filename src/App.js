@@ -7,6 +7,7 @@ import { useState } from 'react';
 import ModalContainer from './Modales/ModalContainer';
 import { use } from "react";
 import Cursados from "./Pages/Cursados/cursados";
+import Inscripciones from "./Pages/Inscripciones/inscripciones";
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/cursados' element={<Cursados />} />
+            <Route path='/inscripciones' element={<Inscripciones />} />
           </Routes>
         </BrowserRouter>
       </GeneralContext.Provider>
@@ -69,5 +71,6 @@ export default App;
 -subir excel cuando el endpoint funcione
 
 - could be nice poder editar el JSON en el visualizador
+
 
 */

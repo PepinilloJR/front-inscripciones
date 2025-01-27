@@ -47,14 +47,11 @@ function Cursados() {
         <div className="PageContainer">
 
             <CursadosFiltrosSection></CursadosFiltrosSection>
-            
+
             <div className="CursadosSection">
                 <div className="CursadosContainer">
                     <CursadosSelectors></CursadosSelectors>
                     <CursadosList></CursadosList>
-                    
-                    
-                    
                     <div className='ButtonsContainer'>
                         <button onClick={()=> {
                             parseToExcelFile(cursadosSelected)

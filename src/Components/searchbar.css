@@ -1,9 +1,14 @@
+* {
+    font-size: calc(0.6vw + 0.6vh);
+}
+
+
 .SearchBarContainer {
     display: flex;
     justify-content: center;
-    padding: calc(1vw + 1vh);
+    padding: calc(0.8vw + 0.8vh);
     /*margin-block: calc(2vw + 2vh);*/
-    width: 50%;
+    width: 80%;
     height: fit-content;
     border-radius: calc(20vw + 20vh);
     outline: calc(0.1vw + 0.1vh) solid rgb(218, 218, 218);
@@ -17,7 +22,7 @@
     height: calc(1vh + 1vw);
     width: 100%;
     
-    font-size: calc(1vh + 1vw);
+    font-size: calc(0.8vh + 0.8vw);
     height: calc(1.5vh + 1.5vw);
 }
 

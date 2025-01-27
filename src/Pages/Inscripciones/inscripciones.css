@@ -1,0 +1,95 @@
+.InscripcionesContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 100%;
+}
+
+.MateriasSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 100%;
+}
+
+.CursosSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 100%;
+}
+
+.InscripcionesSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+}
+
+
+.MateriasBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(1vw + 1vh);
+    outline: solid calc(0.1vw + 0.1vh) rgb(218, 218, 218);
+    border-radius: calc(1vw + 1vh);
+    width: 93%;
+    height: 93%;
+    padding: 2%;
+
+}
+.CursosBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(1vw + 1vh);
+    outline: solid calc(0.1vw + 0.1vh) rgb(218, 218, 218);
+    border-radius: calc(1vw + 1vh);
+    width: 93%;
+    height: 93%;
+    padding: 2%;
+
+}
+.InscripcionesBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(1vw + 1vh);
+    outline: solid calc(0.1vw + 0.1vh) rgb(218, 218, 218);
+    border-radius: calc(1vw + 1vh);
+    width: 93%;
+    height: 93%;
+    padding: 2%;
+
+}
+
+.MateriasList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: 70%;
+    padding: 5%;
+    overflow: auto;
+    gap: calc(1vw + 1vh);
+    outline: solid calc(0.1vw + 0.1vh) rgb(218, 218, 218);
+    border-radius: calc(1vw + 1vh);
+}
+
+.CursosList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: 70%;
+    padding: 5%;
+    overflow: auto;
+    gap: calc(1vw + 1vh);
+    outline: solid calc(0.1vw + 0.1vh) rgb(218, 218, 218);
+    border-radius: calc(1vw + 1vh);
+}

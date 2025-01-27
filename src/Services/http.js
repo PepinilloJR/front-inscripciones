@@ -160,6 +160,21 @@ export async function GETcursosByMateria(idmateria) {
 
 }
 
+export async function GETcursos() {
+    try {
+        const response = await fetch(`${APIurl}/cursos/`, {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        const json = await response.json()
+        return json
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
 export async function GETinscripcionesByMateria(idmateria) {
     try {
         const response = await fetch(`${APIurl}/inscripciones/materia/${idmateria}`, {
@@ -168,7 +183,23 @@ export async function GETinscripcionesByMateria(idmateria) {
             }
         })
         const json = await response.json()
-        return json.alumnos
+        return json
+       
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
+
+export async function GETinscripciones() {
+    try {
+        const response = await fetch(`${APIurl}/inscripciones/}`, {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        const json = await response.json()
+        return json
        
     } catch (error) {
         console.log(error)
