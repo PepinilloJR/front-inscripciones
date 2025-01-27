@@ -1,3 +1,7 @@
+
+
+
+
 .PageContainer {
     display: flex;
     width: 100%;
@@ -7,10 +11,106 @@
 
 .FiltrosSection {
     display: flex;
-
-    height: 100%;
-    width: 25%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+    height: 95%;
+    width: 35%;
+    row-gap: calc(1vw + 1vh);
     /*border-radius: calc(1vw + 1vh);*/
+
+}
+
+.FiltroBox {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+    column-gap: calc(1vw + 1vh);
+}
+
+.FiltrosList {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: calc(0.5vw + 0.5vh);
+    width: 73%;
+    outline: solid calc(0.1vw + 0.1vh) rgb(218, 218, 218);
+    border-radius: calc(1vw + 1vh);
+    padding: 2%;
+}
+.Filtro {
+    padding: calc(0.5vw + 0.5vh);
+    border-radius: calc(1vw + 1vh);
+    outline: solid calc(0.1vw + 0.1vh) rgb(218, 218, 218);
+}
+
+.SearchFilterButton {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    font-size: calc(2vw + 2vh);
+    padding: calc(0.2vw + 0.2vh);
+    border-radius: calc(2vw + 2vh);
+}
+
+.SearchFilterButton:hover {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    background-color: rgb(175, 175, 175);
+    font-size: calc(2vw + 2vh);
+    padding: calc(0.2vw + 0.2vh);
+    border-radius: calc(2vw + 2vh);
+}
+
+.SearchFilterButtonSelected {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    font-size: calc(2vw + 2vh);
+    background-color: rgb(170, 193, 255);
+    padding: calc(0.2vw + 0.2vh);
+    border-radius: calc(2vw + 2vh);
+}
+.SearchFilterButtonSelected:hover {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    font-size: calc(2vw + 2vh);
+    background-color: rgb(129, 151, 211);
+    padding: calc(0.2vw + 0.2vh);
+    border-radius: calc(2vw + 2vh);
+}
+
+.SearchFilterOptions {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 73%;
+    max-height: 50%;
+    height: fit-content;
+    padding: 2%;
+    row-gap: calc(0.5vw + 0.5vh);
+    outline: solid calc(0.2vw + 0.2vh) rgb(170, 193, 255);
+    border-radius: calc(1vw + 1vh);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.SearchFilterOptionsClosed {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 73%;
+    max-height: 0%;
+    height: fit-content;
+    padding-inline: 2%;
+    row-gap: calc(0.5vw + 0.5vh);
+    outline: solid 0px rgb(218, 218, 218);
+    border-radius: calc(1vw + 1vh);
+    transition: 0.5s;
+    overflow: hidden;
 
 }
 
@@ -21,7 +121,7 @@
     justify-content: center;
     height: 100%;
 
-    width: 75%;
+    width: 65%;
 
 }
 
@@ -33,14 +133,33 @@
     justify-content: center;
     width: 97%;
     height: 90%;
+    outline: solid calc(0.1vw + 0.1vh) rgb(218, 218, 218);
+    padding-bottom: 2%;
     border-radius: calc(1vw + 1vh);
-    gap: calc(1vw + 1vh);
+    gap: calc(0.5vw + 0.5vh);
 }
 
 .SelectorsContainer {
-    width: 90%;
-    height: 10%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: calc(1vw + 1vh);
+    width: 80%;
+    height: 5%;
 
+}
+
+.Selector {
+    display: flex;
+    height: fit-content;
+    align-items: center;
+    gap: calc(0.5vw + 0.5vh);
+    font-size: calc(0.8vw + 0.8vh);
+}
+
+.OptionsButton {
+    width: calc(1vw + 1vw);
+    height:  calc(1vw + 1vw);
 }
 
 .CursadosListBox {
@@ -67,7 +186,7 @@
 .ButtonsContainer {
     display: flex;
     justify-content: center;
-    height: 10%;
+    height: 5%;
     width: 100%;
 }
 .ExportarButton {
@@ -103,4 +222,10 @@
     width: calc(8vw + 8vh);
     height: calc(5vw + 5vh);
     background-color: rgb(121, 252, 142);
+}
+
+input[type="checkbox"] {
+    width: calc(0.8vw + 0.8vh);
+    height: calc(0.8vw + 0.8vh);
+    font-weight: normal;
 }

@@ -2,8 +2,9 @@
     display: flex;
     justify-content: center;
     padding: calc(1vw + 1vh);
-    margin: calc(2vw + 2vh);
-    width: 40%;
+    /*margin-block: calc(2vw + 2vh);*/
+    width: 50%;
+    height: fit-content;
     border-radius: calc(20vw + 20vh);
     outline: calc(0.1vw + 0.1vh) solid rgb(218, 218, 218);
 }
