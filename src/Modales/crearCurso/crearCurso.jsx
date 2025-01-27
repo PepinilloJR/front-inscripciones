@@ -65,7 +65,7 @@ function CrearCursoModal() {
         <div className="InputContainer">
             <div className="InputTitulo">Materia </div>
             <select ref={Materia} className="Input">
-                {materias.map((mat, key) => {
+                {materias?.map((mat, key) => {
                     return <option key={key} value={mat.id}>{mat.nombre}</option>
                 })}
             </select>
