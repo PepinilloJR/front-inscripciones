@@ -10,8 +10,8 @@ function Materias() {
     const [ materiasFiltrados, setMateriasFiltrados ] = useState([])
     
     useEffect(() => {
-        setMateriasFiltrados(materias.filter(m => m.nombre.toLowerCase().includes(materiaFiltro.toLowerCase()) ))
-    }, [materiaFiltro])
+        setMateriasFiltrados(materias?.filter(m => m.nombre.toLowerCase().includes(materiaFiltro.toLowerCase()) ))
+    }, [materiaFiltro, materias])
 
     return <>
     <div className="MateriasList">
@@ -26,7 +26,13 @@ function Materias() {
 
 
 function Materia({materia}) {
-    return <div>{materia.nombre}</div>
+
+    const { setMateriaSelected, materiaSelected } = useContext(InsContext)
+
+    return <div onClick={()=> {
+        setMateriaSelected(materia)
+        console.log(materiaSelected)
+    }}>{materia.nombre}</div>
 }
 
 

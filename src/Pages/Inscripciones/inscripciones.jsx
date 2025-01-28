@@ -5,6 +5,7 @@ import "./inscripciones.css"
 import { GETcursos, GETinscripciones, GETmaterias } from "../../Services/http"
 import Cursos from "./cursos"
 import Materias from "./materias"
+import InscripcionesList from "./inscripcionesList"
 
 function Inscripciones() {
 
@@ -27,15 +28,21 @@ function Inscripciones() {
             setMaterias(await GETmaterias())
         }
         const ObtainCursos = async () => {
-            setCursos(await GETcursos())
+            setCursos(await GETcursos(materiaSelected))
         }
         const ObtainInscripciones = async () => {
-            setInscripciones(await GETinscripciones())
+            setInscripciones(await GETinscripciones(materiaSelected))
         }
         
-        ObtainMaterias()
-        ObtainCursos()
-    }, [])
+        // idealmente para que no se hacer peticiones de mas considero lo siguiente
+        if (materias === undefined) {
+            ObtainMaterias()
+        }
+        if (materiaSelected || cursos === undefined) {
+            ObtainCursos()
+        }
+        ObtainInscripciones()
+    }, [materiaSelected, cursoSelected])
 
 
     return <InsContext.Provider value={{
@@ -43,6 +50,12 @@ function Inscripciones() {
         cursoFiltro,
         materias,
         materiaFiltro,
+        inscripciones,
+        materiaSelected,
+        setMateriaSelected,
+        cursoSelected,
+        setCursoSelected
+
     }}>
 
     <div className="InscripcionesContainer"> 
@@ -62,7 +75,7 @@ function Inscripciones() {
         </div>
         <div className="InscripcionesSection">
             <div className="InscripcionesBox">
-
+                <InscripcionesList></InscripcionesList>
             </div>
         </div>
     </div>

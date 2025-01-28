@@ -19,7 +19,7 @@ export async function GETmaterias() {
 
 
 export async function POSTmateria(nombre_materia) {
-    
+
     try {
         const response = await fetch(`${APIurl}/materias/`, {
             method: 'POST',
@@ -30,12 +30,12 @@ export async function POSTmateria(nombre_materia) {
             }, body: JSON.stringify({
                 nombre: nombre_materia
             })
-                
+
         })
         if (!response.ok) {
             return { message: "no se pudo subir la materia" + " Status: " + response.status, status: "error" }
-        } 
-        return { message: "Materia subida con exito", status: "ok"  }
+        }
+        return { message: "Materia subida con exito", status: "ok" }
     } catch (error) {
         return error
     }
@@ -63,8 +63,8 @@ export async function POSTcurso(Comision, Cuatrimestre, HoraInicio, HoraFin, Cup
         })
         if (!response.ok) {
             return { message: "no se pudo cargar el curso" + " Status: " + response.status, status: "error" }
-            
-        } 
+
+        }
         return { message: "Curso subido con exito", status: "ok" }
     } catch (error) {
         return error
@@ -74,8 +74,8 @@ export async function POSTcurso(Comision, Cuatrimestre, HoraInicio, HoraFin, Cup
 
 export async function POSTcursos(json) {
     try {
-        const response = await fetch(`${APIurl}/cursos/bulk`, 
-        {
+        const response = await fetch(`${APIurl}/cursos/bulk`,
+            {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -87,7 +87,7 @@ export async function POSTcursos(json) {
         )
         if (!response.ok) {
             return { message: "no se pudo cargar los cursos" + " Status: " + response.status, status: "error" }
-        } 
+        }
         return { message: "Cursos cargados con exito" }
     } catch (error) {
         return error
@@ -112,9 +112,9 @@ export async function POSTalumno(legajo, nombre, apellido) {
         })
         if (!response.ok) {
             return { message: "no se pudo subir el alumno" + " Status: " + response.status, status: "error" }
-        } 
-        return { message: "Alumno subido con exito", status: "ok"  }
-        
+        }
+        return { message: "Alumno subido con exito", status: "ok" }
+
     } catch (error) {
         return error
     }
@@ -124,8 +124,8 @@ export async function POSTalumno(legajo, nombre, apellido) {
 
 export async function POSTInscripcion(json) {
     try {
-        const response = await fetch(`${APIurl}/inscripciones/bulk`, 
-        {
+        const response = await fetch(`${APIurl}/inscripciones/bulk`,
+            {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -137,74 +137,65 @@ export async function POSTInscripcion(json) {
         )
         if (!response.ok) {
             return { message: "no se pudo cargar las inscripciones" + " Status: " + response.status, status: "error" }
-        } 
-        return { message: "Inscripciones subidas con exito", status: "ok"  }
+        }
+        return { message: "Inscripciones subidas con exito", status: "ok" }
     } catch (error) {
         return error
     }
 
 }
 
-export async function GETcursosByMateria(idmateria) {
+export async function GETcursos(materia) {
+
     try {
-        const response = await fetch(`${APIurl}/materias/${idmateria}/cursos/`, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        const json = await response.json()
-        return json.cursos
+        if (materia) {
+            const response = await fetch(`${APIurl}/materias/${materia.id}/cursos/`, {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            const json = await response.json()
+            return json.cursos
+        } else {
+            const response = await fetch(`${APIurl}/cursos/`, {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            const json = await response.json()
+            return json
+
+        }
     } catch (error) {
         console.log(error)
     }
-
 }
 
-export async function GETcursos() {
-    try {
-        const response = await fetch(`${APIurl}/cursos/`, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        const json = await response.json()
-        return json
-    } catch (error) {
-        console.log(error)
-    }
 
-}
+export async function GETinscripciones(materia) {
 
-export async function GETinscripcionesByMateria(idmateria) {
     try {
-        const response = await fetch(`${APIurl}/inscripciones/materia/${idmateria}`, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        const json = await response.json()
-        return json
-       
-    } catch (error) {
-        console.log(error)
-    }
-    
-}
+        if (materia) {
+            const response = await fetch(`${APIurl}/inscripciones/materia/${materia.id}/`, {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            const json = await response.json()
+            return json.alumnos
 
-export async function GETinscripciones() {
-    try {
-        const response = await fetch(`${APIurl}/inscripciones/}`, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        const json = await response.json()
-        return json
-       
-    } catch (error) {
-        console.log(error)
+        } else {
+            const response = await fetch(`${APIurl}/inscripciones/`, {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            const json = await response.json()
+            return json
+        }
+    } catch (e) {
+        console.log(e)
     }
-    
 }
 
 export async function GETcursados() {
@@ -216,11 +207,11 @@ export async function GETcursados() {
         })
         const json = await response.json()
         return json
-       
+
     } catch (error) {
         console.log(error)
     }
-    
+
 }
 
 
@@ -246,7 +237,7 @@ export async function POSTcursados(cursoSelected, alumnosSelected, materiaSelect
     })
 
     try {
-        const response = await fetch(`${APIurl}/cursados/bulk`, 
+        const response = await fetch(`${APIurl}/cursados/bulk`,
             {
                 method: "POST",
                 headers: {
@@ -259,7 +250,7 @@ export async function POSTcursados(cursoSelected, alumnosSelected, materiaSelect
         )
         if (!response.ok) {
             return { message: "no se pudo subir los cursados" + " Status: " + response.status, status: "error" }
-        } 
+        }
         return { message: "Cursados subidos con exito", status: "ok" }
     } catch (error) {
         return error

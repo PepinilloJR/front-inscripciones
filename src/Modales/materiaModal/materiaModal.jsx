@@ -4,7 +4,7 @@ import { GeneralContext, InsContext } from "../../Context/Context"
 import "../modales.css"
 import Alumno from "./alumno"
 
-import { GETcursosByMateria, GETinscripcionesByMateria, POSTcursados } from "../../Services/http"
+import { GETcursos, GETinscripciones, POSTcursados } from "../../Services/http"
 import Curso from "./curso"
 
 function MateriaModal() {
@@ -23,12 +23,12 @@ function MateriaModal() {
 
     useEffect(() => {
         const ObtenerCursos = async () => {
-            setCursos(await GETcursosByMateria(materiaSelected.id))
+            setCursos(await GETcursos(materiaSelected.id))
             console.log(cursos)
         }
 
         const ObtenerInscripciones = async () => {
-            setInscripciones(await GETinscripcionesByMateria(materiaSelected.id))
+            setInscripciones(await GETinscripciones(materiaSelected.id))
             console.log(inscripciones)
         }
 
@@ -75,6 +75,7 @@ function MateriaModal() {
                         return <Alumno key={key} alumno={a}></Alumno>
                     })}
                 </div>
+                
             </div>
             
         </div>

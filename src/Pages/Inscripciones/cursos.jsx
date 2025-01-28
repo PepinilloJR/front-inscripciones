@@ -9,8 +9,8 @@ function Cursos() {
     const [cursosFiltrados, setCursosFiltrados] = useState([])
 
     useEffect(() => {
-        setCursosFiltrados(cursos.filter(a => a.comision.toLowerCase().includes(cursoFiltro.toLowerCase()) ))
-    }, [cursoFiltro])
+        setCursosFiltrados(cursos?.filter(a => a.comision.toLowerCase().includes(cursoFiltro.toLowerCase()) ))
+    }, [cursoFiltro, cursos])
 
 
     return <>
@@ -25,7 +25,14 @@ function Cursos() {
 
 
 function Curso({curso}) {
-    return <div>{curso.comision}</div>
+
+    const { setCursoSelected, cursoSelected } = useContext(InsContext)
+
+
+    return <div onClick={()=> {
+        setCursoSelected(curso)
+        console.log(cursoSelected)
+    }}>{curso.comision}</div>
 }
 
 
