@@ -2,23 +2,19 @@ import { useContext } from "react"
 import { InsContext } from "../../Context/Context"
 import { useState, useEffect } from "react"
 
+import "./inscripciones.css"
+
 function Materias() {
 
-    const { materias, materiaFiltro } = useContext(InsContext)
+    const { materias, materiaFiltro, materiaSelected, materiasFiltrados, setMateriasFiltrados  } = useContext(InsContext)
 
 
-    const [ materiasFiltrados, setMateriasFiltrados ] = useState([])
-    
-    useEffect(() => {
-        setMateriasFiltrados(materias?.filter(m => m.nombre.toLowerCase().includes(materiaFiltro.toLowerCase()) ))
-    }, [materiaFiltro, materias])
 
     return <>
     <div className="MateriasList">
-        {materiasFiltrados?.map((c, key)=> {
-        
-            return <Materia key={key} materia={c} ></Materia>
-       
+
+        {materiasFiltrados?.map((m, key)=> {
+            return <Materia key={key} materia={m} ></Materia>
        })}
     </div>
     </>
@@ -27,11 +23,16 @@ function Materias() {
 
 function Materia({materia}) {
 
-    const { setMateriaSelected, materiaSelected } = useContext(InsContext)
+    const { setMateriaSelected, materiaSelected, setCursoSelected, cursoSelected } = useContext(InsContext)
 
-    return <div onClick={()=> {
-        setMateriaSelected(materia)
-        console.log(materiaSelected)
+
+    return <div className={materiaSelected === materia ? "MateriaSelected" : "Materia"} onClick={()=> {
+        if (materiaSelected === materia) {
+            setMateriaSelected(undefined)
+
+        } else {
+            setMateriaSelected(materia)
+        }
     }}>{materia.nombre}</div>
 }
 

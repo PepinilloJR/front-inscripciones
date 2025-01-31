@@ -1,22 +1,15 @@
 import { useContext, useEffect, useState } from "react"
 import { InsContext } from "../../Context/Context"
-
+import "./inscripciones.css"
 
 function Cursos() {
 
-    const { cursos, cursoFiltro } = useContext(InsContext)
-
-    const [cursosFiltrados, setCursosFiltrados] = useState([])
-
-    useEffect(() => {
-        setCursosFiltrados(cursos?.filter(a => a.comision.toLowerCase().includes(cursoFiltro.toLowerCase()) ))
-    }, [cursoFiltro, cursos])
+    const { cursos, cursoFiltro, cursoSelected, cursosFiltrados, setCursosFiltrados } = useContext(InsContext)
 
 
     return <>
     <div className="CursosList">
         {cursosFiltrados?.map((c, key)=> {
-            
             return <Curso key={key} curso={c} ></Curso>
        })}
     </div>
@@ -26,13 +19,20 @@ function Cursos() {
 
 function Curso({curso}) {
 
-    const { setCursoSelected, cursoSelected } = useContext(InsContext)
+    const { setCursoSelected, cursoSelected, materias } = useContext(InsContext)
 
+    
+    return <div className={cursoSelected?.id === curso?.id ? "CursoSelected" : "Curso"} onClick={()=> {
+        if (cursoSelected?.id === curso?.id) {
+            setCursoSelected(undefined)
+        } else {
+            setCursoSelected(curso)
 
-    return <div onClick={()=> {
-        setCursoSelected(curso)
-        console.log(cursoSelected)
-    }}>{curso.comision}</div>
+        }
+    }}>
+        <div>{curso.comision}</div>
+        {materias ? <div>{materias[curso?.materia - 1]?.nombre}</div> : <></>}
+    </div>
 }
 
 

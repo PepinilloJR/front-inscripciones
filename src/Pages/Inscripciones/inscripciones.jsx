@@ -6,6 +6,7 @@ import { GETcursos, GETinscripciones, GETmaterias } from "../../Services/http"
 import Cursos from "./cursos"
 import Materias from "./materias"
 import InscripcionesList from "./inscripcionesList"
+import DeterminarSelectividad from "./determinarSelectividad"
 
 function Inscripciones() {
 
@@ -23,27 +24,83 @@ function Inscripciones() {
     const [materiaSelected, setMateriaSelected] = useState()
 
 
+    const [insPosibles, setInsPosibles] = useState([])
+    const [inscripcionesSelected, setInscripcionesSelected] = useState([])
+
+    const [ materiasFiltrados, setMateriasFiltrados ] = useState([])
+    const [inscripcionesFiltradas, setInscripcionesFiltradas] = useState([])
+    const [cursosFiltrados, setCursosFiltrados] = useState([])
+
+    const [cursosMap, setCursosMap] = useState({})
+
+    // Los useEffect estan en orden de como se acciona cada uno, estan encadenados
+
     useEffect(()=> {
         const ObtainMaterias = async () => {
             setMaterias(await GETmaterias())
         }
+
+        ObtainMaterias()
+    }, [])
+
+    useEffect(()=> {
         const ObtainCursos = async () => {
             setCursos(await GETcursos(materiaSelected))
         }
+
+        if (materiaSelected) {
+            setCursoSelected()
+        }
+
+        ObtainCursos()
+    }, [materiaSelected])
+
+    useEffect(() => {
         const ObtainInscripciones = async () => {
             setInscripciones(await GETinscripciones(materiaSelected))
         }
-        
-        // idealmente para que no se hacer peticiones de mas considero lo siguiente
-        if (materias === undefined) {
-            ObtainMaterias()
-        }
-        if (materiaSelected || cursos === undefined) {
-            ObtainCursos()
-        }
-        ObtainInscripciones()
-    }, [materiaSelected, cursoSelected])
 
+        ObtainInscripciones()
+    }, [materiaSelected])
+
+
+    useEffect(() => {
+        setMateriasFiltrados(materias?.filter(m => m.nombre.toLowerCase().includes(materiaFiltro.toLowerCase()) || materiaSelected === m ))
+    }, [materiaFiltro, materias])
+
+    useEffect(() => {
+        setCursosFiltrados(cursos?.filter(c => c.comision.toLowerCase().includes(cursoFiltro.toLowerCase()) || cursoSelected === c  ))
+    }, [cursoFiltro, cursos])
+
+    useEffect(()=> {
+        var map = {}
+        cursosFiltrados?.forEach(c => {
+            map[c.comision] = c
+        })
+        setCursosMap(map)
+    }, [cursosFiltrados])
+
+
+    useEffect(() => {
+
+        const filtrarInscripciones = async () => {
+            setInscripcionesFiltradas(await inscripciones?.filter(
+                i => (materiaSelected?.id === i.materia && cursoSelected === undefined) || 
+                ((i.comision1 === cursoSelected?.comision ||  i.comision2 === cursoSelected?.comision) && i.materia === cursoSelected?.materia)
+                
+            ))
+        }
+        filtrarInscripciones()
+        console.log(inscripcionesFiltradas)
+    }, [cursoSelected, inscripciones])
+
+
+    useEffect(() => {
+        setInsPosibles(DeterminarSelectividad(inscripcionesFiltradas, cursosMap, materiaSelected, cursoSelected))
+    }, [inscripcionesFiltradas])
+
+
+    
 
     return <InsContext.Provider value={{
         cursos,
@@ -54,7 +111,15 @@ function Inscripciones() {
         materiaSelected,
         setMateriaSelected,
         cursoSelected,
-        setCursoSelected
+        setCursoSelected,
+        inscripcionesSelected, 
+        setInscripcionesSelected,
+        materiasFiltrados,
+        setMateriasFiltrados,
+        inscripcionesFiltradas,
+        setInscripcionesFiltradas,
+        cursosFiltrados,
+        setCursosFiltrados
 
     }}>
 
@@ -75,6 +140,12 @@ function Inscripciones() {
         </div>
         <div className="InscripcionesSection">
             <div className="InscripcionesBox">
+                <label>
+                    Seleccionar {insPosibles?.length} posibles inscripciones
+                <input type="checkbox" onChange={() => {
+                    setInscripcionesSelected(insPosibles)
+                }}></input>
+                </label>
                 <InscripcionesList></InscripcionesList>
             </div>
         </div>

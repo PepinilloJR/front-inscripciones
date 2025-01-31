@@ -43,7 +43,7 @@ function App() {
 
           <Menu></Menu>
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Inscripciones />} />
             <Route path='/cursados' element={<Cursados />} />
             <Route path='/inscripciones' element={<Inscripciones />} />
           </Routes>
@@ -58,6 +58,8 @@ export default App;
 /* TODO:
 
 - ULTRA IMPORTANTE REMODELACION DE INTERFAZ
+
+- BUSCAR FORMA DE MAPEAR LAS LISTAS EN MAPAS O TABLAS HASH PARA LA SELECCION RAPIDA
 
 - exportar excel con cursados
 

@@ -24,7 +24,7 @@ function MateriasSlider() {
 
     // cambio las materias que se muestran al cambiar el filtro, que se cambia el el searchBar
     useEffect(() => {
-        setListMaterias(materias?.filter((e) => e.nombre.toLowerCase().includes(materiasFilter.toLowerCase())))
+        setListMaterias(materias?.filter((e) => e.nombre.toLowerCase().includes(materiasFilter?.toLowerCase())))
         // reinicio el slider
         ndes.current = 0;
         manejarResize();

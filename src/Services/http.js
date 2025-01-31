@@ -182,7 +182,7 @@ export async function GETinscripciones(materia) {
                 }
             })
             const json = await response.json()
-            return json.alumnos
+            return json.inscripciones
 
         } else {
             const response = await fetch(`${APIurl}/inscripciones/`, {
@@ -257,18 +257,3 @@ export async function POSTcursados(cursoSelected, alumnosSelected, materiaSelect
     }
 }
 
-/*
-export async function DELETEinscripciones(inscripciones) {
-    inscripciones.forEach(async i => {
-        try {
-            const response = await fetch(`${APIurl}/inscripciones/${i.id}`, {
-                method: "DELETE"
-            })
-
-
-        } catch (e) {
-            console.error(e)
-        }
-    })
-}
-*/

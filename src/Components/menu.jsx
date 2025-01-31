@@ -27,6 +27,9 @@ function Menu () {
                 <FaFileExcel className="UploadBoton"></FaFileExcel>
                 <button className="boton">Exportar Inscriptos</button>
             </Link>
+            <Link className="botonLink" to="/inscripciones">
+                <button className="boton">Inscripciones</button>
+            </Link>
             <Link onClick={() => {GContext.setModal(<CrearMateriaModal></CrearMateriaModal>)
             }} className="botonLink" to="/">
                 <button className="boton">Crear materia</button>
