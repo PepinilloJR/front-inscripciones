@@ -69,13 +69,13 @@ function Inscripciones() {
     }, [materiaFiltro, materias])
 
     useEffect(() => {
-        setCursosFiltrados(cursos?.filter(c => c.comision.toLowerCase().includes(cursoFiltro.toLowerCase()) || cursoSelected === c  ))
+        setCursosFiltrados(cursos?.filter(c => c.comision.codigo.toLowerCase().includes(cursoFiltro.toLowerCase()) || cursoSelected === c  ))
     }, [cursoFiltro, cursos])
 
     useEffect(()=> {
         var map = {}
         cursosFiltrados?.forEach(c => {
-            map[c.comision] = c
+            map[c.comision.codigo] = c
         })
         setCursosMap(map)
     }, [cursosFiltrados])
@@ -85,8 +85,8 @@ function Inscripciones() {
 
         const filtrarInscripciones = async () => {
             setInscripcionesFiltradas(await inscripciones?.filter(
-                i => (materiaSelected?.id === i.materia && cursoSelected === undefined) || 
-                ((i.comision1 === cursoSelected?.comision ||  i.comision2 === cursoSelected?.comision) && i.materia === cursoSelected?.materia)
+                i => (materiaSelected?.id === i.materia.id && cursoSelected === undefined) || 
+                ((i.comision1.codigo === cursoSelected?.comision.codigo ||  i.comision2.codigo === cursoSelected?.comision.codigo) && i.materia.id === cursoSelected?.materia.id)
                 
             ))
         }

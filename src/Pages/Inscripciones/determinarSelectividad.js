@@ -31,11 +31,11 @@ function DeterminarSelectividad(inscripciones,cursosMap,materia,cursoSelected) {
 
 
             inscripciones?.forEach(i => {
-                if (i.comision1 === curso.comision && (curso.cupo - 1 >= 0)) {
+                if (i.comision1.codigo === curso.comision.codigo && (curso.cupo - 1 >= 0)) {
                     curso.cupo = curso.cupo - 1
                     seleccionados.push(i)
 
-                } else if (i.comision2 === curso.comision && (curso.cupo - 1 >= 0)) {
+                } else if (i.comision2.codigo === curso.comision.codigo && (curso.cupo - 1 >= 0)) {
                     curso.cupo = curso.cupo - 1
                     seleccionados.push(i)
                 }
@@ -47,13 +47,13 @@ function DeterminarSelectividad(inscripciones,cursosMap,materia,cursoSelected) {
             inscripciones?.forEach(i => {
 
 
-                if (cursos[i.comision1] && ((cursos[i.comision1].cupo - cursos[i.comision1].inscriptos - 1) >= 0)) {
-                    cursos[i.comision1].cupo = cursos[i.comision1].cupo - 1
+                if (cursos[i.comision1.codigo] && ((cursos[i.comision1.codigo].cupo - cursos[i.comision1.codigo].inscriptos - 1) >= 0)) {
+                    cursos[i.comision1.codigo].cupo = cursos[i.comision1.codigo].cupo - 1
                     seleccionados.push(i)
 
 
-                } else if (cursos[i.comision2] && ((cursos[i.comision2].cupo - cursos[i.comision2].inscriptos - 1) >= 0)) {
-                    cursos[i.comision2].cupo = cursos[i.comision2].cupo - 1
+                } else if (cursos[i.comision2.codigo] && ((cursos[i.comision2.codigo].cupo - cursos[i.comision2.codigo].inscriptos - 1) >= 0)) {
+                    cursos[i.comision2.codigo].cupo = cursos[i.comision2.codigo].cupo - 1
                     seleccionados.push(i)
 
                 }

@@ -31,11 +31,11 @@ function Inscripcion({inscripcion}) {
 
     }} className={isInscripcionSelected ? "InscripcionSelected" : "Inscripcion"}>
     
-    <div>{inscripcion.alumno}</div>
-    <div>{inscripcion.materia}</div>
-    <div>{inscripcion.comision1}</div>
-    <div>{inscripcion.comision2}</div>
-    <div>{materiasFiltrados[inscripcion.materia - 1]?.nombre}</div>
+    <div>{/*inscripcion.alumno*/}</div>
+    <div>{/*inscripcion.materia*/}</div>
+    <div>{inscripcion.comision1.codigo}</div>
+    <div>{inscripcion.comision2.codigo}</div>
+    <div>{/*materiasFiltrados[inscripcion.materia - 1]?.nombre*/}</div>
     </div>
 }
 

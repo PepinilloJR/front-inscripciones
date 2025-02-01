@@ -1,11 +1,11 @@
 
 
-export const APIurl = "http://127.0.0.1:8000"
+export const APIurl = "http://localhost:8080" //"http://127.0.0.1:8000"
 
 
 export async function GETmaterias() {
     try {
-        const response = await fetch(`${APIurl}/materias/`, {
+        const response = await fetch(`${APIurl}/materia`, {
             headers: {
                 'Accept': 'application/json'
             }
@@ -21,7 +21,7 @@ export async function GETmaterias() {
 export async function POSTmateria(nombre_materia) {
 
     try {
-        const response = await fetch(`${APIurl}/materias/`, {
+        const response = await fetch(`${APIurl}/materia`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -46,7 +46,7 @@ export async function POSTmateria(nombre_materia) {
 export async function POSTcurso(Comision, Cuatrimestre, HoraInicio, HoraFin, Cupo, Materia) {
 
     try {
-        const response = fetch(`${APIurl}/cursos/`, {
+        const response = fetch(`${APIurl}/curso`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -74,7 +74,7 @@ export async function POSTcurso(Comision, Cuatrimestre, HoraInicio, HoraFin, Cup
 
 export async function POSTcursos(json) {
     try {
-        const response = await fetch(`${APIurl}/cursos/bulk`,
+        const response = await fetch(`${APIurl}/curso`,
             {
                 method: "POST",
                 headers: {
@@ -98,7 +98,7 @@ export async function POSTcursos(json) {
 
 export async function POSTalumno(legajo, nombre, apellido) {
     try {
-        const response = await fetch(`${APIurl}/alumnos/`, {
+        const response = await fetch(`${APIurl}/alumno`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -124,7 +124,7 @@ export async function POSTalumno(legajo, nombre, apellido) {
 
 export async function POSTInscripcion(json) {
     try {
-        const response = await fetch(`${APIurl}/inscripciones/bulk`,
+        const response = await fetch(`${APIurl}/solicitudInscripcionTardia`,
             {
                 method: "POST",
                 headers: {
@@ -149,15 +149,15 @@ export async function GETcursos(materia) {
 
     try {
         if (materia) {
-            const response = await fetch(`${APIurl}/materias/${materia.id}/cursos/`, {
+            const response = await fetch(`${APIurl}/curso/materia/${materia.id}`, {
                 headers: {
                     'Accept': 'application/json'
                 }
             })
             const json = await response.json()
-            return json.cursos
+            return json
         } else {
-            const response = await fetch(`${APIurl}/cursos/`, {
+            const response = await fetch(`${APIurl}/curso`, {
                 headers: {
                     'Accept': 'application/json'
                 }
@@ -175,17 +175,17 @@ export async function GETcursos(materia) {
 export async function GETinscripciones(materia) {
 
     try {
-        if (materia) {
-            const response = await fetch(`${APIurl}/inscripciones/materia/${materia.id}/`, {
+        if (materia) {  // /materia/{materiaId}/visible
+            const response = await fetch(`${APIurl}/solicitudInscripcionTardia/materia/${materia.id}/visible`, {
                 headers: {
                     'Accept': 'application/json'
                 }
             })
             const json = await response.json()
-            return json.inscripciones
+            return json
 
         } else {
-            const response = await fetch(`${APIurl}/inscripciones/`, {
+            const response = await fetch(`${APIurl}/solicitudInscripcionTardia`, {
                 headers: {
                     'Accept': 'application/json'
                 }
@@ -200,7 +200,7 @@ export async function GETinscripciones(materia) {
 
 export async function GETcursados() {
     try {
-        const response = await fetch(`${APIurl}/cursados`, {
+        const response = await fetch(`${APIurl}/inscripcionTardia`, {
             headers: {
                 'Accept': 'application/json'
             }

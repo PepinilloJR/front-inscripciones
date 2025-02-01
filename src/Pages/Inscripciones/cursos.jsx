@@ -30,7 +30,7 @@ function Curso({curso}) {
 
         }
     }}>
-        <div>{curso.comision}</div>
+        <div>{curso.comision.codigo}</div>
         {materias ? <div>{materias[curso?.materia - 1]?.nombre}</div> : <></>}
     </div>
 }
