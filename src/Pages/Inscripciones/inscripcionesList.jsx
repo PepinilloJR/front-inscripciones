@@ -27,6 +27,9 @@ function Inscripcion({inscripcion}) {
     const isInscripcionSelected = inscripcionesSelected.find(a => a === inscripcion)
 
     return <div onClick={()=> {
+        if (isInscripcionSelected) {
+            
+        }
         setInscripcionesSelected([...inscripcionesSelected, inscripcion])
 
     }} className={isInscripcionSelected ? "InscripcionSelected" : "Inscripcion"}>

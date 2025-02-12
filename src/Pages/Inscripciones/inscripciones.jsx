@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { GeneralContext, InsContext } from "../../Context/Context"
 import SearchBar from "../../Components/searchbar"
 import "./inscripciones.css"
-import { GETcursos, GETinscripciones, GETmaterias } from "../../Services/http"
+import { GETcursos, GETinscripciones, GETmaterias, POSTtardias } from "../../Services/http"
 import Cursos from "./cursos"
 import Materias from "./materias"
 import InscripcionesList from "./inscripcionesList"
@@ -147,8 +147,14 @@ function Inscripciones() {
                 }}></input>
                 </label>
                 <InscripcionesList></InscripcionesList>
+                <div className='ButtonsContainer'>
+                <button onClick={()=> {POSTtardias(inscripcionesSelected)}} className='ExportarButton'>
+                    Inscribir seleccionados
+                </button>
+            </div>
             </div>
         </div>
+
     </div>
     </InsContext.Provider>
 

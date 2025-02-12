@@ -215,6 +215,40 @@ export async function GETcursados() {
 }
 
 
+export async function POSTtardias(inscripcionesTardia) {
+    console.log("hola")
+    const tardias = []
+
+    inscripcionesTardia.forEach((i) => {
+        tardias.push({
+            solicitudInscripcionTardia: i,
+            alumno: i.alumno,
+            curso: i.curso,
+            estado: i.condicion,
+            año: i.año
+        })
+    })  
+
+
+    try {
+        const response = await fetch(`${APIurl}/inscripcionTardia`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(
+                tardias
+            )
+        })
+
+        console.log(response)
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
 export async function POSTcursados(cursoSelected, alumnosSelected, materiaSelected) {
     const cursados = []
 
