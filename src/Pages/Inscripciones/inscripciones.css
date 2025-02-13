@@ -85,7 +85,7 @@
     overflow: auto;
     gap: calc(0.5vw + 0.5vh);
     flex-shrink: 0;
-    outline: solid calc(0.1vw + 0.1vh) rgb(218, 218, 218);
+    /*outline: solid calc(0.1vw + 0.1vh) rgb(218, 218, 218);*/
     border-radius: calc(1vw + 1vh);
 }
 
@@ -99,7 +99,7 @@
     overflow: auto;
     flex-shrink: 0;
     gap: calc(0.5vw + 0.5vh);
-    outline: solid calc(0.1vw + 0.1vh) rgb(218, 218, 218);
+    /*outline: solid calc(0.1vw + 0.1vh) rgb(218, 218, 218);*/
     border-radius: calc(1vw + 1vh);
 }
 .InscripcionesListContainer {
@@ -113,14 +113,26 @@
     outline: solid calc(0.1vw + 0.1vh) rgb(218, 218, 218);
     border-radius: calc(1vw + 1vh);
 }
-.InscripcionesList{
+.InscripcionesList {
     display: grid;
-    grid-template-columns: repeat(4, calc(6vw + 6vh));
-    grid-auto-columns: repeat(calc(4vw + 4vh), auto);
-    gap: calc(1vw + 1vh);
+    grid-template-columns: repeat(3, calc(10vw + 10vh)); /* 3 columnas fijas */
     width: fit-content;
     height: fit-content;
+    gap: calc(1vw + 1vh); /* Espaciado entre elementos */
+    justify-content: center; /* Centra el grid si hay menos de 3 elementos */
 }
+
+
+
+/*
+.InscripcionesList{
+    display: grid;
+    grid-template-columns: repeat(3, calc(10vw + 10vh));
+    grid-auto-columns: repeat(calc(10vw + 10vh), auto);
+    gap: calc(3vw + 3vh);
+    width: fit-content;
+    height: fit-content;
+}*/
 
 .Materia {
     display: flex;
@@ -199,26 +211,57 @@
     display: flex;
     flex-direction: column;
     background-color: rgb(224, 220, 218);
-    align-items: center;
+    align-items: start;
     justify-content: center;
-    width: calc(4vw + 4vh);
-    padding: calc(1vw + 1vh);
+    width: calc(10.5vw + 10.5vh);
+    padding: calc(0.5vw + 0.5vh);
     min-height: calc(4vw + 4vh);
-    font-size: calc(0.5vw + 0.5vh);
+    font-size: calc(0.3vw + 0.3vh);
     font-weight: bold;
-
+    box-sizing: border-box;
 }
 
 .InscripcionSelected {
     display: flex;
     flex-direction: column;
     background-color: rgb(29, 160, 17);
-    align-items: center;
+    align-items: start;
     justify-content: center;
-    width: calc(4vw + 4vh);
-    padding: calc(1vw + 1vh);
+    width: calc(10.5vw + 10.5vh);
+    padding: calc(0.5vw + 0.5vh);
     min-height: calc(4vw + 4vh);
+    box-sizing: border-box;
+}
+
+.InscripcionCampo {
     font-size: calc(0.5vw + 0.5vh);
     font-weight: bold;
+}
 
+.InscripcionCheckbox {
+    display: flex;
+    align-items: center;
+    gap: calc(0.5vw + 0.5vh);
+}
+
+
+.DisabledButton {
+    display: flex;
+    align-items: center;
+    background-color: rgb(114, 114, 114);
+    color: black;
+    border-radius: calc(1vw + 1vh);
+    padding: calc(1vw + 1vh);
+}
+
+.SelectorSection {
+    width: 95%;
+    display: flex;
+    justify-content: start;
+    gap: calc(1vw + 1vh);
+}
+
+.SelectedCount {
+    display: flex;
+    margin-left: auto;
 }

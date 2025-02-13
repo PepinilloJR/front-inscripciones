@@ -185,7 +185,7 @@ export async function GETinscripciones(materia) {
             return json
 
         } else {
-            const response = await fetch(`${APIurl}/solicitudInscripcionTardia`, {
+            const response = await fetch(`${APIurl}/solicitudInscripcionTardia/visible`, {
                 headers: {
                     'Accept': 'application/json'
                 }
@@ -241,7 +241,7 @@ export async function POSTtardias(inscripcionesTardia) {
             )
         })
 
-        console.log(response)
+        console.log(await response.json())
     } catch (error) {
         console.log(error)
     }

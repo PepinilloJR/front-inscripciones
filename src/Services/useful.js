@@ -40,3 +40,7 @@ export function FormatText(txt) {
 // string de salida:
 // aaaaññaeiouaeiou 2
 
+export function FormatHour(numero) {
+    var str = numero.toString().padStart(4, '0');
+    return `${str.slice(0,2)}:${str.slice(2)}`
+}

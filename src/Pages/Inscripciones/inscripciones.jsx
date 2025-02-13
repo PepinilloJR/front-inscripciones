@@ -20,6 +20,7 @@ function Inscripciones() {
     const [cursoFiltro, setCursoFiltro] = useState("")
 
     const [cursoSelected, setCursoSelected] = useState()
+    //const [cursoSelectedCupo, setCursoSelectedCupo] = useState(0)
 
     const [materiaSelected, setMateriaSelected] = useState()
 
@@ -56,12 +57,13 @@ function Inscripciones() {
     }, [materiaSelected])
 
     useEffect(() => {
+
         const ObtainInscripciones = async () => {
             setInscripciones(await GETinscripciones(materiaSelected))
         }
-
+        //setCursoSelectedCupo(cursoSelected?.cupo - cursoSelected?.inscriptos)
         ObtainInscripciones()
-    }, [materiaSelected])
+    }, [materiaSelected, cursoSelected])
 
 
     useEffect(() => {
@@ -91,8 +93,9 @@ function Inscripciones() {
             ))
         }
         filtrarInscripciones()
-        console.log(inscripcionesFiltradas)
-    }, [cursoSelected, inscripciones])
+        setInscripcionesSelected([])
+        
+    }, [cursoSelected, inscripciones, materiaSelected])
 
 
     useEffect(() => {
@@ -140,15 +143,33 @@ function Inscripciones() {
         </div>
         <div className="InscripcionesSection">
             <div className="InscripcionesBox">
-                <label>
-                    Seleccionar {insPosibles?.length} posibles inscripciones
-                <input type="checkbox" onChange={() => {
-                    setInscripcionesSelected(insPosibles)
+
+                <div className="SelectorSection">
+
+                
+                <label className="InscripcionCheckbox">
+                <input type="checkbox" onChange={(e) => {
+                    console.log(e.target.checked)
+                    if(!e.target.checked) {
+                        setInscripcionesSelected([])
+                    }
+                    else {
+                        setInscripcionesSelected(insPosibles)
+                    }
+
                 }}></input>
+                Seleccionar {insPosibles?.length} posibles inscripciones
                 </label>
+
+                <div className="SelectedCount">Seleccionados: {inscripcionesSelected?.length}/{inscripcionesFiltradas?.length}</div>
+
+                </div>
                 <InscripcionesList></InscripcionesList>
                 <div className='ButtonsContainer'>
-                <button onClick={()=> {POSTtardias(inscripcionesSelected)}} className='ExportarButton'>
+                <button onClick={()=> {POSTtardias(inscripcionesSelected)}} 
+                className={inscripcionesSelected?.length > 0 ? 'ExportarButton' : 'DisabledButton'}
+                disabled={inscripcionesSelected?.length === 0}>
+
                     Inscribir seleccionados
                 </button>
             </div>

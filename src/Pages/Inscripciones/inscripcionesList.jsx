@@ -22,23 +22,76 @@ function InscripcionesList() {
 
 
 function Inscripcion({inscripcion}) {
-    const { materiasFiltrados, setInscripcionesSelected, inscripcionesSelected } = useContext(InsContext)
+    const { materiasFiltrados, setInscripcionesSelected, inscripcionesSelected, cursoSelected, cursosFiltrados } = useContext(InsContext)
 
-    const isInscripcionSelected = inscripcionesSelected.find(a => a === inscripcion)
+    const isInscripcionSelected = inscripcionesSelected.find(i => i.inscripcion === inscripcion)
+
+
+
+    
+
 
     return <div onClick={()=> {
         if (isInscripcionSelected) {
-            
-        }
-        setInscripcionesSelected([...inscripcionesSelected, inscripcion])
+            const ins = inscripcionesSelected.filter(i => i.inscripcion !== inscripcion)
+            setInscripcionesSelected(ins)
+        } else {
 
+            // se hace lo siguiente
+            // si no hay un curso seleccionado, se intenta asignarlo al curso principal
+            // si no hay espacio en el principal, se asigna en el secundario
+            // si no hay espacio en el secundario, no se asigna, y se realiza la comprobacion para el rojo (vere como)
+
+            if (cursoSelected && cursoSelected?.cupo - (cursoSelected?.inscriptos + inscripcionesSelected.length) > 0) {
+                
+                const ins = {
+                    inscripcion: inscripcion,
+                    curso: cursoSelected
+                } 
+                setInscripcionesSelected([...inscripcionesSelected, ins])
+                
+            } else if (!cursoSelected) {
+                // para asignarle el primario o el secundario, de todas formas primero se debe saber
+                // si para cada uno, existe el curso que busca
+
+                // esto tiene un problema es que suma inscripcionesSelected pero se terminan sumando otras
+                // que no son parte de ninguna de las 2 comisiones, dando un falso flag de no espacio
+
+                // solucion vaga --> obtener antes de asignarla cuales de las inscripciones selected son
+                //                   de su misma comision, luego comparar sumando ESAS inscripciones al cupo
+                //                   de esa forma logramos no pasarnos del cupo
+                var cursoAsignado = cursosFiltrados.find(c => c.comision.codigo === inscripcion.comision1.codigo)
+
+                var asignados = inscripcionesSelected?.filter(i => i.inscripcion.comision1.codigo === inscripcion.comision1.codigo)?.length
+
+                if (cursoAsignado && cursoAsignado?.cupo - (cursoAsignado?.inscriptos + asignados) > 0) {
+                    const ins = {
+                        inscripcion: inscripcion,
+                        curso: cursoAsignado
+                    } 
+                    setInscripcionesSelected([...inscripcionesSelected, ins])
+                } else {
+                    cursoAsignado = cursosFiltrados.find(c => c.comision.codigo === inscripcion.comision2.codigo)
+                    asignados = inscripcionesSelected?.filter(i => i.inscripcion.comision2.codigo === inscripcion.comision2.codigo)?.length
+                    if (cursoAsignado && cursoAsignado?.cupo - (cursoAsignado?.inscriptos + asignados) > 0) {
+                        const ins = {
+                            inscripcion: inscripcion,
+                            curso: cursoAsignado
+                        } 
+                        setInscripcionesSelected([...inscripcionesSelected, ins])
+                    }
+                }
+
+            }
+
+        }
     }} className={isInscripcionSelected ? "InscripcionSelected" : "Inscripcion"}>
     
-    <div>{/*inscripcion.alumno*/}</div>
-    <div>{/*inscripcion.materia*/}</div>
-    <div>{inscripcion.comision1.codigo}</div>
-    <div>{inscripcion.comision2.codigo}</div>
-    <div>{/*materiasFiltrados[inscripcion.materia - 1]?.nombre*/}</div>
+    <div className="InscripcionCampo">{inscripcion.alumno.nombre} {inscripcion.alumno.apellido}</div>
+    <div className="InscripcionCampo">Legajo:{inscripcion.alumno.legajo}</div>
+    <div className="InscripcionCampo">Comision 1:{inscripcion.comision1.codigo}</div>
+    <div className="InscripcionCampo">Comision 2:{inscripcion.comision2.codigo}</div>
+    <div className="InscripcionCampo">{inscripcion.materia.nombre}</div>
     </div>
 }
 

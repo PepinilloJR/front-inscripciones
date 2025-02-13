@@ -19,8 +19,11 @@ function DeterminarSelectividad(inscripciones,cursosMap,materia,cursoSelected) {
     } 
     //var cursos = {...cursosMap}
     //var curso = {...cursoSelected}
-    if (curso) {
+    if (cursoSelected) {
         var curso = JSON.parse(JSON.stringify(cursoSelected))
+        console.log(curso)
+
+       // console.log(curso)
     }
     var seleccionados = []
     // si tenemos una materiaSeleccionada, debemos considerar solamente los cursos filtrados por esta materia
@@ -29,15 +32,21 @@ function DeterminarSelectividad(inscripciones,cursosMap,materia,cursoSelected) {
         // si tenemos un curso seleccionado, solo debemos considerar los cupos para ese solo curso, mejor caso posible
         if (curso) {
 
-
+            //console.log("tengo el curso seleccionado" + curso)
             inscripciones?.forEach(i => {
-                if (i.comision1.codigo === curso.comision.codigo && (curso.cupo - 1 >= 0)) {
+                if (i.comision1.codigo === curso.comision.codigo && ((curso.cupo - curso.inscriptos) - 1 >= 0)) {
                     curso.cupo = curso.cupo - 1
-                    seleccionados.push(i)
+                    seleccionados.push({    
+                        inscripcion: i,
+                        curso:curso
+                    })
 
-                } else if (i.comision2.codigo === curso.comision.codigo && (curso.cupo - 1 >= 0)) {
+                } else if (i.comision2.codigo === curso.comision.codigo && ((curso.cupo - curso.inscriptos) - 1 >= 0)) {
                     curso.cupo = curso.cupo - 1
-                    seleccionados.push(i)
+                    seleccionados.push({    
+                        inscripcion: i,
+                        curso:curso
+                    })
                 }
             })
 
@@ -49,12 +58,18 @@ function DeterminarSelectividad(inscripciones,cursosMap,materia,cursoSelected) {
 
                 if (cursos[i.comision1.codigo] && ((cursos[i.comision1.codigo].cupo - cursos[i.comision1.codigo].inscriptos - 1) >= 0)) {
                     cursos[i.comision1.codigo].cupo = cursos[i.comision1.codigo].cupo - 1
-                    seleccionados.push(i)
+                    seleccionados.push({    
+                        inscripcion: i,
+                        curso:cursos[i.comision1.codigo]
+                    })
 
 
                 } else if (cursos[i.comision2.codigo] && ((cursos[i.comision2.codigo].cupo - cursos[i.comision2.codigo].inscriptos - 1) >= 0)) {
                     cursos[i.comision2.codigo].cupo = cursos[i.comision2.codigo].cupo - 1
-                    seleccionados.push(i)
+                    seleccionados.push({    
+                        inscripcion: i,
+                        curso:cursos[i.comision2.codigo]
+                    })
 
                 }
             })
