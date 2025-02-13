@@ -26,12 +26,24 @@ function Inscripcion({inscripcion}) {
 
     const isInscripcionSelected = inscripcionesSelected.find(i => i.inscripcion === inscripcion)
 
+    const [claseInscripcion, setClaseInscripcion] = useState("Inscripcion")
 
 
-    
+    useEffect(()=> {
+        //console.log(inscripcionesSelected)
+        const ins = inscripcionesSelected.find(i => i.inscripcion === inscripcion)
+        if (ins && ins?.curso.comision.codigo === ins?.inscripcion.comision1.codigo) {
+            setClaseInscripcion("InscripcionSelected")
+        } else if (ins && ins?.curso.comision.codigo === ins?.inscripcion.comision2.codigo) {
+            setClaseInscripcion("InscripcionSelectedSecond")
+        } else {
+            setClaseInscripcion("Inscripcion")
+        }
+    },[inscripcionesSelected])
 
 
     return <div onClick={()=> {
+        //console.log(inscripcionesSelected)
         if (isInscripcionSelected) {
             const ins = inscripcionesSelected.filter(i => i.inscripcion !== inscripcion)
             setInscripcionesSelected(ins)
@@ -49,8 +61,10 @@ function Inscripcion({inscripcion}) {
                     curso: cursoSelected
                 } 
                 setInscripcionesSelected([...inscripcionesSelected, ins])
+
                 
             } else if (!cursoSelected) {
+                
                 // para asignarle el primario o el secundario, de todas formas primero se debe saber
                 // si para cada uno, existe el curso que busca
 
@@ -62,30 +76,36 @@ function Inscripcion({inscripcion}) {
                 //                   de esa forma logramos no pasarnos del cupo
                 var cursoAsignado = cursosFiltrados.find(c => c.comision.codigo === inscripcion.comision1.codigo)
 
-                var asignados = inscripcionesSelected?.filter(i => i.inscripcion.comision1.codigo === inscripcion.comision1.codigo)?.length
-
+                var asignados = inscripcionesSelected?.filter(i => i.inscripcion.comision1.codigo === inscripcion.comision1.codigo
+                    || i.inscripcion.comision2.codigo === inscripcion.comision1.codigo)?.length
+                console.log(asignados)
                 if (cursoAsignado && cursoAsignado?.cupo - (cursoAsignado?.inscriptos + asignados) > 0) {
                     const ins = {
                         inscripcion: inscripcion,
                         curso: cursoAsignado
                     } 
                     setInscripcionesSelected([...inscripcionesSelected, ins])
+
                 } else {
                     cursoAsignado = cursosFiltrados.find(c => c.comision.codigo === inscripcion.comision2.codigo)
-                    asignados = inscripcionesSelected?.filter(i => i.inscripcion.comision2.codigo === inscripcion.comision2.codigo)?.length
+                    asignados = inscripcionesSelected?.filter(i => i.inscripcion.comision1.codigo === inscripcion.comision2.codigo
+                        || i.inscripcion.comision2.codigo === inscripcion.comision2.codigo)?.length
+                    console.log(asignados)
                     if (cursoAsignado && cursoAsignado?.cupo - (cursoAsignado?.inscriptos + asignados) > 0) {
                         const ins = {
                             inscripcion: inscripcion,
                             curso: cursoAsignado
                         } 
                         setInscripcionesSelected([...inscripcionesSelected, ins])
+
+
                     }
                 }
 
             }
 
         }
-    }} className={isInscripcionSelected ? "InscripcionSelected" : "Inscripcion"}>
+    }} className={claseInscripcion}>
     
     <div className="InscripcionCampo">{inscripcion.alumno.nombre} {inscripcion.alumno.apellido}</div>
     <div className="InscripcionCampo">Legajo:{inscripcion.alumno.legajo}</div>

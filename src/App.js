@@ -59,18 +59,11 @@ export default App;
 
 - ULTRA IMPORTANTE REMODELACION DE INTERFAZ
 
-- BUSCAR FORMA DE MAPEAR LAS LISTAS EN MAPAS O TABLAS HASH PARA LA SELECCION RAPIDA
-
-- exportar excel con cursados
-
 - LA FILTROS UPDATE : agregar filtros y opciones de seleccion para recorrer y hacer mas rapido el trabajo
                       ejemplo: seleccionar todo, filtrar por año cursados
 
 -deshabilitar los botones con inputs vacios o incorrectos en modales
 
--terminar modal de materia seleccionada
-
--subir excel cuando el endpoint funcione
 
 - could be nice poder editar el JSON en el visualizador
 

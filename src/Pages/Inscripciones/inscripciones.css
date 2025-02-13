@@ -232,6 +232,17 @@
     min-height: calc(4vw + 4vh);
     box-sizing: border-box;
 }
+.InscripcionSelectedSecond {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(221, 224, 31);
+    align-items: start;
+    justify-content: center;
+    width: calc(10.5vw + 10.5vh);
+    padding: calc(0.5vw + 0.5vh);
+    min-height: calc(4vw + 4vh);
+    box-sizing: border-box;
+}
 
 .InscripcionCampo {
     font-size: calc(0.5vw + 0.5vh);
