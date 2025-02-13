@@ -221,14 +221,15 @@ export async function POSTtardias(inscripcionesTardia) {
 
     inscripcionesTardia.forEach((i) => {
         tardias.push({
-            solicitudInscripcionTardia: i,
-            alumno: i.alumno,
+            solicitudInscripcionTardia: i.inscripcion,
+            alumno: i.inscripcion.alumno,
             curso: i.curso,
-            estado: i.condicion,
-            año: i.año
+            estado: i.inscripcion.condicion,
+            año: i.inscripcion.año
         })
     })  
 
+    console.log(tardias)
 
     try {
         const response = await fetch(`${APIurl}/inscripcionTardia`, {
