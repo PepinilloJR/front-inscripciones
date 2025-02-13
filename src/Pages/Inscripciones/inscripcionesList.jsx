@@ -45,7 +45,7 @@ function Inscripcion({inscripcion}) {
     return <div onClick={()=> {
         //console.log(inscripcionesSelected)
         if (isInscripcionSelected) {
-            const ins = inscripcionesSelected.filter(i => i.inscripcion !== inscripcion)
+            const ins = inscripcionesSelected?.filter(i => i.inscripcion !== inscripcion)
             setInscripcionesSelected(ins)
         } else {
 
@@ -54,7 +54,7 @@ function Inscripcion({inscripcion}) {
             // si no hay espacio en el principal, se asigna en el secundario
             // si no hay espacio en el secundario, no se asigna, y se realiza la comprobacion para el rojo (vere como)
 
-            if (cursoSelected && cursoSelected?.cupo - (cursoSelected?.inscriptos + inscripcionesSelected.length) > 0) {
+            if (cursoSelected && cursoSelected?.cupo - (cursoSelected?.inscriptos + inscripcionesSelected?.length) > 0) {
                 
                 const ins = {
                     inscripcion: inscripcion,
@@ -74,7 +74,7 @@ function Inscripcion({inscripcion}) {
                 // solucion vaga --> obtener antes de asignarla cuales de las inscripciones selected son
                 //                   de su misma comision, luego comparar sumando ESAS inscripciones al cupo
                 //                   de esa forma logramos no pasarnos del cupo
-                var cursoAsignado = cursosFiltrados.find(c => c.comision.codigo === inscripcion.comision1.codigo)
+                var cursoAsignado = cursosFiltrados?.find(c => c.comision.codigo === inscripcion.comision1.codigo)
 
                 var asignados = inscripcionesSelected?.filter(i => i.inscripcion.comision1.codigo === inscripcion.comision1.codigo
                     || i.inscripcion.comision2.codigo === inscripcion.comision1.codigo)?.length
@@ -87,7 +87,7 @@ function Inscripcion({inscripcion}) {
                     setInscripcionesSelected([...inscripcionesSelected, ins])
 
                 } else {
-                    cursoAsignado = cursosFiltrados.find(c => c.comision.codigo === inscripcion.comision2.codigo)
+                    cursoAsignado = cursosFiltrados?.find(c => c.comision.codigo === inscripcion.comision2.codigo)
                     asignados = inscripcionesSelected?.filter(i => i.inscripcion.comision1.codigo === inscripcion.comision2.codigo
                         || i.inscripcion.comision2.codigo === inscripcion.comision2.codigo)?.length
                     console.log(asignados)
