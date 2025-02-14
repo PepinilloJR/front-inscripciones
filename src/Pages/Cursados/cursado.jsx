@@ -15,5 +15,11 @@ export function Cursado({cursado}) {
             }
             console.log(cursadosSelected)
         }
-    } className={cursadosSelected.find(c => c === cursado) ? "CursadoSelected" : "Cursado"}>{cursado.alumno}</div>
+    } className={cursadosSelected.find(c => c === cursado) ? "CursadoSelected" : "Cursado"}>
+        <div>{cursado.alumno.legajo}</div>
+        <div>{cursado.alumno.nombre}</div>
+        <div>{cursado.curso.comision.codigo}</div>
+        <div>{cursado.solicitudInscripcionTardia.materia.nombre}</div>
+
+        </div>
 }

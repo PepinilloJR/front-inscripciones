@@ -209,6 +209,7 @@
 
 .Cursado {
     display: flex;
+    flex-direction: column;
     align-items: center;
     width: calc(8vw + 8vh);
     height: calc(5vw + 5vh);
@@ -218,6 +219,7 @@
 
 .CursadoSelected {
     display: flex;
+    flex-direction: column;
     align-items: center;
     width: calc(8vw + 8vh);
     height: calc(5vw + 5vh);

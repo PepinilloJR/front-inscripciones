@@ -1,7 +1,8 @@
-import MateriaModal from "../../Modales/materiaModal/materiaModal"
+//import MateriaModal from "../../Modales/materiaModal/materiaModal"
 import { useContext } from "react";
 import { GeneralContext } from "../../Context/Context"
 import { Link } from "react-router-dom";
+
 function Materia({ mat }) {
 
     const { setMateriaSelected, setModal } = useContext(GeneralContext)
