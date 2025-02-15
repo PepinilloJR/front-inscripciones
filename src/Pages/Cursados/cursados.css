@@ -207,6 +207,15 @@
     padding: calc(1vw + 1vh);
 }
 
+.ExportarButtonDisabled {
+    display: flex;
+    align-items: center;
+    background-color: rgb(145, 145, 145);
+    color: black;
+    border-radius: calc(1vw + 1vh);
+    padding: calc(1vw + 1vh);
+}
+
 .Cursado {
     display: flex;
     flex-direction: column;
@@ -225,6 +234,11 @@
     height: calc(5vw + 5vh);
     background-color: rgb(121, 252, 142);
 }
+
+.ContadorSelected {
+    margin-left: auto;
+}
+
 
 input[type="checkbox"] {
     width: calc(0.8vw + 0.8vh);

@@ -13,6 +13,7 @@ import CursadosFiltrosSection from './filtros';
 
 function Cursados() {
     const [cursados, setCursados] = useState()
+    const [cursadosFiltrados, setCursadosFIltrados] = useState()
     const [cursos, setCursos] = useState()
     const [cursadosSelected, setCursadosSelected] = useState([])
     const [filtro, setFiltro] = useState("")
@@ -20,6 +21,12 @@ function Cursados() {
 
     const [optionsSelected, setOptionsSelected] = useState(false)
 
+    const [optionMateria, setOptionMateria] = useState(true)
+    const [optionCurso, setOptionCurso] = useState(true)
+    const [optionAlumno, setOptionAlumno] = useState(true)
+    const [optionYear, setOptionYear] = useState(new Date().getFullYear().toString())
+
+    console.log(optionYear)
 
     useEffect(()=> {
         const obtenerCursados = async () => {
@@ -42,6 +49,16 @@ function Cursados() {
             setFiltroOptions,
             optionsSelected,
             setOptionsSelected,
+            optionMateria,
+            setOptionMateria,
+            optionCurso,
+            setOptionCurso,
+            optionAlumno,
+            setOptionAlumno,
+            cursadosFiltrados,
+            setCursadosFIltrados,
+            optionYear,
+            setOptionYear
 
             }}>
         <div className="PageContainer">
@@ -55,7 +72,7 @@ function Cursados() {
                     <div className='ButtonsContainer'>
                         <button onClick={()=> {
                             parseToExcelFile(cursadosSelected)
-                        }} className='ExportarButton'>
+                        }} className={cursadosSelected?.length === 0 ? 'ExportarButtonDisabled': 'ExportarButton'} disabled={cursadosSelected?.length === 0}>
                             Exportar Excel
                         </button>
                     </div>
@@ -69,7 +86,20 @@ function Cursados() {
 
 function parseToExcelFile(json) {
 
-    const sheet = XLSX.utils.json_to_sheet(json)
+    const json_correguido = json.map((i) => {
+        return {
+            alumno: i.alumno.nombre + i.alumno.apellido,
+            legajo: i.alumno.legajo,
+            comision: i.curso.comision.codigo,
+            materia: i.curso.materia.nombre,
+            estado: i.estado,
+            año: i.año
+
+        }
+    })
+
+
+    const sheet = XLSX.utils.json_to_sheet(json_correguido)
 
     const workBook = XLSX.utils.book_new()
 

@@ -44,3 +44,15 @@ export function FormatHour(numero) {
     var str = numero.toString().padStart(4, '0');
     return `${str.slice(0,2)}:${str.slice(2)}`
 }
+
+
+
+export function DeterminateNewYears() {
+
+    const yearInicial = 2025; // año inicial desde el que se empezo a crear las inscripciones, no tocar pues
+  
+    const yearActual = new Date().getFullYear();
+    const listadoYears = Array.from({ length: yearActual - yearInicial + 1 }, (_, i) => yearActual - i);
+    return listadoYears;
+}
+  

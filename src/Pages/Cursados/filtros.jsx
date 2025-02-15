@@ -1,12 +1,24 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { CurContext } from "../../Context/Context"
-
+import {DeterminateNewYears} from "../../Services/useful"
 import { BiMenuAltLeft } from "react-icons/bi"
 import SearchBar from "../../Components/searchbar"
 
 
 function CursadosFiltrosSection() {
-    const { setOptionsSelected, optionsSelected, setFiltro } = useContext(CurContext)
+    const { setOptionsSelected, optionsSelected, setFiltro,
+        optionMateria,
+        setOptionMateria,
+        optionCurso,
+        setOptionCurso,
+        optionAlumno,
+        setOptionAlumno,
+        optionYear,
+        setOptionYear } = useContext(CurContext)
+
+    const [opcionesSeleccionadas, setOpcionesSeleccionadas] = useState(3) 
+    
+
 
     return <div className="FiltrosSection">
     <div className='FiltroBox'>
@@ -22,18 +34,36 @@ function CursadosFiltrosSection() {
             Opciones de busqueda
             <label className='Selector'>
                 <input defaultChecked={true} onChange={(e) => {
-                }} type="checkbox"></input>
+                    setOptionMateria(!optionMateria)
+                    if (optionMateria) {
+                        setOpcionesSeleccionadas(opcionesSeleccionadas - 1)
+                    } else {
+                        setOpcionesSeleccionadas(opcionesSeleccionadas + 1)
+                    }
+
+                }} type="checkbox" disabled={opcionesSeleccionadas === 1 && optionMateria}></input>
                 Materias
             </label>
             <label  className='Selector'>
                 <input defaultChecked={true} onChange={(e) => {
-                }} type="checkbox"></input>
+                    setOptionCurso(!optionCurso)
+                    if (optionCurso) {
+                        setOpcionesSeleccionadas(opcionesSeleccionadas - 1)
+                    } else {
+                        setOpcionesSeleccionadas(opcionesSeleccionadas + 1)
+                    }
+                }} type="checkbox" disabled={opcionesSeleccionadas === 1 && optionCurso}></input>
                 Comisiones
             </label>
             <label className='Selector'>
                 <input defaultChecked={true} onChange={(e) => {
-
-                }} type="checkbox"></input>
+                    setOptionAlumno(!optionAlumno)
+                    if (optionAlumno) {
+                        setOpcionesSeleccionadas(opcionesSeleccionadas - 1)
+                    } else {
+                        setOpcionesSeleccionadas(opcionesSeleccionadas + 1)
+                    }
+                }} type="checkbox" disabled={opcionesSeleccionadas === 1 && optionAlumno}></input>
                 Alumnos
             </label>
     </div>
@@ -44,7 +74,11 @@ function CursadosFiltrosSection() {
             <label className='Filtro'>
             {"Año: "} 
             <select>
-                <option value="2025">2025</option>
+                {DeterminateNewYears().map((year,key)=> {
+                    return <option onClick={(o) => {
+                        setOptionYear(o.target.value)
+                    }} key={key} value={year}>{year}</option>
+                })}
             </select>
             </label>
         </div>

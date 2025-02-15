@@ -247,4 +247,6 @@ export async function POSTtardias(inscripcionesTardia) {
         console.log(error)
     }
 
+    return tardias
+
 }

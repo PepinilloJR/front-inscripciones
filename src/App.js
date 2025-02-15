@@ -67,5 +67,6 @@ export default App;
 
 - could be nice poder editar el JSON en el visualizador
 
+- remanejar todos los posibles errores en las subidas y etc
 
 */

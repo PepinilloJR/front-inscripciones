@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { GeneralContext, InsContext } from "../../Context/Context"
 import SearchBar from "../../Components/searchbar"
 import "./inscripciones.css"
@@ -27,12 +27,15 @@ function Inscripciones() {
 
     const [insPosibles, setInsPosibles] = useState([])
     const [inscripcionesSelected, setInscripcionesSelected] = useState([])
+    const [inscripcionesEnviadas, setInscripcionesEnviadas] = useState()
 
     const [ materiasFiltrados, setMateriasFiltrados ] = useState([])
     const [inscripcionesFiltradas, setInscripcionesFiltradas] = useState([])
     const [cursosFiltrados, setCursosFiltrados] = useState([])
 
     const [cursosMap, setCursosMap] = useState({})
+
+    const checkRef = useRef()
 
     // Los useEffect estan en orden de como se acciona cada uno, estan encadenados
 
@@ -63,7 +66,7 @@ function Inscripciones() {
         }
         //setCursoSelectedCupo(cursoSelected?.cupo - cursoSelected?.inscriptos)
         ObtainInscripciones()
-    }, [materiaSelected, cursoSelected])
+    }, [materiaSelected, cursoSelected, inscripcionesEnviadas])
 
 
     useEffect(() => {
@@ -94,7 +97,7 @@ function Inscripciones() {
         }
         filtrarInscripciones()
         setInscripcionesSelected([])
-        
+        checkRef.current.checked = false;
     }, [cursoSelected, inscripciones, materiaSelected])
 
 
@@ -148,7 +151,7 @@ function Inscripciones() {
 
                 
                 <label className="InscripcionCheckbox">
-                <input type="checkbox" onChange={(e) => {
+                <input ref={checkRef} type="checkbox" onChange={(e) => {
                     console.log(e.target.checked)
                     if(!e.target.checked) {
                         setInscripcionesSelected([])
@@ -157,7 +160,7 @@ function Inscripciones() {
                         setInscripcionesSelected(insPosibles)
                     }
 
-                }}></input>
+                }} ></input>
                 Seleccionar {insPosibles?.length} posibles inscripciones
                 </label>
 
@@ -166,7 +169,7 @@ function Inscripciones() {
                 </div>
                 <InscripcionesList></InscripcionesList>
                 <div className='ButtonsContainer'>
-                <button onClick={()=> {POSTtardias(inscripcionesSelected)}} 
+                <button onClick={async ()=> {setInscripcionesEnviadas(await POSTtardias(inscripcionesSelected))}} 
                 className={inscripcionesSelected?.length > 0 ? 'ExportarButton' : 'DisabledButton'}
                 disabled={inscripcionesSelected?.length === 0}>
 
