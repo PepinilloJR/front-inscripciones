@@ -34,7 +34,7 @@ function CargarExcelModal() {
                 const mensaje = await POSTInscripcion(json); 
                 setMensajeResultado(mensaje)
 
-            }} className="botonSubir">Subir</button>
+            }} className={json !== "No se cargo ningun archivo..." ? "botonSubir" : "botonSubirDisabled"} disabled={json === "No se cargo ningun archivo..."}>Subir</button>
         </div>
         </div>
 

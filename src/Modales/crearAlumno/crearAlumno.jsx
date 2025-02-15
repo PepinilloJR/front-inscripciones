@@ -1,5 +1,5 @@
 
-import { useContext, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import "../modales.css"
 import { GeneralContext } from "../../Context/Context";
 
@@ -14,28 +14,41 @@ function CrearAlumnoModal() {
 
     const [mensajeResultado, setMensajeResultado] = useState()
 
-    const legajo = useRef('');
-    const nombre = useRef('');
-    const apellido = useRef('');
+    const [legajo, setLegajo] = useState('');
+    const [nombre, setNombre] = useState('');
+    const [apellido, setApellido] = useState('');
+
+    const [permitirSubir, setPermitirSubir] = useState(false)
+
+
+    useEffect(() => {
+        setPermitirSubir(legajo !== "" && nombre !== "" && apellido !== "")
+    }, [legajo, nombre, apellido])
 
     return <>
 
         <div className="ModalTitulo">Crear nuevo Alumno</div>
         <div className="InputContainer">
             <div className="InputTitulo">Legajo </div>
-            <input ref={legajo} type="text" className="Input">
+            <input onChange={(E) => {
+                setLegajo(E.target.value)
+            }} type="text" className="Input">
             </input>
         </div>
 
         <div className="InputContainer">
             <div className="InputTitulo">Nombre </div>
-            <input ref={nombre} type="text" className="Input">
+            <input onChange={(E) => {
+                setNombre(E.target.value)
+            }}  type="text" className="Input">
             </input>
         </div>
 
         <div className="InputContainer">
             <div className="InputTitulo">Apellido </div>
-            <input ref={apellido} type="text" className="Input">
+            <input onChange={(E) => {
+                setApellido(E.target.value)
+            }} type="text" className="Input">
             </input>
         </div>
         
@@ -48,13 +61,13 @@ function CrearAlumnoModal() {
             <button onClick={async () => {
                 //setModal(undefined); 
                 const mensaje = await POSTalumno(
-                    FormatText(legajo.current.value),
-                    FormatText(nombre.current.value),
-                    FormatText(apellido.current.value)
+                    FormatText(legajo),
+                    FormatText(nombre),
+                    FormatText(apellido)
                 )
                 console.log(mensaje.message)
                 setMensajeResultado(mensaje)
-            }} className="botonSubir">Subir</button>
+            }} className={permitirSubir ? "botonSubir" : "botonSubirDisabled"}>Subir</button>
         </div>
     </>
 }

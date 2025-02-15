@@ -65,6 +65,24 @@
     line-height: calc(1vw + 1vh); 
     margin-inline: calc(1vw + 1vh);
 }
+
+.botonSubirDisabled {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(5vw + 5vh);
+    height: calc(1.5vw + 1.5vh); 
+    background-color: rgb(141, 141, 141);
+    color: black;
+    border-radius: calc(2vw + 2vh);
+
+    padding: calc(1vw + 1vh);
+    font-size: calc(1vw + 1vh);
+    line-height: calc(1vw + 1vh); 
+    margin-inline: calc(1vw + 1vh);
+}
+
 .botonCancelar {
     display: flex;
     flex-direction: column;

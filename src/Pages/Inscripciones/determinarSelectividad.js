@@ -21,9 +21,6 @@ function DeterminarSelectividad(inscripciones,cursosMap,materia,cursoSelected) {
     //var curso = {...cursoSelected}
     if (cursoSelected) {
         var curso = JSON.parse(JSON.stringify(cursoSelected))
-        console.log(curso)
-
-       // console.log(curso)
     }
     var seleccionados = []
     // si tenemos una materiaSeleccionada, debemos considerar solamente los cursos filtrados por esta materia

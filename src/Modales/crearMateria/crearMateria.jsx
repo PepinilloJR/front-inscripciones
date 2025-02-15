@@ -10,14 +10,18 @@ function CrearMateriaModal() {
 
     const {setModal} = useContext(GeneralContext)
 
-    const NombreRef = useRef("")
+    //const NombreRef = useRef("")
     const [mensajeResultado, setMensajeResultado] = useState()
+
+    const [nombre, setNombre] = useState("")
 
     return  <>
             <div className="ModalTitulo">Crear nueva materia</div>
             <div className="InputContainer">
                 <div className="InputTitulo">Nombre </div>
-                <input ref={NombreRef} type="text" className="Input"> 
+                <input onChange={(E) => {
+                    setNombre(E.target.value)
+                }} type="text" className="Input"> 
                 </input>
             </div>
 
@@ -29,10 +33,11 @@ function CrearMateriaModal() {
                 <button onClick={() => {setModal(undefined)}} className="botonCancelar">Cancelar</button>
                 <button onClick={async () => {
                     //setModal(undefined)
-                    const mensaje = await POSTmateria(FormatText(NombreRef.current.value))
+                    //console.log(NombreRef.current.value)
+                    const mensaje = await POSTmateria(FormatText(nombre))
                     setMensajeResultado(mensaje)
 
-                }} className="botonSubir">Subir</button>
+                }} className={nombre === "" ? "botonSubirDisabled" : "botonSubir" } disabled={nombre === ""}>Subir</button>
             </div>
             </>
 

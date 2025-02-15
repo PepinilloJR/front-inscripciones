@@ -13,27 +13,21 @@ function App() {
 
   const [modal, setModal] = useState(undefined)
 
-  const [materias, setMaterias] = useState([])
+  //const [materias, setMaterias] = useState([])
 
-  const [materiasFilter, setMateriasFilter] = useState() // referencia al search de Materias, por ahora esta forma se me ocurrio de hacerlo, no es un Ref posta, es el texto
+  //const [materiasFilter, setMateriasFilter] = useState() // referencia al search de Materias, por ahora esta forma se me ocurrio de hacerlo, no es un Ref posta, es el texto
                                                    // que tiene el input del searchbar
-  const [materiaSelected, setMateriaSelected] = useState()
+  //const [materiaSelected, setMateriaSelected] = useState()
 
   const [archivo, setArchivo] = useState()
 
   return (
     <div className="App">
       <GeneralContext.Provider value={{
-        materias, 
-        setMaterias, 
-        materiasFilter, 
-        setMateriasFilter, 
-        materiaSelected, 
         archivo,
         setArchivo,
-        setMateriaSelected, 
         setModal,
-        modal, 
+        modal
       }}>
 
 
@@ -59,14 +53,13 @@ export default App;
 
 - ULTRA IMPORTANTE REMODELACION DE INTERFAZ
 
-- LA FILTROS UPDATE : agregar filtros y opciones de seleccion para recorrer y hacer mas rapido el trabajo
-                      ejemplo: seleccionar todo, filtrar por año cursados
-
--deshabilitar los botones con inputs vacios o incorrectos en modales
+- deshabilitar los botones con inputs vacios o incorrectos en modales
 
 
 - could be nice poder editar el JSON en el visualizador
 
 - remanejar todos los posibles errores en las subidas y etc
+
+-mostrar cantidad restante de solicitudes en cada carta de materia
 
 */

@@ -22,7 +22,6 @@ function InscripcionesList() {
 
 
 function Inscripcion({inscripcion}) {
-    console.log(inscripcion)
     const { materiasFiltrados, setInscripcionesSelected, inscripcionesSelected, cursoSelected, cursosFiltrados } = useContext(InsContext)
 
     const isInscripcionSelected = inscripcionesSelected.find(i => i.inscripcion === inscripcion)

@@ -57,7 +57,7 @@ function Inscripciones() {
         }
 
         ObtainCursos()
-    }, [materiaSelected])
+    }, [materiaSelected, inscripcionesEnviadas])
 
     useEffect(() => {
 
@@ -169,7 +169,9 @@ function Inscripciones() {
                 </div>
                 <InscripcionesList></InscripcionesList>
                 <div className='ButtonsContainer'>
-                <button onClick={async ()=> {setInscripcionesEnviadas(await POSTtardias(inscripcionesSelected))}} 
+                <button onClick={async ()=> {
+                console.log(inscripcionesSelected);
+                setInscripcionesEnviadas(await POSTtardias(inscripcionesSelected))}} 
                 className={inscripcionesSelected?.length > 0 ? 'ExportarButton' : 'DisabledButton'}
                 disabled={inscripcionesSelected?.length === 0}>
 

@@ -43,7 +43,7 @@ export async function POSTmateria(nombre_materia) {
 }
 
 
-export async function POSTcurso(Comision, Cuatrimestre, HoraInicio, HoraFin, Cupo, Materia) {
+export async function POSTcurso(json) {
 
     try {
         const response = fetch(`${APIurl}/curso`, {
@@ -53,12 +53,7 @@ export async function POSTcurso(Comision, Cuatrimestre, HoraInicio, HoraFin, Cup
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                comision: Comision,
-                cuatrimestre: Cuatrimestre,
-                hora_inicio: HoraInicio,
-                hora_fin: HoraFin,
-                cupo: Cupo,
-                materia: Materia
+                json
             })
         })
         if (!response.ok) {
@@ -67,7 +62,7 @@ export async function POSTcurso(Comision, Cuatrimestre, HoraInicio, HoraFin, Cup
         }
         return { message: "Curso subido con exito", status: "ok" }
     } catch (error) {
-        return error
+        return { message: "no se pudo cargar los cursos" + "razon: " + error, status: "error" }
     }
 
 }
@@ -88,9 +83,10 @@ export async function POSTcursos(json) {
         if (!response.ok) {
             return { message: "no se pudo cargar los cursos" + " Status: " + response.status, status: "error" }
         }
-        return { message: "Cursos cargados con exito" }
+        
+        return { message: "Cursos subidos con exito", status: "ok" }
     } catch (error) {
-        return error
+        return { message: "no se pudo cargar los cursos" + "razon: " + error, status: "error" }
     }
 
 }
