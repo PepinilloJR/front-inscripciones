@@ -1,0 +1,21 @@
+{
+    "map": {
+        "Confirmar legajo": "legajo",
+        "Nombre": "nombre",
+        "Apellido": "apellido",
+        "Comisión (Opción 1)": "comision1",
+        "Comisión Opción 2": "comision2",
+        "Materia ": "materia",
+        "materia": "materia",
+        "cupo": "cupo",
+        "inscriptos": "inscriptos",
+        "curso inscripto": "curso",
+        "Seleccione su ingeniería": "ingenieria",
+        "¿En que condición estás en la materia?": "condicion",
+        "¿Iniciaste el trámite de RECURSADO DE ASIGNATURA REGULAR en AUTOGESTIÓN 4 en el AÑO para la/s materia/s solicitadas?": "tramite",
+        "curso": "comision",
+        "diccomisio": "cuatrimestre",
+        "hd": "hora_inicio",
+        "hh": "hora_fin"
+    }
+}

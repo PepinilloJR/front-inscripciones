@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import { CurContext } from "../../Context/Context"
 import { Cursado } from "./cursado"
 

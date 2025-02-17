@@ -19,27 +19,28 @@ function Menu () {
         <menu className="Menu">
         
             <Link onClick={() => {GContext.setModal(<CargarExcelModal></CargarExcelModal>);
-            }} className="botonLink" to="/">
+            }} className="botonLink">
                 <MdFileUpload className="UploadBoton"></MdFileUpload>
                 <button className="boton">Importar Inscripciones</button>
+            </Link>
+            <Link className="botonLink" to="/inscripciones">
+                <button className="boton">Inscripciones</button>
             </Link>
             <Link className="botonLink" to="/cursados">
                 <FaFileExcel className="UploadBoton"></FaFileExcel>
                 <button className="boton">Exportar Inscriptos</button>
             </Link>
-            <Link className="botonLink" to="/inscripciones">
-                <button className="boton">Inscripciones</button>
-            </Link>
+            
             <Link onClick={() => {GContext.setModal(<CrearMateriaModal></CrearMateriaModal>)
-            }} className="botonLink" to="/">
+            }} className="botonLink" >
                 <button className="boton">Crear materia</button>
             </Link>
             <Link onClick={() => {GContext.setModal(<CrearCursoModal></CrearCursoModal>)
-            }} className="botonLink" to="/">
+            }} className="botonLink" >
                 <button className="boton">Crear curso</button>
             </Link>
             <Link onClick={() => {GContext.setModal(<CrearAlumnoModal></CrearAlumnoModal>)
-            }} className="botonLink" to="/">
+            }} className="botonLink">
                 <button className="boton">Crear alumno</button>
             </Link>
         </menu>

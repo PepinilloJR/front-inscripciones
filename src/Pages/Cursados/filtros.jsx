@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { CurContext } from "../../Context/Context"
 import {DeterminateNewYears} from "../../Services/useful"
 import { BiMenuAltLeft } from "react-icons/bi"
@@ -13,7 +13,6 @@ function CursadosFiltrosSection() {
         setOptionCurso,
         optionAlumno,
         setOptionAlumno,
-        optionYear,
         setOptionYear } = useContext(CurContext)
 
     const [opcionesSeleccionadas, setOpcionesSeleccionadas] = useState(3) 
@@ -71,9 +70,9 @@ function CursadosFiltrosSection() {
     <div className='FiltroBox'>
         <div className='FiltrosList'>
             Filtros
-            <label className='Filtro'>
+            <label >
             {"Año: "} 
-            <select>
+            <select className='Filtro'>
                 {DeterminateNewYears().map((year,key)=> {
                     return <option onClick={(o) => {
                         setOptionYear(o.target.value)

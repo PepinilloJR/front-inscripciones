@@ -1,13 +1,8 @@
 import * as XLSX from 'xlsx';
 import { useState, useEffect } from 'react';
 import { GETcursados } from '../../Services/http';
-import { Cursado } from './cursado';
-import "./cursados.css"
 import "../Pages.css"
 import { CurContext } from '../../Context/Context'
-import SearchBar from '../../Components/searchbar';
-import { BiMenuAltLeft } from "react-icons/bi";
-
 import CursadosList from './cursadoList';
 import CursadosSelectors from './cursadosSelectors';
 import CursadosFiltrosSection from './filtros';

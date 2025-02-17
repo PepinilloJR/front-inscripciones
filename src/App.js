@@ -1,11 +1,9 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Home from './Pages/Materias/home';
 import { GeneralContext } from './Context/Context';
 import Menu from './Components/menu';
 import { useState } from 'react';
 import ModalContainer from './Modales/ModalContainer';
-import { use } from "react";
 import Cursados from "./Pages/Cursados/cursados";
 import Inscripciones from "./Pages/Inscripciones/inscripciones";
 
@@ -43,16 +41,13 @@ function App() {
 
 export default App;
 
-/* TODO:
+/* TODO: 
 
-- ULTRA IMPORTANTE REMODELACION DE INTERFAZ
+apuradamente!!!
 
-- could be nice poder editar el JSON en el visualizador
+- remanejar todos los posibles errores en las subidas y etc <---- es decir mostrar mensajes de que se obviaron algunos elementos etc
 
-- remanejar todos los posibles errores en las subidas y etc
+- hacer readme
 
--mostrar cantidad restante de solicitudes en cada carta de materia
-
-- DELETE MODIFICAR etc
 
 */

@@ -33,22 +33,10 @@ function CargarExcelComponent({archivo, setArchivo, json, setJson}) {
     </>
 }
 
-function parseToJsonFile(archivo) {
+async function parseToJsonFile(archivo) {
 
-    const mapeos = {
-        "Confirmar legajo": "legajo",
-        "Comisión (Opción 1)": "comision1",
-        "Comisión Opción 2": "comision2",
-        "Materia " : "materia",
-        "curso inscripto": "curso",
-        "Seleccione su ingeniería": "ingenieria",
-        "¿En que condición estás en la materia?": "condicion",
-        "¿Iniciaste el trámite de RECURSADO DE ASIGNATURA REGULAR en AUTOGESTIÓN 4 en el AÑO para la/s materia/s solicitadas?": "tramite",
-        "curso":"comision",
-        "diccomisio":"cuatrimestre",
-        "hd":"hora_inicio",
-        "hh":"hora_fin"
-    }
+    let mapeos = await fetch("maping.json") 
+    mapeos = await mapeos.json()
 
 
     return new Promise(async (resolve, reject) => {
@@ -68,7 +56,7 @@ function parseToJsonFile(archivo) {
                 const nuevoObjeto = {}
                 Object.keys(object).forEach(propiedad => {
                     
-                    const nuevaPropiedad = mapeos[propiedad] || FormatText(propiedad)
+                    const nuevaPropiedad = mapeos.map[propiedad] || FormatText(propiedad)
                     nuevoObjeto[nuevaPropiedad] = FormatText(object[propiedad].toString())               
                     
                 })

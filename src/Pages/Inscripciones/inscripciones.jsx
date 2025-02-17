@@ -1,5 +1,5 @@
-import { useContext, useEffect, useRef, useState } from "react"
-import { GeneralContext, InsContext } from "../../Context/Context"
+import { useEffect, useRef, useState } from "react"
+import { InsContext } from "../../Context/Context"
 import SearchBar from "../../Components/searchbar"
 import "../Pages.css"
 import { GETcursos, GETinscripciones, GETmaterias, POSTtardias } from "../../Services/http"
@@ -7,7 +7,7 @@ import Cursos from "./cursos"
 import Materias from "./materias"
 import InscripcionesList from "./inscripcionesList"
 import DeterminarSelectividad from "./determinarSelectividad"
-
+import { DeterminateNewYears } from "../../Services/useful"
 function Inscripciones() {
 
     const [materias, setMaterias] = useState()
@@ -34,6 +34,8 @@ function Inscripciones() {
 
     const [cursosMap, setCursosMap] = useState({})
 
+    const [optionYear, setOptionYear] = useState(new Date().getFullYear().toString())
+
     const checkRef = useRef()
 
     // Los useEffect estan en orden de como se acciona cada uno, estan encadenados?)
@@ -55,13 +57,13 @@ function Inscripciones() {
         }
 
         fetchContent(setCursos, GETcursos, materiaSelected)
-    }, [materiaSelected, inscripcionesEnviadas])
+    }, [materiaSelected, inscripcionesEnviadas, optionYear])
 
     useEffect(() => {
 
 
         fetchContent(setInscripciones, GETinscripciones, materiaSelected)
-    }, [materiaSelected, cursoSelected, inscripcionesEnviadas])
+    }, [materiaSelected, cursoSelected, inscripcionesEnviadas, optionYear])
 
 
     useEffect(() => {
@@ -69,7 +71,7 @@ function Inscripciones() {
     }, [materiaFiltro, materias])
 
     useEffect(() => {
-        setCursosFiltrados(cursos?.filter(c => c.comision.codigo.toLowerCase().includes(cursoFiltro.toLowerCase()) || cursoSelected === c  ))
+        setCursosFiltrados(cursos?.filter(c => (c.comision.codigo.toLowerCase().includes(cursoFiltro.toLowerCase()) && c.año.toString() === optionYear) || cursoSelected === c ))
     }, [cursoFiltro, cursos])
 
     useEffect(()=> {
@@ -85,7 +87,7 @@ function Inscripciones() {
 
         const filtrarInscripciones = async () => {
             setInscripcionesFiltradas(await inscripciones?.filter(
-                i => (materiaSelected?.id === i.materia.id && cursoSelected === undefined) || 
+                i => (materiaSelected?.id === i.materia.id && i.año.toString() === optionYear && cursoSelected === undefined) || 
                 ((i.comision1.codigo === cursoSelected?.comision.codigo ||  i.comision2.codigo === cursoSelected?.comision.codigo) && i.materia.id === cursoSelected?.materia.id)
             ))
         }
@@ -132,9 +134,19 @@ function Inscripciones() {
             </div>
         </div>
         <div className="Section">
+            
             <div className="SectionContainer">
                 Cursos
                 <SearchBar ContentSetter={setCursoFiltro}></SearchBar>
+                <label>
+                    <select className="Filtro">
+                        {DeterminateNewYears().map((year,key)=> {
+                        return <option onClick={(o) => {
+                            setOptionYear(o.target.value)
+                            }} key={key} value={year}>{year}</option>
+                        })}
+                    </select>
+                </label>
                 <Cursos></Cursos>
             </div>
         </div>
