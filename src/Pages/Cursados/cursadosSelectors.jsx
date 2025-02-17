@@ -5,10 +5,10 @@ function CursadosSelectors() {
 
     const {setCursadosSelected, cursadosSelected, cursados, cursadosFiltrados} = useContext(CurContext)
 
-    return <div className="SelectorsContainer">
+    return <div className="Selectors">
 
     
-    <label className='Selector'>
+    <label className='Checkbox'>
     <input onChange={(e) => {
         if(e.target.checked) {
             setCursadosSelected(cursados)
@@ -18,7 +18,7 @@ function CursadosSelectors() {
     }} type="checkbox"></input>
         Seleccionar todos
     </label>
-    <div className="ContadorSelected">
+    <div className="SelectedCount">
         {cursadosSelected?.length} / {cursadosFiltrados?.length}
     </div>
     

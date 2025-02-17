@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { GeneralContext, InsContext } from "../../Context/Context"
 import SearchBar from "../../Components/searchbar"
 import "./inscripciones.css"
+import "../Pages.css"
 import { GETcursos, GETinscripciones, GETmaterias, POSTtardias } from "../../Services/http"
 import Cursos from "./cursos"
 import Materias from "./materias"
@@ -129,28 +130,28 @@ function Inscripciones() {
 
     }}>
 
-    <div className="InscripcionesContainer"> 
-        <div className="MateriasSection">
-            <div className="MateriasBox">
+    <div className="PageContainer"> 
+        <div className="Section">
+            <div className="SectionBox">
                 Materias
                 <SearchBar ContentSetter={setMateriaFiltro}></SearchBar>
                 <Materias></Materias>
             </div>
         </div>
-        <div className="CursosSection">
-            <div className="CursosBox">
+        <div className="Section">
+            <div className="SectionBox">
                 Cursos
                 <SearchBar ContentSetter={setCursoFiltro}></SearchBar>
                 <Cursos></Cursos>
             </div>
         </div>
-        <div className="InscripcionesSection">
-            <div className="InscripcionesBox">
+        <div className="PrincipalSection">
+            <div className="SectionBox">
 
-                <div className="SelectorSection">
+                <div className="Selectors">
 
                 
-                <label className="InscripcionCheckbox">
+                <label className="Checkbox">
                 <input ref={checkRef} type="checkbox" onChange={(e) => {
                     console.log(e.target.checked)
                     if(!e.target.checked) {
@@ -172,7 +173,7 @@ function Inscripciones() {
                 <button onClick={async ()=> {
                 console.log(inscripcionesSelected);
                 setInscripcionesEnviadas(await POSTtardias(inscripcionesSelected))}} 
-                className={inscripcionesSelected?.length > 0 ? 'ExportarButton' : 'DisabledButton'}
+                className={inscripcionesSelected?.length > 0 ? 'SendButton' : 'DisabledButton'}
                 disabled={inscripcionesSelected?.length === 0}>
 
                     Inscribir seleccionados

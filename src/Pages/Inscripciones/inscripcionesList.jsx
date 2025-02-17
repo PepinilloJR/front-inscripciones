@@ -26,18 +26,18 @@ function Inscripcion({inscripcion}) {
 
     const isInscripcionSelected = inscripcionesSelected.find(i => i.inscripcion === inscripcion)
 
-    const [claseInscripcion, setClaseInscripcion] = useState("Inscripcion")
+    const [claseInscripcion, setClaseInscripcion] = useState("Item")
 
 
     useEffect(()=> {
         //console.log(inscripcionesSelected)
         const ins = inscripcionesSelected.find(i => i.inscripcion === inscripcion)
         if (ins && ins?.curso.comision.codigo === ins?.inscripcion.comision1.codigo) {
-            setClaseInscripcion("InscripcionSelected")
+            setClaseInscripcion("ItemSelected")
         } else if (ins && ins?.curso.comision.codigo === ins?.inscripcion.comision2.codigo) {
-            setClaseInscripcion("InscripcionSelectedSecond")
+            setClaseInscripcion("ItemSelectedSecond")
         } else {
-            setClaseInscripcion("Inscripcion")
+            setClaseInscripcion("Item")
         }
     },[inscripcionesSelected])
 
@@ -107,11 +107,11 @@ function Inscripcion({inscripcion}) {
         }
     }} className={claseInscripcion}>
     
-    <div className="InscripcionCampo">{inscripcion.alumno.nombre} {inscripcion.alumno.apellido}</div>
-    <div className="InscripcionCampo">Legajo:{inscripcion.alumno.legajo}</div>
-    <div className="InscripcionCampo">Comision 1:{inscripcion.comision1.codigo}</div>
-    <div className="InscripcionCampo">Comision 2:{inscripcion.comision2.codigo}</div>
-    <div className="InscripcionCampo">{inscripcion.materia.nombre}</div>
+    <div className="Campo">{inscripcion.alumno.nombre} {inscripcion.alumno.apellido}</div>
+    <div className="Campo">Legajo:{inscripcion.alumno.legajo}</div>
+    <div className="Campo">Comision 1:{inscripcion.comision1.codigo}</div>
+    <div className="Campo">Comision 2:{inscripcion.comision2.codigo}</div>
+    <div className="Campo">{inscripcion.materia.nombre}</div>
     </div>
 }
 

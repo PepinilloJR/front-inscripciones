@@ -20,7 +20,7 @@ function CursadosFiltrosSection() {
     
 
 
-    return <div className="FiltrosSection">
+    return <div className="Section">
     <div className='FiltroBox'>
         <button onClick={()=> {setOptionsSelected(!optionsSelected)}} className={optionsSelected ? 'SearchFilterButtonSelected' : "SearchFilterButton"} >
             <BiMenuAltLeft style={{fontSize: "calc(2vw + 2vh)"}}></BiMenuAltLeft>
@@ -32,7 +32,7 @@ function CursadosFiltrosSection() {
     <div className={optionsSelected ? 'SearchFilterOptions' : 'SearchFilterOptionsClosed'}>
             
             Opciones de busqueda
-            <label className='Selector'>
+            <label className='Checkbox'>
                 <input defaultChecked={true} onChange={(e) => {
                     setOptionMateria(!optionMateria)
                     if (optionMateria) {
@@ -44,7 +44,7 @@ function CursadosFiltrosSection() {
                 }} type="checkbox" disabled={opcionesSeleccionadas === 1 && optionMateria}></input>
                 Materias
             </label>
-            <label  className='Selector'>
+            <label  className='Checkbox'>
                 <input defaultChecked={true} onChange={(e) => {
                     setOptionCurso(!optionCurso)
                     if (optionCurso) {
@@ -55,7 +55,7 @@ function CursadosFiltrosSection() {
                 }} type="checkbox" disabled={opcionesSeleccionadas === 1 && optionCurso}></input>
                 Comisiones
             </label>
-            <label className='Selector'>
+            <label className='Checkbox'>
                 <input defaultChecked={true} onChange={(e) => {
                     setOptionAlumno(!optionAlumno)
                     if (optionAlumno) {

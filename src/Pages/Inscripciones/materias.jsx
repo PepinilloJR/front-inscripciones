@@ -26,14 +26,20 @@ function Materia({materia}) {
     const { setMateriaSelected, materiaSelected, setCursoSelected, cursoSelected } = useContext(InsContext)
 
 
-    return <div className={materiaSelected === materia ? "MateriaSelected" : "Materia"} onClick={()=> {
+    return <div className={materiaSelected === materia ? "ItemSelected" : "Item"} onClick={()=> {
         if (materiaSelected === materia) {
             setMateriaSelected(undefined)
 
         } else {
             setMateriaSelected(materia)
         }
-    }}>{materia.nombre}</div>
+    }}>
+        <div className="Campo" >
+        {materia.nombre}
+        </div>
+
+        
+    </div>
 }
 
 

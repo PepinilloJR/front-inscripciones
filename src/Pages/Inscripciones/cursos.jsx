@@ -20,7 +20,7 @@ function Cursos() {
 function Curso({curso}) {
 
     const { setCursoSelected, cursoSelected, materias } = useContext(InsContext)
-    return <div className={cursoSelected?.id === curso?.id ? "CursoSelected" : "Curso"} onClick={()=> {
+    return <div className={cursoSelected?.id === curso?.id ? "ItemSelected" : "Item"} onClick={()=> {
         if (cursoSelected?.id === curso?.id) {
             setCursoSelected(undefined)
         } else {
@@ -28,10 +28,10 @@ function Curso({curso}) {
 
         }
     }}>
-        <div>{curso.comision.codigo}</div>
-        <div>{curso.materia.nombre}</div>
-        <div>cupos disponibles: {curso.cupo - curso.inscriptos}</div>
-        <div>horarios: {FormatHour(curso.hora_inicio)} - {FormatHour(curso.hora_fin)}</div>
+        <div className="Campo">{curso.comision.codigo}</div>
+        <div className="Campo">{curso.materia.nombre}</div>
+        <div className="Campo">cupos disponibles: {curso.cupo - curso.inscriptos}</div>
+        <div className="Campo">horarios: {FormatHour(curso.hora_inicio)} - {FormatHour(curso.hora_fin)}</div>
     </div>
 }
 

@@ -13,12 +13,6 @@ function App() {
 
   const [modal, setModal] = useState(undefined)
 
-  //const [materias, setMaterias] = useState([])
-
-  //const [materiasFilter, setMateriasFilter] = useState() // referencia al search de Materias, por ahora esta forma se me ocurrio de hacerlo, no es un Ref posta, es el texto
-                                                   // que tiene el input del searchbar
-  //const [materiaSelected, setMateriaSelected] = useState()
-
   const [archivo, setArchivo] = useState()
 
   return (
@@ -52,9 +46,6 @@ export default App;
 /* TODO:
 
 - ULTRA IMPORTANTE REMODELACION DE INTERFAZ
-
-- deshabilitar los botones con inputs vacios o incorrectos en modales
-
 
 - could be nice poder editar el JSON en el visualizador
 
