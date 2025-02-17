@@ -83,7 +83,6 @@ function CursadosFiltrosSection() {
             </label>
         </div>
     </div>
-
 </div>
 }
 

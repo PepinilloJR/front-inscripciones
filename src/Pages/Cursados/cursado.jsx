@@ -15,11 +15,11 @@ export function Cursado({cursado}) {
             }
             console.log(cursadosSelected)
         }
-    } className={cursadosSelected.find(c => c === cursado) ? "CursadoSelected" : "Cursado"}>
-        <div>{cursado.alumno.legajo}</div>
-        <div>{cursado.alumno.nombre}</div>
-        <div>{cursado.curso.comision.codigo}</div>
-        <div>{cursado.solicitudInscripcionTardia.materia.nombre}</div>
+    } className={cursadosSelected.find(c => c === cursado) ? "ItemSelected" : "Item"}>
+        <div className="Campo">{cursado.alumno.legajo}</div>
+        <div className="Campo">{cursado.alumno.nombre + " " + cursado.alumno.apellido}</div>
+        <div className="Campo">{cursado.curso.comision.codigo}</div>
+        <div className="Campo">{cursado.solicitudInscripcionTardia.materia.nombre}</div>
 
         </div>
 }

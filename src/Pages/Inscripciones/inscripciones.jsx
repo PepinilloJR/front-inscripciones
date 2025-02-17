@@ -1,7 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import { GeneralContext, InsContext } from "../../Context/Context"
 import SearchBar from "../../Components/searchbar"
-import "./inscripciones.css"
 import "../Pages.css"
 import { GETcursos, GETinscripciones, GETmaterias, POSTtardias } from "../../Services/http"
 import Cursos from "./cursos"
@@ -21,7 +20,6 @@ function Inscripciones() {
     const [cursoFiltro, setCursoFiltro] = useState("")
 
     const [cursoSelected, setCursoSelected] = useState()
-    //const [cursoSelectedCupo, setCursoSelectedCupo] = useState(0)
 
     const [materiaSelected, setMateriaSelected] = useState()
 
@@ -38,35 +36,31 @@ function Inscripciones() {
 
     const checkRef = useRef()
 
-    // Los useEffect estan en orden de como se acciona cada uno, estan encadenados
+    // Los useEffect estan en orden de como se acciona cada uno, estan encadenados?)
+
+    const fetchContent = async (setter, method, input) => {
+        setter(await method(input))
+    } 
+
 
     useEffect(()=> {
-        const ObtainMaterias = async () => {
-            setMaterias(await GETmaterias())
-        }
 
-        ObtainMaterias()
+        fetchContent(setMaterias, GETmaterias)
     }, [])
 
     useEffect(()=> {
-        const ObtainCursos = async () => {
-            setCursos(await GETcursos(materiaSelected))
-        }
 
         if (materiaSelected) {
             setCursoSelected()
         }
 
-        ObtainCursos()
+        fetchContent(setCursos, GETcursos, materiaSelected)
     }, [materiaSelected, inscripcionesEnviadas])
 
     useEffect(() => {
 
-        const ObtainInscripciones = async () => {
-            setInscripciones(await GETinscripciones(materiaSelected))
-        }
-        //setCursoSelectedCupo(cursoSelected?.cupo - cursoSelected?.inscriptos)
-        ObtainInscripciones()
+
+        fetchContent(setInscripciones, GETinscripciones, materiaSelected)
     }, [materiaSelected, cursoSelected, inscripcionesEnviadas])
 
 
@@ -93,7 +87,6 @@ function Inscripciones() {
             setInscripcionesFiltradas(await inscripciones?.filter(
                 i => (materiaSelected?.id === i.materia.id && cursoSelected === undefined) || 
                 ((i.comision1.codigo === cursoSelected?.comision.codigo ||  i.comision2.codigo === cursoSelected?.comision.codigo) && i.materia.id === cursoSelected?.materia.id)
-                
             ))
         }
         filtrarInscripciones()
@@ -132,21 +125,21 @@ function Inscripciones() {
 
     <div className="PageContainer"> 
         <div className="Section">
-            <div className="SectionBox">
+            <div className="SectionContainer">
                 Materias
                 <SearchBar ContentSetter={setMateriaFiltro}></SearchBar>
                 <Materias></Materias>
             </div>
         </div>
         <div className="Section">
-            <div className="SectionBox">
+            <div className="SectionContainer">
                 Cursos
                 <SearchBar ContentSetter={setCursoFiltro}></SearchBar>
                 <Cursos></Cursos>
             </div>
         </div>
         <div className="PrincipalSection">
-            <div className="SectionBox">
+            <div className="SectionContainer">
 
                 <div className="Selectors">
 

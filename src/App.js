@@ -53,4 +53,6 @@ export default App;
 
 -mostrar cantidad restante de solicitudes en cada carta de materia
 
+- DELETE MODIFICAR etc
+
 */

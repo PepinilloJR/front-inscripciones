@@ -8,17 +8,12 @@ import { useEffect, useState } from "react"
 
 function DeterminarSelectividad(inscripciones,cursosMap,materia,cursoSelected) {
 
-   // console.log("---------------")
-   // console.log(inscripciones)
-   // console.log(cursosMap)
-   // console.log(materia)
-   // console.log(curso)
+
 
     if (cursosMap) {
         var cursos = JSON.parse(JSON.stringify(cursosMap))
     } 
-    //var cursos = {...cursosMap}
-    //var curso = {...cursoSelected}
+
     if (cursoSelected) {
         var curso = JSON.parse(JSON.stringify(cursoSelected))
     }
@@ -49,7 +44,6 @@ function DeterminarSelectividad(inscripciones,cursosMap,materia,cursoSelected) {
 
         } else {
 
-            // esta parte no funciona? PORQUE
             inscripciones?.forEach(i => {
 
 

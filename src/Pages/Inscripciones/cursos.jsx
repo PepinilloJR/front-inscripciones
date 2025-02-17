@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react"
 import { InsContext } from "../../Context/Context"
-import "./inscripciones.css"
+
 import { FormatHour } from "../../Services/useful"
 function Cursos() {
 
-    const { cursos, cursoFiltro, cursoSelected, cursosFiltrados, setCursosFiltrados } = useContext(InsContext)
+    const {  cursosFiltrados } = useContext(InsContext)
 
 
     return <>
-    <div className="CursosList">
+    <div className="SingleList">
         {cursosFiltrados?.map((c, key)=> {
             return <Curso key={key} curso={c} ></Curso>
        })}
@@ -19,8 +19,8 @@ function Cursos() {
 
 function Curso({curso}) {
 
-    const { setCursoSelected, cursoSelected, materias } = useContext(InsContext)
-    return <div className={cursoSelected?.id === curso?.id ? "ItemSelected" : "Item"} onClick={()=> {
+    const { setCursoSelected, cursoSelected } = useContext(InsContext)
+    return <div className={cursoSelected?.id === curso?.id ? "ItemSelectedSticky" : "Item"} onClick={()=> {
         if (cursoSelected?.id === curso?.id) {
             setCursoSelected(undefined)
         } else {

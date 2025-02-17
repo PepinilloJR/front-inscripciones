@@ -1,17 +1,15 @@
 import { useContext } from "react"
 import { InsContext } from "../../Context/Context"
-import { useState, useEffect } from "react"
 
-import "./inscripciones.css"
 
 function Materias() {
 
-    const { materias, materiaFiltro, materiaSelected, materiasFiltrados, setMateriasFiltrados  } = useContext(InsContext)
+    const { materiasFiltrados  } = useContext(InsContext)
 
 
 
     return <>
-    <div className="MateriasList">
+    <div className="SingleList">
 
         {materiasFiltrados?.map((m, key)=> {
             return <Materia key={key} materia={m} ></Materia>
@@ -23,10 +21,10 @@ function Materias() {
 
 function Materia({materia}) {
 
-    const { setMateriaSelected, materiaSelected, setCursoSelected, cursoSelected } = useContext(InsContext)
+    const { setMateriaSelected, materiaSelected } = useContext(InsContext)
 
 
-    return <div className={materiaSelected === materia ? "ItemSelected" : "Item"} onClick={()=> {
+    return <div className={materiaSelected === materia ? "ItemSelectedSticky" : "Item"} onClick={()=> {
         if (materiaSelected === materia) {
             setMateriaSelected(undefined)
 

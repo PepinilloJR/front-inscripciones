@@ -8,7 +8,7 @@ function CursadosList() {
 
 
     useEffect(() => {
-
+        console.log(cursadosFiltrados)
         const lista = cursados?.filter(i =>
            
             ((i.curso.materia.nombre.toLowerCase().includes(filtro.toLowerCase()) && optionMateria) ||
@@ -20,12 +20,12 @@ function CursadosList() {
             (i.año === optionYear) 
         )
         setCursadosFIltrados(lista)
-
+    
 
     }, [cursados, filtro, optionYear])
 
-    return <div className="CursadosListBox">
-        <div className='CursadosList'>
+    return <div className="PrincipalSectionBox">
+        <div className='GroupList'>
             {cursadosFiltrados?.map((c, key) => {
 
                 return <Cursado cursado={c} key={key}></Cursado>

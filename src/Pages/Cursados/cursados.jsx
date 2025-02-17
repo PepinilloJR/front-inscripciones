@@ -66,8 +66,8 @@ function Cursados() {
 
             <CursadosFiltrosSection></CursadosFiltrosSection>
 
-            <div className="CursadosSection">
-                <div className="CursadosContainer">
+            <div className="PrincipalSection">
+                <div className="SectionContainer">
                     <CursadosSelectors></CursadosSelectors>
                     <CursadosList></CursadosList>
                     <div className='ButtonsContainer'>
@@ -89,7 +89,7 @@ function parseToExcelFile(json) {
 
     const json_correguido = json.map((i) => {
         return {
-            alumno: i.alumno.nombre + i.alumno.apellido,
+            alumno: i.alumno.nombre + " " + i.alumno.apellido,
             legajo: i.alumno.legajo,
             comision: i.curso.comision.codigo,
             materia: i.curso.materia.nombre,
@@ -98,7 +98,7 @@ function parseToExcelFile(json) {
 
         }
     })
-
+    console.log(json_correguido)
 
     const sheet = XLSX.utils.json_to_sheet(json_correguido)
 
