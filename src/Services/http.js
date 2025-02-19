@@ -1,3 +1,4 @@
+import { GiConsoleController } from "react-icons/gi"
 
 
 export const APIurl = "http://localhost:8080" //"http://127.0.0.1:8000"
@@ -132,9 +133,9 @@ export async function POSTInscripcion(json) {
             }
         )
         if (!response.ok) {
-            return { message: "no se pudo cargar las inscripciones" + " Status: " + response.status, status: "error" }
+            return { message: "no se pudo cargar las inscripciones" + " Status: " + response.status, status: "error", body: await response.json() }
         }
-        return { message: "Inscripciones subidas con exito", status: "ok" }
+        return { message: "Inscripciones subidas con exito", status: "ok", body: await response.json() }
     } catch (error) {
         return error
     }

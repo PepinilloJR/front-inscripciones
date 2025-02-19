@@ -22,8 +22,7 @@ function CargarExcelModal() {
         <div className="Modal">
 
         <div className="ModalTitulo">Añade un archivo Excel</div>
-        <CargarExcelComponent archivo={archivo} setArchivo={setArchivo} json={json} setJson={setJson} ></CargarExcelComponent>
-
+        <CargarExcelComponent archivo={archivo} setArchivo={setArchivo} json={json} setJson={setJson} ListaErrores={mensajeResultado?.body} ></CargarExcelComponent>
         <div className='MessageContainer'>
             <div className={mensajeResultado?.status === "ok" ? 'MessageSuccess' : 'MessageError'}>{mensajeResultado?.message}</div>
         </div>

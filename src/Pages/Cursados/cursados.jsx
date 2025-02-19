@@ -32,6 +32,10 @@ function Cursados() {
     },[])
 
 
+    useEffect(() => {
+        setCursadosSelected([])
+    }, [filtro, optionYear])
+
     return <>
         <CurContext.Provider value={{
             cursadosSelected, 
