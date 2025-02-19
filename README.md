@@ -1,21 +1,19 @@
-# Como usar el sistema
+# Cómo usar el sistema
 
-El sistema de solicitudes de inscripciones tardias se utiliza teniendo en mente dos archivos de hojas de cálculo 
-con el siguiente formato:
+El sistema de solicitudes de inscripciones tardías se utiliza teniendo en mente dos archivos de hojas de cálculo con el siguiente formato:
 
-## Archivo de solicitudes de inscripcion tardia
+## Archivo de solicitudes de inscripción tardía
 ![imagen](https://github.com/user-attachments/assets/0e8d56ff-9190-4961-b179-ba6ce8fe98cd)
-
 
 ## Archivo de cursos 
 ![imagen](https://github.com/user-attachments/assets/df7e38ef-2217-4a92-8989-8f3ed3b4d47b)
 
-### Como funciona la lectura de archivos
+### Cómo funciona la lectura de archivos
 
-Los nombres de las columnas se mapean como propiedades de los objetos que se manipulan en la GUI.
-Estos nombres deben respetarse para que sea posible interpretar los datos correctamente, o podrian pasar cosas innesperadas.
+Los nombres de las columnas se mapean como propiedades de los objetos que se manipulan en la GUI.  
+Estos nombres deben respetarse para que sea posible interpretar los datos correctamente, o podrían pasar cosas inesperadas.  
 
-Tambien es posible cambiar los mapeos modificando el archivo maping.json para cambiar las correspondencias entre columnas y propiedades, o para agregar nuevas propiedades que deban ser leidas de nuevas columnas. 
+También es posible cambiar los mapeos modificando el archivo `mapping.json` para cambiar las correspondencias entre columnas y propiedades, o para agregar nuevas propiedades que deban ser leídas de nuevas columnas.  
 
 ![imagen](https://github.com/user-attachments/assets/8dd87a22-766b-4dbe-a312-ee5f9ee5982b)
 
@@ -23,30 +21,31 @@ Tambien es posible cambiar los mapeos modificando el archivo maping.json para ca
 
 ### Agregar los cursos
 
-Inicialmente, se deben cargar los cursos del año correspondiente a las solicitudes de inscripcion, esto puede hacerse manualmente o desde el archivo de cursos, en la seccion de Crear curso.
+Inicialmente, se deben cargar los cursos del año correspondiente a las solicitudes de inscripción.  
+Esto puede hacerse manualmente o desde el archivo de cursos, en la sección de **Crear curso**.
 
-### Importar las solicitudes de inscripcion tardia
+### Importar las solicitudes de inscripción tardía
 
-Luego de tener disponibles los cursos, se debe subir el archivo de solicitudes de inscripcion tardia en la seccion Importar inscripciones.
-De darse un problema con alguna de las inscripciones, se mostrara una seccion especificando cuales no pudieron cargarse y sus razones
-para que se vuelva a intentar una vez resueltos los problemas con el archivo.
+Teniendo disponibles los cursos, se debe subir el archivo de solicitudes de inscripción tardía en la sección **Importar inscripciones**.  
+
+Si ocurre un problema con alguna de las inscripciones, se mostrará una sección especificando cuáles no pudieron cargarse y sus razones, para que se vuelva a intentar una vez resueltos los problemas con el archivo.
 
 ### Crear inscripciones
-Teniendo ya disponibles los cursos y las solicitudes, se debe ir a la seccion de Inscripciones para seleccionar y admitir las inscripciones tardias seleccionandolas.
 
-Si al seleccionar la inscripcion, esta en verde, significa que se esta asignando al curso correspondiente a la opcion 1.
- 
-Si al seleccionar la inscripcion, esta en amarillo, significa que se esta asignando al curso correspondiente a la opcion 2.
+Teniendo ya disponibles los cursos y las solicitudes, se debe ir a la sección de **Inscripciones** para seleccionar y admitir las inscripciones tardías.
 
-![imagen](https://github.com/user-attachments/assets/748ea28d-5a9a-4cc3-9291-d1c0008bf16f)
+- Si al seleccionar la inscripción esta aparece en **verde**, significa que se está asignando al curso correspondiente a la opción 1.  
+- Si al seleccionar la inscripción esta aparece en **amarillo**, significa que se está asignando al curso correspondiente a la opción 2.
+
+  ![imagen](https://github.com/user-attachments/assets/748ea28d-5a9a-4cc3-9291-d1c0008bf16f)
 
 ### Exportar inscripciones
-Una vez admitidas las inscripciones tardias, se debe diriguir a la seccion de Exportar inscripciones, donde podra filtrar y seleccionar inscripciones tardias 
-cargadas en la base de datos, para poder exportarlas en formato de hoja de calculo.
+
+Una vez admitidas las inscripciones tardías, se debe dirigir a la sección de **Exportar inscripciones**, donde podrá filtrar y seleccionar inscripciones tardías cargadas en la base de datos, para poder exportarlas en formato de hoja de cálculo.
 
 ![imagen](https://github.com/user-attachments/assets/087f8ed4-2b1c-43c1-9c56-931b00daad62)
 
-# Informacion general para el uso de React
+# Información general para el uso de React
 
 ## Available Scripts
 
