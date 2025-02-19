@@ -2,10 +2,6 @@ import { useContext } from "react";
 import { InsContext } from "../../Context/Context";
 import { useEffect, useState } from "react"
 
-// esto podria mejorarse si uso directamente las materias y los cursos en ves de las versiones filtradas?
-// esto podria permitirme acceder directamente por ID, o quizas no? tengo que ver
-
-
 function DeterminarSelectividad(inscripciones,cursosMap,materia,cursoSelected) {
 
 
@@ -24,7 +20,6 @@ function DeterminarSelectividad(inscripciones,cursosMap,materia,cursoSelected) {
         // si tenemos un curso seleccionado, solo debemos considerar los cupos para ese solo curso, mejor caso posible
         if (curso) {
 
-            //console.log("tengo el curso seleccionado" + curso)
             inscripciones?.forEach(i => {
                 if (i.comision1.codigo === curso.comision.codigo && ((curso.cupo - curso.inscriptos) - 1 >= 0)) {
                     curso.cupo = curso.cupo - 1

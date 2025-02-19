@@ -5,7 +5,7 @@ import { BsSearch } from "react-icons/bs";
 
 function SearchBar({ContentSetter, Placeholder}){
 
-    // la seerchBar toma un Estado setter con el que guarda su contenido al cambiar, y un placeholder para mostrar
+    // la searchBar toma un Estado setter con el que guarda su contenido al cambiar, y un placeholder para mostrar
 
     const [searchbarChanged, setSearchbarChanged] = useState(false)
     const SearchBarRef = useRef("")

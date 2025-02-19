@@ -172,7 +172,7 @@ export async function GETcursos(materia) {
 export async function GETinscripciones(materia) {
 
     try {
-        if (materia) {  // /materia/{materiaId}/visible
+        if (materia) { 
             const response = await fetch(`${APIurl}/solicitudInscripcionTardia/materia/${materia.id}/visible`, {
                 headers: {
                     'Accept': 'application/json'

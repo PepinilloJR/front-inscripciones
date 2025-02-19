@@ -7,8 +7,7 @@
     display: flex;
     justify-content: center;
     padding: calc(0.8vw + 0.8vh);
-    padding-block: calc(0.4vw + 0.4vh);;
-    /*margin-block: calc(2vw + 2vh);*/
+    padding-block: calc(0.4vw + 0.4vh);
     width: 50%;
     height: fit-content;
     border-radius: calc(20vw + 20vh);

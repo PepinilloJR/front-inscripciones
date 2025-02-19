@@ -21,12 +21,8 @@ function App() {
         setModal,
         modal
       }}>
-
-
         <BrowserRouter>
           {modal === undefined ? null : <ModalContainer></ModalContainer>}
-
-
           <Menu></Menu>
           <Routes>
             <Route path='/' element={<Inscripciones />} />
@@ -40,14 +36,3 @@ function App() {
 }
 
 export default App;
-
-/* TODO: 
-
-apuradamente!!!
-
-- remanejar todos los posibles errores en las subidas y etc <---- es decir mostrar mensajes de que se obviaron algunos elementos etc
-
-- hacer readme
-
-
-*/
