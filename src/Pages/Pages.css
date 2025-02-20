@@ -204,10 +204,10 @@
 
 .GroupList {
     display: grid;
-    grid-template-columns: repeat(3, calc(10vw + 10vh));
+    grid-template-columns: repeat(3, calc(9.5vw + 9.5vh));
     width: fit-content;
     height: fit-content;
-    gap: calc(1vw + 1vh); 
+    gap: calc(0.8vw + 0.8vh); 
     justify-content: center; 
     padding: calc(0.1vw + 0.1vh);
 }
@@ -330,4 +330,16 @@ input[type="checkbox"] {
 .OptionsButton {
     width: calc(1vw + 1vw);
     height:  calc(1vw + 1vw);
+}
+
+@media only screen and (max-width: 1300px) {
+    .GroupList {
+        display: grid;
+        grid-template-columns: repeat(2, calc(9vw + 9vh));
+        width: fit-content;
+        height: fit-content;
+        gap: calc(0.8vw + 0.8vh); 
+        justify-content: center; 
+        padding: calc(0.1vw + 0.1vh);
+    }
 }
