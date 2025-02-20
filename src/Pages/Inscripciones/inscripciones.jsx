@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from "react"
 import { InsContext } from "../../Context/Context"
-import SearchBar from "../../Components/searchbar"
 import "../Pages.css"
 import { GETcursos, GETinscripciones, GETmaterias, POSTtardias } from "../../Services/http"
-import Cursos from "./cursos"
-import Materias from "./materias"
 import InscripcionesList from "./inscripcionesList"
 import DeterminarSelectividad from "./determinarSelectividad"
-import { DeterminateNewYears } from "../../Services/useful"
+
+import InscripcionesFiltrosSection from "./filtros"
+import InscripcionesSelectors from "./inscripcionesSelectors"
 function Inscripciones() {
 
     const [materias, setMaterias] = useState()
@@ -23,12 +22,11 @@ function Inscripciones() {
 
     const [materiaSelected, setMateriaSelected] = useState()
 
-
     const [insPosibles, setInsPosibles] = useState([])
     const [inscripcionesSelected, setInscripcionesSelected] = useState([])
     const [inscripcionesEnviadas, setInscripcionesEnviadas] = useState()
 
-    const [ materiasFiltrados, setMateriasFiltrados ] = useState([])
+    const [materiasFiltrados, setMateriasFiltrados] = useState([])
     const [inscripcionesFiltradas, setInscripcionesFiltradas] = useState([])
     const [cursosFiltrados, setCursosFiltrados] = useState([])
 
@@ -42,15 +40,15 @@ function Inscripciones() {
 
     const fetchContent = async (setter, method, input) => {
         setter(await method(input))
-    } 
+    }
 
 
-    useEffect(()=> {
+    useEffect(() => {
 
         fetchContent(setMaterias, GETmaterias)
     }, [])
 
-    useEffect(()=> {
+    useEffect(() => {
 
         if (materiaSelected) {
             setCursoSelected()
@@ -67,14 +65,14 @@ function Inscripciones() {
 
 
     useEffect(() => {
-        setMateriasFiltrados(materias?.filter(m => m.nombre.toLowerCase().includes(materiaFiltro.toLowerCase()) || materiaSelected === m ))
+        setMateriasFiltrados(materias?.filter(m => m.nombre.toLowerCase().includes(materiaFiltro.toLowerCase()) || materiaSelected === m))
     }, [materiaFiltro, materias])
 
     useEffect(() => {
-        setCursosFiltrados(cursos?.filter(c => (c.comision.codigo.toLowerCase().includes(cursoFiltro.toLowerCase()) && c.año.toString() === optionYear) || cursoSelected === c ))
+        setCursosFiltrados(cursos?.filter(c => (c.comision.codigo.toLowerCase().includes(cursoFiltro.toLowerCase()) && c.año.toString() === optionYear) || cursoSelected === c))
     }, [cursoFiltro, cursos])
 
-    useEffect(()=> {
+    useEffect(() => {
         var map = {}
         cursosFiltrados?.forEach(c => {
             map[c.comision.codigo] = c
@@ -87,8 +85,8 @@ function Inscripciones() {
 
         const filtrarInscripciones = async () => {
             setInscripcionesFiltradas(await inscripciones?.filter(
-                i => (materiaSelected?.id === i.materia.id && i.año.toString() === optionYear && cursoSelected === undefined) || 
-                ((i.comision1.codigo === cursoSelected?.comision.codigo ||  i.comision2.codigo === cursoSelected?.comision.codigo) && i.materia.id === cursoSelected?.materia.id)
+                i => (materiaSelected?.id === i.materia.id && i.año.toString() === optionYear && cursoSelected === undefined) ||
+                    ((i.comision1.codigo === cursoSelected?.comision.codigo || i.comision2.codigo === cursoSelected?.comision.codigo) && i.materia.id === cursoSelected?.materia.id)
             ))
         }
         filtrarInscripciones()
@@ -102,92 +100,59 @@ function Inscripciones() {
     }, [inscripcionesFiltradas])
 
 
-    
+
 
     return <InsContext.Provider value={{
         cursos,
         cursoFiltro,
+        setCursoFiltro,
         materias,
+        setMateriaFiltro,
         materiaFiltro,
         inscripciones,
         materiaSelected,
         setMateriaSelected,
         cursoSelected,
         setCursoSelected,
-        inscripcionesSelected, 
+        inscripcionesSelected,
         setInscripcionesSelected,
         materiasFiltrados,
         setMateriasFiltrados,
         inscripcionesFiltradas,
         setInscripcionesFiltradas,
         cursosFiltrados,
-        setCursosFiltrados
+        setCursosFiltrados,
+        optionYear,
+        setOptionYear,
+        checkRef,
+        insPosibles,
+        setInsPosibles
 
     }}>
 
-    <div className="PageContainer"> 
-        <div className="Section">
-            <div className="SectionContainer">
-                Materias
-                <SearchBar ContentSetter={setMateriaFiltro}></SearchBar>
-                <Materias></Materias>
-            </div>
-        </div>
-        <div className="Section">
-            
-            <div className="SectionContainer">
-                Cursos
-                <SearchBar ContentSetter={setCursoFiltro}></SearchBar>
-                <label>
-                    <select className="Filtro">
-                        {DeterminateNewYears().map((year,key)=> {
-                        return <option onClick={(o) => {
-                            setOptionYear(o.target.value)
-                            }} key={key} value={year}>{year}</option>
-                        })}
-                    </select>
-                </label>
-                <Cursos></Cursos>
-            </div>
-        </div>
-        <div className="PrincipalSection">
-            <div className="SectionContainer">
+        <div className="PageContainer">
+            <InscripcionesFiltrosSection></InscripcionesFiltrosSection>
+            <div className="PrincipalSection">
+                <div className="SectionContainer">
 
-                <div className="Selectors">
+                    <InscripcionesSelectors></InscripcionesSelectors>
+                    <InscripcionesList></InscripcionesList>
+                    
+                    <div className='ButtonsContainer'>
+                        <button onClick={async () => {
+                            console.log(inscripcionesSelected);
+                            setInscripcionesEnviadas(await POSTtardias(inscripcionesSelected))
+                        }}
+                            className={inscripcionesSelected?.length > 0 ? 'SendButton' : 'DisabledButton'}
+                            disabled={inscripcionesSelected?.length === 0}>
 
-                
-                <label className="Checkbox">
-                <input ref={checkRef} type="checkbox" onChange={(e) => {
-                    console.log(e.target.checked)
-                    if(!e.target.checked) {
-                        setInscripcionesSelected([])
-                    }
-                    else {
-                        setInscripcionesSelected(insPosibles)
-                    }
-
-                }} ></input>
-                Seleccionar {insPosibles?.length} posibles inscripciones
-                </label>
-
-                <div className="SelectedCount">Seleccionados: {inscripcionesSelected?.length}/{inscripcionesFiltradas?.length}</div>
-
+                            Inscribir seleccionados
+                        </button>
+                    </div>
                 </div>
-                <InscripcionesList></InscripcionesList>
-                <div className='ButtonsContainer'>
-                <button onClick={async ()=> {
-                console.log(inscripcionesSelected);
-                setInscripcionesEnviadas(await POSTtardias(inscripcionesSelected))}} 
-                className={inscripcionesSelected?.length > 0 ? 'SendButton' : 'DisabledButton'}
-                disabled={inscripcionesSelected?.length === 0}>
+            </div>
 
-                    Inscribir seleccionados
-                </button>
-            </div>
-            </div>
         </div>
-
-    </div>
     </InsContext.Provider>
 
 }

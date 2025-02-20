@@ -4,27 +4,27 @@ import { InsContext } from "../../Context/Context"
 
 function Materias() {
 
-    const { materiasFiltrados  } = useContext(InsContext)
+    const { materiasFiltrados } = useContext(InsContext)
 
 
 
     return <>
-    <div className="SingleList">
+        <div className="SingleList">
 
-        {materiasFiltrados?.map((m, key)=> {
-            return <Materia key={key} materia={m} ></Materia>
-       })}
-    </div>
+            {materiasFiltrados?.map((m, key) => {
+                return <Materia key={key} materia={m} ></Materia>
+            })}
+        </div>
     </>
 }
 
 
-function Materia({materia}) {
+function Materia({ materia }) {
 
     const { setMateriaSelected, materiaSelected } = useContext(InsContext)
 
 
-    return <div className={materiaSelected === materia ? "ItemSelectedSticky" : "Item"} onClick={()=> {
+    return <div className={materiaSelected === materia ? "ItemSelectedSticky" : "Item"} onClick={() => {
         if (materiaSelected === materia) {
             setMateriaSelected(undefined)
 
@@ -33,10 +33,10 @@ function Materia({materia}) {
         }
     }}>
         <div className="Campo" >
-        {materia.nombre}
+            {materia.nombre}
         </div>
 
-        
+
     </div>
 }
 
